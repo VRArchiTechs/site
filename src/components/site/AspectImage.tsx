@@ -8,14 +8,23 @@ type Props = {
   /** wrapper classes */
   frameClassName?: string;
   eager?: boolean;
+  /** keep the image's own ratio instead of snapping to 16:9 / 3:4 */
+  natural?: boolean;
 };
 
 /**
  * Renders an image at a fixed editorial ratio based on its own orientation:
  * 16:9 for landscape, 3:4 for portrait. Never squares a portrait.
  */
-export function AspectImage({ src, alt, className = "", frameClassName = "", eager }: Props) {
-  const [ratio, setRatio] = useState<"16 / 9" | "3 / 4">("16 / 9");
+export function AspectImage({
+  src,
+  alt,
+  className = "",
+  frameClassName = "",
+  eager,
+  natural,
+}: Props) {
+  const [ratio, setRatio] = useState<string>(natural ? "4 / 3" : "16 / 9");
 
   return (
     <div className={`overflow-hidden ${frameClassName}`} style={{ aspectRatio: ratio }}>
@@ -26,7 +35,13 @@ export function AspectImage({ src, alt, className = "", frameClassName = "", eag
         onLoad={(e) => {
           const el = e.currentTarget;
           if (el.naturalWidth && el.naturalHeight) {
-            setRatio(el.naturalWidth < el.naturalHeight ? "3 / 4" : "16 / 9");
+            setRatio(
+              natural
+                ? `${el.naturalWidth} / ${el.naturalHeight}`
+                : el.naturalWidth < el.naturalHeight
+                  ? "3 / 4"
+                  : "16 / 9",
+            );
           }
         }}
         className={`h-full w-full object-cover ${className}`}
