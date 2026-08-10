@@ -1,3 +1,4 @@
+import { AspectImage } from "./AspectImage";
 import { Filmstrip } from "./Filmstrip";
 import { Reveal } from "./Reveal";
 import type { Project } from "@/lib/portfolio-data";
@@ -16,12 +17,14 @@ export function ProjectSpread({ project }: { project: Project }) {
         <Reveal className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-16">
           <div>
             <p className="eyebrow text-brass">Project {project.number}</p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,5vw,4rem)] leading-[1.02] tracking-[-0.015em] text-ink">
+            <h2 className="mt-5 font-display text-[clamp(2.1rem,6vw,4rem)] leading-[1.02] tracking-[-0.015em] text-ink">
               {project.title}
             </h2>
-            <p className="eyebrow mt-4 text-ink-muted">{project.location}</p>
+            <p className="eyebrow mt-4 inline-block border border-hair px-2.5 py-1 text-ink-muted">
+              {project.location}
+            </p>
           </div>
-          <dl className="grid grid-cols-2 gap-6 self-end border-t border-hair pt-6 sm:grid-cols-3">
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-5 self-end border-t border-hair pt-6 sm:grid-cols-3">
             {project.meta.map((m) => (
               <div key={m.label}>
                 <dt className="eyebrow text-ink-muted">{m.label}</dt>
@@ -38,11 +41,10 @@ export function ProjectSpread({ project }: { project: Project }) {
 
       <Reveal className="mt-16">
         <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-          <img
+          <AspectImage
             src={project.hero.src}
             alt={project.hero.alt}
-            loading="lazy"
-            className="w-full border border-hair object-cover md:aspect-[16/9]"
+            frameClassName="border border-hair bg-paper-deep"
           />
         </div>
       </Reveal>
