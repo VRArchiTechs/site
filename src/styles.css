@@ -4,6 +4,72 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ---------- Editorial architecture portfolio tokens ---------- */
+@theme {
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans:
+    "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --color-paper: oklch(0.979 0.004 85);
+  --color-paper-deep: oklch(0.949 0.009 84);
+  --color-ink: oklch(0.196 0.007 95);
+  --color-ink-soft: oklch(0.42 0.008 90);
+  --color-ink-muted: oklch(0.58 0.008 90);
+  --color-brass: oklch(0.596 0.066 76);
+  --color-brass-soft: oklch(0.78 0.04 78);
+  --color-hair: oklch(0.87 0.008 84);
+  --color-hair-dark: oklch(0.34 0.008 92);
+}
+
+@utility hairline {
+  border-top: 1px solid var(--color-hair);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+@utility dropcap {
+  &::first-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-size: 4.1em;
+    line-height: 0.78;
+    padding-right: 0.09em;
+    padding-top: 0.06em;
+    color: var(--color-brass);
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility filmstrip {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hair) transparent;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-hair);
+  }
+}
+
 /*
  * Design system definition.
  *
@@ -140,5 +206,15 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

@@ -1,24 +1,70 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo } from "react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Hero } from "@/components/site/Hero";
+import { ProgressRail } from "@/components/site/ProgressRail";
+import { ProjectSpread } from "@/components/site/ProjectSpread";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { SiteNav } from "@/components/site/SiteNav";
+import { Studio } from "@/components/site/Studio";
+import { Visualisation } from "@/components/site/Visualisation";
+import { WorkIndex } from "@/components/site/WorkIndex";
+import { projects, sections, studio } from "@/lib/portfolio-data";
+import { useActiveSection } from "@/components/site/useActiveSection";
+
+const title = "Vishnu Ahir — Architecture, Structure & Interior Design";
+const description =
+  "Editorial portfolio of Vishnu Ahir (VR ArchiTechs), Gandhinagar — residential architecture, structural detailing, interiors and photorealistic visualisation.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: studio.name,
+          jobTitle: studio.role,
+          worksFor: { "@type": "Organization", name: studio.practice },
+          email: studio.email,
+          telephone: studio.phone,
+          address: { "@type": "PostalAddress", addressLocality: "Gandhinagar", addressRegion: "Gujarat" },
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const ids = useMemo(() => sections.map((s) => s.id), []);
+  const active = useActiveSection(ids);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-paper font-sans text-ink antialiased">
+      <SiteNav active={active} />
+      <ProgressRail active={active} />
+      <main>
+        <Hero />
+        <Studio />
+        <WorkIndex />
+        {projects.map((project) => (
+          <ProjectSpread key={project.id} project={project} />
+        ))}
+        <Visualisation />
+      </main>
+      <SiteFooter />
     </div>
   );
 }
