@@ -1,0 +1,72 @@
+import { Reveal } from "./Reveal";
+import { scenes } from "@/lib/portfolio-data";
+
+export function Visualisation() {
+  return (
+    <section id="visualisation" className="bg-ink text-paper">
+      <div className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-32">
+        <Reveal className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
+          <div>
+            <p className="eyebrow text-brass-soft">Chapter — Visualisation</p>
+            <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.8rem)] leading-[1.03] tracking-[-0.015em]">
+              Rendering as a way of testing material.
+            </h2>
+          </div>
+          <p className="self-end border-t border-hair-dark pt-6 text-[0.98rem] leading-[1.8] text-paper/70">
+            These scenes are grouped by room rather than by client. Each one is a controlled study —
+            one light condition, one palette, one question about how a surface behaves before it is
+            ever specified.
+          </p>
+        </Reveal>
+
+        {scenes.map((scene, i) => (
+          <Reveal key={scene.id} className="mt-20" delay={i * 40}>
+            <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-hair-dark pb-5">
+              <h3 className="font-display text-[clamp(1.5rem,3.2vw,2.4rem)]">
+                <span className="mr-4 align-middle text-sm tracking-[0.2em] text-brass-soft">
+                  {scene.number}
+                </span>
+                {scene.name}
+              </h3>
+              <p className="eyebrow text-paper/50">
+                {scene.plates.length + (scene.lead ? 1 : 0)} renders
+              </p>
+            </div>
+
+            <p className="mt-6 max-w-[62ch] text-[0.95rem] leading-[1.8] text-paper/65">
+              {scene.note}
+            </p>
+
+            {scene.lead ? (
+              <img
+                src={scene.lead.src}
+                alt={scene.lead.alt}
+                loading="lazy"
+                className="mt-9 w-full border border-hair-dark object-cover md:aspect-[16/9]"
+              />
+            ) : null}
+
+            <div className="filmstrip mt-6 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5">
+              {scene.plates.map((plate) => (
+                <figure
+                  key={plate.src + plate.caption}
+                  className="w-[80vw] shrink-0 snap-start sm:w-[46vw] lg:w-[32vw]"
+                >
+                  <img
+                    src={plate.src}
+                    alt={plate.alt}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full border border-hair-dark object-cover"
+                  />
+                  <figcaption className="mt-3 border-t border-hair-dark pt-2 text-xs leading-relaxed text-paper/55">
+                    {plate.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
