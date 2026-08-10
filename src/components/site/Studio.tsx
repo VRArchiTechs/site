@@ -22,7 +22,7 @@ export function Studio() {
               <AspectImage
                 src={studio.portrait.src}
                 alt={studio.portrait.alt}
-                frameClassName="relative border border-hair bg-paper-soft"
+                frameClassName="relative border border-hair bg-paper-deep"
                 className="grayscale-[0.12] transition-transform duration-[900ms] ease-out hover:scale-[1.02]"
               />
             </div>

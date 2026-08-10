@@ -1,3 +1,4 @@
+import { AspectImage } from "./AspectImage";
 import { Reveal } from "./Reveal";
 import { scenes } from "@/lib/portfolio-data";
 
@@ -38,11 +39,10 @@ export function Visualisation() {
             </p>
 
             {scene.lead ? (
-              <img
+              <AspectImage
                 src={scene.lead.src}
                 alt={scene.lead.alt}
-                loading="lazy"
-                className="mt-9 w-full border border-hair-dark object-cover md:aspect-[16/9]"
+                frameClassName="mt-9 border border-hair-dark"
               />
             ) : null}
 
@@ -50,13 +50,13 @@ export function Visualisation() {
               {scene.plates.map((plate) => (
                 <figure
                   key={plate.src + plate.caption}
-                  className="w-[80vw] shrink-0 snap-start sm:w-[46vw] lg:w-[32vw]"
+                  className="group w-[84vw] shrink-0 snap-start sm:w-[46vw] lg:w-[32vw]"
                 >
-                  <img
+                  <AspectImage
                     src={plate.src}
                     alt={plate.alt}
-                    loading="lazy"
-                    className="aspect-[4/3] w-full border border-hair-dark object-cover"
+                    frameClassName="border border-hair-dark"
+                    className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
                   <figcaption className="mt-3 border-t border-hair-dark pt-2 text-xs leading-relaxed text-paper/55">
                     {plate.caption}

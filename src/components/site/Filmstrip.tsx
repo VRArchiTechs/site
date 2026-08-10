@@ -23,7 +23,7 @@ export function Filmstrip({ title, plates }: { title: string; plates: Plate[] })
             <AspectImage
               src={plate.src}
               alt={plate.alt}
-              frameClassName="border border-hair bg-paper-soft"
+              frameClassName="border border-hair bg-paper-deep"
               className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
             />
             <figcaption className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-3 border-t border-hair pt-2.5">
