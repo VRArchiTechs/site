@@ -7,7 +7,13 @@ export function Filmstrip({ title, plates }: { title: string; plates: Plate[] })
         <p className="eyebrow text-brass">{title}</p>
         <p className="eyebrow text-ink-muted">{plates.length} plates →</p>
       </div>
-      <div className="filmstrip mt-5 flex snap-x snap-proximity scroll-pl-6 gap-5 overflow-x-auto px-6 pb-5 md:scroll-pl-10 md:px-10">
+      <div
+        className="filmstrip mt-5 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5"
+        style={{
+          paddingInline: "max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))",
+          scrollPaddingInline: "max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))",
+        }}
+      >
         {plates.map((plate) => (
           <figure
             key={plate.src + plate.caption}
