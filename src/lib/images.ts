@@ -11,7 +11,7 @@ export const img = {
   "p06-render-4": "/images/projects/pintubhai/p06-render-4.webp",
   "p07-ground-floor-plan-and-wall-cladding-detail": "/images/projects/pintubhai/p07-ground-floor-plan-and-wall-cladding-detail.webp",
   "p08-front-elevation-and-section": "/images/projects/pintubhai/p08-front-elevation-and-section.webp",
-  "p09-tri-pod-residence-exterior-render": "/images/projects/tripod/p09-tri-pod-residence-exterior-render.webp",
+  "p09-tri-pod-residence-exterior-render": "/images/hero/home-hero.webp",
   "p10-tri-pod-residence-street-elevation": "/images/projects/tripod/p10-tri-pod-residence-street-elevation.webp",
   "p11-facade-strategy-diagram": "/images/projects/tripod/p11-facade-strategy-diagram.webp",
   "p12-north-elevation": "/images/projects/tripod/p12-north-elevation.webp",
