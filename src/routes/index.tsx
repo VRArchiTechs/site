@@ -55,6 +55,7 @@ function Index() {
     <div className="min-h-screen bg-paper font-sans text-ink antialiased">
       <SiteNav active={active} />
       <ProgressRail active={active} />
+      <div className="grain" aria-hidden="true" />
       <main>
         <Hero />
         <Studio />
