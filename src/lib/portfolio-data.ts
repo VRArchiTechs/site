@@ -9,7 +9,11 @@ export type Project = {
   indexTitle: string;
   location: string;
   meta: { label: string; value: string }[];
-  lede: string;
+  /** mono strapline under the title: "Radhanpur, Gujarat — Design → Structural → Built" */
+  sub: string;
+  notes: string[];
+  pull?: string;
+  heroTag?: string;
   hero: { src: string; alt: string };
   strips: { title: string; plates: Plate[] }[];
   tags: string[];
@@ -54,7 +58,13 @@ export const projects: Project[] = [
       { label: "Type", value: "Residential Bungalow" },
       { label: "Delivery", value: "Drawings to Render" },
     ],
-    lede: "A compact bungalow resolved end to end — ground floor planning, stone cladding coursed to the door heights, elevations and sections, and a gate assembly drawn to the bolt. The renders exist to test the same decisions the drawings commit to.",
+    sub: "Gandhinagar, Gujarat — Plan → Elevation → Section → Detail",
+    notes: [
+      "A ground-up residential project carried through complete construction documentation — floor plans, elevations, sections and wall cladding details, coordinated down to stone cladding profiles and RCC chaja levels.",
+      "This is the layer that sits underneath every render on this page: the working drawing set a contractor actually builds from.",
+    ],
+    pull: "Every finished render starts as a dimensioned line drawing — this is that layer, shown in full.",
+    heroTag: "As designed — render",
     hero: {
       src: img["p02-bungalow-for-mr-pintubhai-render-view"],
       alt: "Render view of a compact stone-clad residential bungalow",
@@ -98,7 +108,13 @@ export const projects: Project[] = [
       { label: "Floors", value: "G+3 Residential" },
       { label: "Tools", value: "AutoCAD · SketchUp · Twinmotion" },
     ],
-    lede: "A narrow plot asked for height without heaviness. A vertical louvered spine anchors the facade while curved balcony edges pull the floors sideways; terracotta cladding carries the warm lines, concrete keeps the quiet ones.",
+    sub: "Ahmedabad, Gujarat — Facade Design · Planning · Visualisation",
+    notes: [
+      "A controlled balance between vertical emphasis and fluid horizontal movement within a compact G+3 residential form. A continuous louvered element establishes hierarchy and privacy; curved balcony edges soften the mass with a rhythmic, floor-by-floor progression.",
+      "Terracotta cladding is layered against neutral concrete to define primary zones and add depth to the street-facing elevation.",
+    ],
+    pull: "The composition responds to both scale and context — introducing rhythm, privacy and a distinct architectural identity.",
+    heroTag: "Street facade — render",
     hero: {
       src: img["p09-tri-pod-residence-exterior-render"],
       alt: "Exterior render of the Tri-Pod Residence facade",
@@ -131,7 +147,13 @@ export const projects: Project[] = [
       { label: "Floors", value: "G+1 · 5,000 sq.ft plot" },
       { label: "Programme", value: "7 Bed · 5 Bath" },
     ],
-    lede: "Classical grammar — pediment, symmetry, a columned verandah — rebuilt with today's frame and detailing. The file follows the house the whole way: foundation, structure, finishing, and finally the rooms in use.",
+    sub: "Radhanpur, Gujarat — Design → Structural → Interior → Built",
+    notes: [
+      "A balanced integration of architecture, structural engineering and interior design within a contemporary villa typology. Classical elements — pediments, symmetrical proportions, columned verandahs — are reinterpreted through modern construction and spatial planning.",
+      "The scope ran past the drawing board: structural development, interior design, custom detailing and full construction documentation, carried through to a completed, occupied residence.",
+    ],
+    pull: "The completed residence demonstrates the translation of design intent into a built reality — with consistency held across architecture, interior and technical disciplines.",
+    heroTag: "As designed — render",
     hero: { src: img["p14-harekrushna-villa-front-render"], alt: "Front render of Harekrushna Villa" },
     strips: [
       {
@@ -168,7 +190,13 @@ export const projects: Project[] = [
       { label: "Scope", value: "Interior Design & Visualisation" },
       { label: "Rooms", value: "Living · Study · Bedrooms" },
     ],
-    lede: "Warm geometry, held down by wood and stone. Feature walls set the rhythm of each room, cove lighting keeps the ceilings weightless, and art is placed early rather than added at the end.",
+    sub: "Delhi — Full Interior Design",
+    notes: [
+      "A cohesive 1,500 sq.ft interior built on elegant materials, warm lighting and thoughtful detailing — a geometric wood-and-mirror feature wall carries through from the living area into the master bedroom, tying the apartment together.",
+      "Every custom piece — the TV unit, the wardrobe, the walk-in closet — was drawn and dimensioned before it was rendered.",
+    ],
+    pull: "Each space is crafted to offer comfort and a timeless sense of luxury, while holding visual harmony throughout the residence.",
+    heroTag: "Living area — render",
     hero: { src: img["p25-living-room-interior-render"], alt: "Living room interior render" },
     strips: [
       {
@@ -203,7 +231,12 @@ export const projects: Project[] = [
       { label: "Scope", value: "Architecture & Landscape" },
       { label: "Storeys", value: "Two" },
     ],
-    lede: "A two-storey house organised around an arched double-height portico. Balconies wrap the upper floor for shade, and the garden answers with a stone water feature and a seating court kept deliberately dark and cool.",
+    sub: "Ahmedabad, Gujarat — Visualisation, with VR ArchiTechs",
+    notes: [
+      "A 3,000 sq.ft classical villa set within a landscaped garden — arched porticos, balustraded balconies and a stone water feature framed against dense planting.",
+      "Balconies wrap the upper floor for shade, and the seating court is kept deliberately dark and cool. Visualisation work produced in collaboration with VR ArchiTechs.",
+    ],
+    heroTag: "Front elevation — render",
     hero: { src: img["p34-bharatbhai-bunglow-exterior-render"], alt: "Exterior render of Bharatbhai Bungalow" },
     strips: [
       {
@@ -230,7 +263,12 @@ export const projects: Project[] = [
       { label: "Scope", value: "Interior & Documentation" },
       { label: "Focus", value: "Compact Planning" },
     ],
-    lede: "Three hundred and twenty square feet asked to do everything. A fluted timber wall absorbs the television, a niche holds the puja, and full-height glazing borrows the garden as the room's fourth wall.",
+    sub: "Noida — Interior Design",
+    notes: [
+      "A compact 320 sq.ft minimalist living area where fluted timber panelling, a marble-framed TV wall and a small shrine niche share one continuous material language — warm oak against cool white marble.",
+      "Full-height glazing borrows the private garden as the room's fourth wall.",
+    ],
+    heroTag: "Living area — render",
     hero: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render" },
     strips: [
       {
