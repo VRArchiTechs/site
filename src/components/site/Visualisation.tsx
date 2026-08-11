@@ -4,7 +4,7 @@ import { scenes } from "@/lib/portfolio-data";
 
 export function Visualisation() {
   return (
-    <section id="visualisation" className="bg-ink text-paper">
+    <section id="visualisation" className="bg-paper-deep text-ink">
       <div className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-32">
         <Reveal className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
           <div>
@@ -13,7 +13,7 @@ export function Visualisation() {
               Rendering as a way of testing material.
             </h2>
           </div>
-          <p className="self-end border-t border-hair-dark pt-6 text-[0.98rem] leading-[1.8] text-paper/70">
+          <p className="self-end border-t border-hair-dark pt-6 text-[0.98rem] leading-[1.8] text-ink/70">
             These scenes are grouped by room rather than by client. Each one is a controlled study —
             one light condition, one palette, one question about how a surface behaves before it is
             ever specified.
@@ -29,12 +29,12 @@ export function Visualisation() {
                 </span>
                 {scene.name}
               </h3>
-              <p className="eyebrow text-paper/50">
+              <p className="eyebrow text-ink/50">
                 {scene.plates.length + (scene.lead ? 1 : 0)} renders
               </p>
             </div>
 
-            <p className="mt-6 max-w-[62ch] text-[0.95rem] leading-[1.8] text-paper/65">
+            <p className="mt-6 max-w-[62ch] text-[0.95rem] leading-[1.8] text-ink/65">
               {scene.note}
             </p>
 
@@ -58,7 +58,7 @@ export function Visualisation() {
                     frameClassName="border border-hair-dark"
                     className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
-                  <figcaption className="mt-3 border-t border-hair-dark pt-2 text-xs leading-relaxed text-paper/55">
+                  <figcaption className="mt-3 border-t border-hair-dark pt-2 text-xs leading-relaxed text-ink/55">
                     {plate.caption}
                   </figcaption>
                 </figure>
