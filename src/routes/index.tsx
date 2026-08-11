@@ -59,11 +59,11 @@ function Index() {
       <main>
         <Hero />
         <Studio />
+        <Visualisation />
         <WorkIndex />
         {projects.map((project) => (
           <ProjectSpread key={project.id} project={project} />
         ))}
-        <Visualisation />
       </main>
       <SiteFooter />
     </div>
