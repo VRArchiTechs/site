@@ -55,7 +55,7 @@ export const img = {
   "r06-dining-room-ink-mural-variant": "/images/visualisation/dining-room/dining-room-02.webp",
   "r07-dining-room-angled-view": "/images/visualisation/dining-room/dining-room-03.webp",
   "r08-dining-room-angled-view-ink-mural": "/images/visualisation/dining-room/dining-room-04.webp",
-  "r09-bathroom-wide-render": "/images/interiors/r09-bathroom-wide-render.webp",
-  "r10-bathroom-vanity-detail": "/images/interiors/r10-bathroom-vanity-detail.webp",
-  "r11-bathroom-shower-detail": "/images/interiors/r11-bathroom-shower-detail.webp",
+  "r09-bathroom-wide-render": "/images/visualisation/bathroom/bathroom-01.webp",
+  "r10-bathroom-vanity-detail": "/images/visualisation/bathroom/bathroom-02.webp",
+  "r11-bathroom-shower-detail": "/images/visualisation/bathroom/bathroom-03.webp",
 } as const;
