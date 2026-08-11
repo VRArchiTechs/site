@@ -47,7 +47,7 @@ export const img = {
   "p42-seating-area-with-wooden-furniture": "/images/projects/bharatbhai/p42-seating-area-with-wooden-furniture.webp",
   "p43-seating-area-alternate-view": "/images/projects/bharatbhai/p43-seating-area-alternate-view.webp",
   "p44-seating-area-with-study-nook": "/images/projects/bharatbhai/p44-seating-area-with-study-nook.webp",
-  "r01-living-room-wide-presentation-render": "/images/interiors/r01-living-room-wide-presentation-render.webp",
+  "r01-living-room-wide-presentation-render": "/images/visualisation/living-room/living-room-01.webp",
   "r02-living-room-seating-detail": "/images/interiors/r02-living-room-seating-detail.webp",
   "r03-living-room-sofa-and-art-detail": "/images/interiors/r03-living-room-sofa-and-art-detail.webp",
   "r04-living-room-styling-detail-with-pouf": "/images/interiors/r04-living-room-styling-detail-with-pouf.webp",
