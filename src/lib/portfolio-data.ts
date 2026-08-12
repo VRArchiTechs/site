@@ -14,6 +14,7 @@ export type Project = {
   notes: string[];
   pull?: string;
   heroImage?: { src: string; alt: string } | null;
+  heroTag?: string;
   galleryImages: { title: string; plates: Plate[] }[];
   tags: string[];
 };
