@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 type Props = {
   src: string;
   alt: string;
@@ -8,9 +6,7 @@ type Props = {
   /** wrapper classes */
   frameClassName?: string;
   eager?: boolean;
-  /** keep the image's own ratio instead of snapping to an editorial ratio */
-  natural?: boolean;
-  /** explicit editorial ratio for this image frame */
+  /** explicit editorial ratio for the image frame */
   ratio?: "16 / 9" | "3 / 4";
 };
 
@@ -25,26 +21,18 @@ export function AspectImage({
   className = "",
   frameClassName = "",
   eager,
-  natural,
-  ratio,
+  ratio = "16 / 9",
 }: Props) {
-  const [loadedRatio, setLoadedRatio] = useState<string | null>(null);
-  const frameRatio = natural ? loadedRatio ?? "4 / 3" : ratio ?? "16 / 9";
-
   return (
-    <div className={`overflow-hidden ${frameClassName}`} style={{ aspectRatio: frameRatio ?? undefined }}>
+    <div
+      className={`overflow-hidden ${frameClassName}`}
+      style={{ aspectRatio: ratio }}
+    >
       <img
         src={src}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
-        onLoad={(e) => {
-          if (!natural) return;
-          const el = e.currentTarget;
-          if (el.naturalWidth && el.naturalHeight) {
-            setLoadedRatio(`${el.naturalWidth} / ${el.naturalHeight}`);
-          }
-        }}
-        className={`h-full w-full ${natural ? "object-contain" : "object-contain"} ${className}`}
+        className={`h-full w-full object-contain ${className}`}
       />
     </div>
   );
