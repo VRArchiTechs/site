@@ -25,22 +25,24 @@ export function ProjectSpread({ project }: { project: Project }) {
         </Reveal>
       </div>
 
-      <Reveal className="relative mt-12">
-        <img
-          src={project.hero.src}
-          alt={project.hero.alt}
-          loading="lazy"
-          className="h-[62vh] min-h-[340px] w-full object-cover md:h-[82vh] md:min-h-[480px]"
-        />
-        {project.heroTag ? (
-          <span className="eyebrow absolute bottom-5 left-5 border border-hair bg-paper/70 px-3.5 py-2 text-ink backdrop-blur-md md:left-10">
-            {project.heroTag}
-          </span>
-        ) : null}
-      </Reveal>
+      {project.heroImage ? (
+        <Reveal className="relative mt-12">
+          <img
+            src={project.heroImage.src}
+            alt={project.heroImage.alt}
+            loading="lazy"
+            className="aspect-[16/9] w-full object-contain md:max-h-[82vh]"
+          />
+          {project.heroTag ? (
+            <span className="eyebrow absolute bottom-5 left-5 border border-hair bg-paper/70 px-3.5 py-2 text-ink backdrop-blur-md md:left-10">
+              {project.heroTag}
+            </span>
+          ) : null}
+        </Reveal>
+      ) : null}
 
       <div className="relative mx-auto max-w-[1240px] px-6 md:px-10">
-        <Reveal className="grid gap-9 pt-12 md:grid-cols-[0.85fr_1.15fr] md:gap-[70px]">
+        <Reveal className={`${project.heroImage ? "pt-12" : "pt-10"} grid gap-9 md:grid-cols-[0.85fr_1.15fr] md:gap-[70px]`}>
           <div className="space-y-4 text-[0.98rem] leading-[1.85] text-ink-soft">
             {project.notes.map((n) => (
               <p key={n.slice(0, 24)}>{n}</p>
@@ -66,8 +68,8 @@ export function ProjectSpread({ project }: { project: Project }) {
         </Reveal>
       </div>
 
-      {project.strips.map((strip) => (
-        <Filmstrip key={strip.title} title={strip.title} plates={strip.plates} />
+      {project.galleryImages.map((gallery) => (
+        <Filmstrip key={gallery.title} title={gallery.title} plates={gallery.plates} />
       ))}
 
       <div className="mx-auto mt-14 max-w-[1240px] px-6 md:px-10">
