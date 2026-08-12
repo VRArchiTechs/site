@@ -1,3 +1,5 @@
+import { DISPLAY_PRESETS, type DisplayPreset } from "@/lib/display-presets";
+
 type Props = {
   src: string;
   alt: string;
@@ -6,14 +8,13 @@ type Props = {
   /** wrapper classes */
   frameClassName?: string;
   eager?: boolean;
-  /** explicit editorial ratio for the image frame */
-  ratio?: "16 / 9" | "3 / 4";
+  /** shared media presentation preset */
+  display?: DisplayPreset;
 };
 
 /**
- * Renders portfolio imagery with an explicit editorial ratio.
- * Hero images use 16:9; gallery images use 3:4.
- * Images are contained so the full render remains visible without cropping.
+ * Renders portfolio imagery through the shared display preset system.
+ * The preset controls both the frame aspect ratio and object-fit behavior.
  */
 export function AspectImage({
   src,
@@ -21,18 +22,20 @@ export function AspectImage({
   className = "",
   frameClassName = "",
   eager,
-  ratio = "16 / 9",
+  display = "16:9-contain",
 }: Props) {
+  const preset = DISPLAY_PRESETS[display];
+
   return (
     <div
       className={`overflow-hidden ${frameClassName}`}
-      style={{ aspectRatio: ratio }}
+      style={{ aspectRatio: preset.aspectRatio }}
     >
       <img
         src={src}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
-        className={`h-full w-full object-contain ${className}`}
+        className={`h-full w-full object-${preset.objectFit} ${className}`}
       />
     </div>
   );
