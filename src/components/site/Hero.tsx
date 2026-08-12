@@ -4,8 +4,8 @@ export function Hero() {
   return (
     <section id="top" className="relative isolate flex min-h-[100svh] items-end overflow-hidden">
       <img
-        src={studio.heroImage.src}
-        alt={studio.heroImage.alt}
+        src={studio.landingImage.src}
+        alt={studio.landingImage.alt}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-paper/40" />
