@@ -30,7 +30,7 @@ export function Visualisation() {
                 {scene.name}
               </h3>
               <p className="eyebrow text-ink/50">
-                {scene.plates.length + (scene.lead ? 1 : 0)} renders
+                {scene.galleryImages.length + (scene.heroImage ? 1 : 0)} renders
               </p>
             </div>
 
@@ -38,10 +38,10 @@ export function Visualisation() {
               {scene.note}
             </p>
 
-            {scene.lead ? (
+            {scene.heroImage ? (
               <AspectImage
-                src={scene.lead.src}
-                alt={scene.lead.alt}
+                src={scene.heroImage.src}
+                alt={scene.heroImage.alt}
                 ratio="16 / 9"
                 eager={i === 0}
                 frameClassName="mt-9 border border-hair-dark"
@@ -49,7 +49,7 @@ export function Visualisation() {
             ) : null}
 
             <div className="filmstrip mt-6 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5">
-              {scene.plates.map((plate) => (
+              {scene.galleryImages.map((plate) => (
                 <figure
                   key={plate.src + plate.caption}
                   className="group w-[84vw] shrink-0 snap-start sm:w-[46vw] lg:w-[32vw]"
