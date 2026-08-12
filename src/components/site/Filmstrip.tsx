@@ -12,7 +12,7 @@ type Props = {
 export function Filmstrip({ title, description, display, plates }: Props) {
   return (
     <div className="mt-16">
-      <div className="mx-auto max-w-[1240px] border-b border-hair px-6 pb-4 md:px-10">
+      <div className="mx-auto max-w-[1320px] border-b border-hair px-6 pb-4 md:px-10">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4">
           <p className="eyebrow truncate text-brass">{title}</p>
           <p className="eyebrow shrink-0 text-ink-muted">{plates.length} PLATES</p>
@@ -25,8 +25,8 @@ export function Filmstrip({ title, description, display, plates }: Props) {
       <div
         className="filmstrip mt-5 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5"
         style={{
-          paddingInline: "max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))",
-          scrollPaddingInline: "max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))",
+          paddingInline: "max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))",
+          scrollPaddingInline: "max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))",
         }}
       >
         {plates.filter(Boolean).map((plate, i) => (
