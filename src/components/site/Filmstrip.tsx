@@ -1,24 +1,21 @@
 import { AspectImage } from "./AspectImage";
+import type { DisplayPreset } from "@/lib/display-presets";
 import type { Plate } from "@/lib/portfolio-data";
-
-type GalleryType = "render" | "drawing" | "site" | "photo";
 
 type Props = {
   title: string;
   description?: string;
-  type: GalleryType;
+  display: DisplayPreset;
   plates: Plate[];
 };
 
-export function Filmstrip({ title, description, type, plates }: Props) {
-  const imageFit = type === "render" ? "object-cover" : "object-contain";
-
+export function Filmstrip({ title, description, display, plates }: Props) {
   return (
     <div className="mt-16">
       <div className="mx-auto max-w-[1240px] border-b border-hair px-6 pb-4 md:px-10">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4">
           <p className="eyebrow truncate text-brass">{title}</p>
-          <p className="eyebrow shrink-0 text-ink-muted">{plates.length} plates →</p>
+          <p className="eyebrow shrink-0 text-ink-muted">{plates.length} PLATES</p>
         </div>
         {description ? (
           <p className="mt-3 max-w-[62ch] text-sm leading-[1.8] text-ink-muted">{description}</p>
@@ -40,9 +37,9 @@ export function Filmstrip({ title, description, type, plates }: Props) {
             <AspectImage
               src={plate.src}
               alt={plate.alt}
-              ratio="4 / 3"
+              display={display}
               frameClassName="border border-hair bg-paper-deep"
-              className={`${imageFit} transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]`}
+              className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
             />
             <figcaption className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-3 border-t border-hair pt-2.5">
               <span className="eyebrow shrink-0 text-brass">
