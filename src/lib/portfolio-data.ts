@@ -27,6 +27,14 @@ export type Project = {
   tags: string[];
 };
 
+export const sections = [
+  { id: "hero", label: "Landing" },
+  { id: "studio", label: "Studio" },
+  { id: "visualisation", label: "Visualisation" },
+  { id: "work", label: "Work" },
+  { id: "contact", label: "Contact" },
+] as const;
+
 export const studio = {
   name: "Vishnu Ahir",
   practice: "VR ArchiTechs",
@@ -294,75 +302,66 @@ export const projects: Project[] = [
     meta: [
       { label: "Area", value: "320 sq.ft" },
       { label: "Scope", value: "Interior & Documentation" },
-      { label: "Focus", value: "Living · Dining · Study" },
+      { label: "Focus", value: "Living Area" },
     ],
-    sub: "Noida — Interior Design & Visualisation",
+    sub: "Noida — Wood-Centric Minimalist Living",
     notes: [
-      "A compact living area organized around warm wood, filtered daylight and restrained furniture. The design uses a framed glazing line to pull the garden into the room while a study nook is integrated without interrupting the main seating zone.",
-      "The visual language is deliberately quiet — natural timber, soft upholstery and concealed lighting carry the room without competing for attention.",
+      "A compact living area shaped around warm timber, restrained detailing and a strong connection to the garden beyond.",
+      "The design balances a calm material palette with carefully framed openings, integrated storage and furniture-scale detailing.",
     ],
-    pull: "The project is less about adding objects than about giving each necessary element enough space to read clearly.",
     heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric minimalist living area", display: "16:9-cover" },
     galleries: [
       {
-        title: "Living Area",
+        title: "Living Experience",
         type: "render",
         display: "4:3-cover",
         plates: [
-          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to the garden", caption: "Garden Connection" },
-          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Living area with wooden furniture", caption: "Seating & Timber Palette" },
-          { src: img["p43-seating-area-alternate-view"], alt: "Alternate view of the living area", caption: "Alternate View" },
-          { src: img["p44-seating-area-with-study-nook"], alt: "Living area with integrated study nook", caption: "Integrated Study Nook" },
+          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Glazed Corner Opening" },
+          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating & Timber Detailing" },
+          { src: img["p43-seating-area-alternate-view"], alt: "Alternate view of seating area", caption: "Alternate Seating View" },
+          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Study Nook Integration" },
         ],
       },
     ],
-    tags: ["Timber Detailing", "Filtered Daylight", "Integrated Study Nook"],
+    tags: ["Timber Detailing", "Garden Connection", "Minimalist Interior"],
   },
 ];
 
 export const scenes = [
   {
     id: "living-room",
-    number: "01",
+    number: "I",
     name: "Living Room",
-    note: "A controlled study of material, light and furniture within a restrained contemporary living space.",
-    heroImage: {
-      src: img["r01-living-room-wide-presentation-render"],
-      alt: "Wide presentation render of the living room",
-    },
+    note: "A study in warm minimalism, layering tactile fabrics, timber and sculptural furniture against a restrained architectural shell.",
+    heroImage: { src: img["r01-living-room-wide-presentation-render"], alt: "Wide living room presentation render" },
     galleryImages: [
-      { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating Detail" },
-      { src: img["r03-living-room-sofa-and-art-detail"], alt: "Sofa and art detail", caption: "Sofa & Sculptural Art" },
-      { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Living room styling detail with pouf", caption: "Styling & Pouf" },
+      { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating & Feature Wall" },
+      { src: img["r03-living-room-sofa-and-art-detail"], alt: "Living room sofa and art detail", caption: "Sofa & Sculptural Art" },
+      { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Living room styling detail with pouf", caption: "Styling — Pouf & Console" },
     ],
   },
   {
     id: "dining-room",
-    number: "02",
+    number: "II",
     name: "Dining Room",
-    note: "One layout, two material arguments: veined marble with circular wall art, and an ink-wash mural alternative.",
-    heroImage: {
-      src: img["r05-dining-room-marble-wall-variant"],
-      alt: "Dining room with marble wall treatment",
-    },
+    note: "One layout, two material arguments: veined marble with circular wall art, and an ink-wash mural alternative. Both hang from the same bamboo-motif pendant so the comparison stays honest.",
+    heroImage: { src: img["r05-dining-room-marble-wall-variant"], alt: "Dining room marble wall variant" },
     galleryImages: [
-      { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room with ink mural treatment", caption: "Ink Mural Variant — Front" },
-      { src: img["r07-dining-room-angled-view"], alt: "Angled dining room view", caption: "Angled — Marble" },
-      { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Angled dining room view with ink mural", caption: "Angled — Ink Mural" },
+      { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room ink mural variant", caption: "Ink Mural Variant — Front" },
+      { src: img["r07-dining-room-angled-view"], alt: "Dining room angled view", caption: "Angled — Marble" },
+      { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Dining room angled view with ink mural", caption: "Angled — Ink Mural" },
     ],
   },
   {
     id: "bathroom",
-    number: "03",
+    number: "III",
     name: "Bathroom",
-    note: "A layered bathroom study combining stone, ribbed joinery, warm lighting and a compact shower volume.",
-    heroImage: undefined,
+    note: "A quiet material study pairing ribbed olive cabinetry with stone, small-format tile and a deep bronze mirror wall.",
+    heroImage: null,
     galleryImages: [
-      { src: img["r09-bathroom-wide-render"], alt: "Wide bathroom render", caption: "Wide Render" },
+      { src: img["r09-bathroom-wide-render"], alt: "Wide bathroom render", caption: "Wide Bathroom View" },
       { src: img["r10-bathroom-vanity-detail"], alt: "Bathroom vanity detail", caption: "Vanity & Mirror Wall" },
       { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower detail", caption: "Shower Niche Detail" },
     ],
   },
 ] as const;
-
-export type Scene = (typeof scenes)[number];
