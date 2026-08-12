@@ -385,11 +385,8 @@ export const scenes: VisualisationScene[] = [
     number: "02",
     name: "Dining Room",
     note: "Material and artwork variants tested under controlled lighting conditions.",
-    heroImage: {
-      src: img["r05-dining-room-marble-wall-variant"],
-      alt: "Dining room marble wall visualisation",
-    },
     galleryImages: [
+      { src: img["r05-dining-room-marble-wall-variant"], alt: "Dining room marble wall variant", caption: "Marble Wall Variant" },
       { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room ink mural variant", caption: "Ink Mural Variant" },
       { src: img["r07-dining-room-angled-view"], alt: "Dining room angled view", caption: "Angled View" },
       { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Dining room angled view with ink mural", caption: "Angled Mural Study" },
@@ -400,11 +397,8 @@ export const scenes: VisualisationScene[] = [
     number: "03",
     name: "Bathroom",
     note: "A compact material study focused on stone, vanity joinery and reflective surfaces.",
-    heroImage: {
-      src: img["r09-bathroom-wide-render"],
-      alt: "Wide bathroom visualisation",
-    },
     galleryImages: [
+      { src: img["r09-bathroom-wide-render"], alt: "Wide bathroom visualisation", caption: "Wide View" },
       { src: img["r10-bathroom-vanity-detail"], alt: "Bathroom vanity detail", caption: "Vanity Detail" },
       { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower detail", caption: "Shower Detail" },
     ],
