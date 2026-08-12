@@ -2,9 +2,9 @@ import { useState } from "react";
 import { studio } from "@/lib/portfolio-data";
 
 const links = [
+  { id: "visualisation", label: "Visualisation" },
   { id: "studio", label: "Studio" },
   { id: "work", label: "Work" },
-  { id: "visualisation", label: "Visualisation" },
   { id: "contact", label: "Contact" },
 ];
 
