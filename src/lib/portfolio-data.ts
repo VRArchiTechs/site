@@ -299,13 +299,25 @@ export const projects: Project[] = [
         plates: [
           { src: img["p35-front-exterior-render"], alt: "Front exterior render", caption: "Front Exterior" },
           { src: img["p36-dusk-exterior-render"], alt: "Dusk exterior render", caption: "Dusk View" },
-          { src: img["p37-side-angle-render"], alt: "Side elevation render", caption: "Side Elevation View" },
-          { src: img["p38-outdoor-seating-area"], alt: "Outdoor seating area render", caption: "Outdoor Seating" },
-          { src: img["p39-stone-water-feature"], alt: "Stone water feature in the garden", caption: "Landscape Water Feature" },
+          { src: img["p37-side-angle-render"], alt: "Side angle exterior render", caption: "Side Angle" },
+          { src: img["p38-outdoor-seating-area"], alt: "Outdoor seating area", caption: "Outdoor Seating" },
+          { src: img["p39-stone-water-feature"], alt: "Stone water feature detail", caption: "Stone Water Feature" },
+        ],
+      },
+      {
+        title: "Wood-Centric Living Area",
+        type: "render",
+        display: "4:3-cover",
+        plates: [
+          { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render", caption: "Living Area" },
+          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Glazed Corner" },
+          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Composition" },
+          { src: img["p43-seating-area-alternate-view"], alt: "Seating area alternate view", caption: "Alternate View" },
+          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Study Nook" },
         ],
       },
     ],
-    tags: ["Classical Facade", "Landscape Design", "Exterior Visualisation"],
+    tags: ["Classical Facade", "Landscape Design", "Stone Water Feature"],
   },
   {
     id: "wood-centric-living",
@@ -316,30 +328,85 @@ export const projects: Project[] = [
     indexTitle: "Wood-Centric Minimalist Living",
     location: "Noida",
     meta: [
-      { label: "Area", value: "Living Area" },
-      { label: "Scope", value: "Interior Visualisation" },
+      { label: "Area", value: "1,200 sq.ft" },
+      { label: "Scope", value: "Interior Design & Visualisation" },
       { label: "Style", value: "Warm Minimalism" },
     ],
-    sub: "Noida, NCR — Interior Visualisation",
+    sub: "Noida, Delhi NCR — Interior & Visualisation",
     notes: [
-      "A warm minimalist living area built around natural timber, soft textiles and carefully controlled daylight. The material palette keeps the room calm while allowing the architecture and furniture to carry the composition.",
-      "The visualisation focuses on the relationship between glazing, garden views, timber surfaces and low-profile furniture.",
+      "A warm minimalist living space centred around timber grain, soft daylight and restrained furniture. The palette is deliberately quiet so that texture, joinery and proportion carry the visual weight.",
     ],
-    pull: "A restrained palette allows proportion, light and material texture to become the defining elements of the room.",
-    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Warm minimalist living room render", display: "16:9-cover" },
+    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric minimalist living area", display: "16:9-cover" },
     galleries: [
       {
-        title: "Living Experience",
+        title: "Living Area",
         type: "render",
         display: "4:3-cover",
         plates: [
-          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Garden Connection" },
+          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Glazed Corner" },
           { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Composition" },
-          { src: img["p43-seating-area-alternate-view"], alt: "Alternate view of seating area", caption: "Alternate View" },
-          { src: img["p44-seating-area-with-study-nook"], alt: "Living area with study nook", caption: "Study Nook" },
+          { src: img["p43-seating-area-alternate-view"], alt: "Seating area alternate view", caption: "Alternate View" },
+          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Study Nook" },
         ],
       },
     ],
-    tags: ["Warm Minimalism", "Natural Timber", "Daylight Study"],
+    tags: ["Warm Minimalism", "Timber", "Daylight Study"],
+  },
+];
+
+// Visualisation scenes remain separate from Work project data.
+export type VisualisationScene = {
+  id: string;
+  number: string;
+  name: string;
+  note: string;
+  heroImage?: { src: string; alt: string } | null;
+  galleryImages: Plate[];
+};
+
+export const scenes: VisualisationScene[] = [
+  {
+    id: "living-room",
+    number: "01",
+    name: "Living Room",
+    note: "A controlled study of warm timber, soft daylight and layered seating composition.",
+    heroImage: {
+      src: img["r01-living-room-wide-presentation-render"],
+      alt: "Wide living room visualisation",
+    },
+    galleryImages: [
+      { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating Detail" },
+      { src: img["r03-living-room-sofa-and-art-detail"], alt: "Living room sofa and art detail", caption: "Sofa & Art" },
+      { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Living room styling detail with pouf", caption: "Styling Study" },
+    ],
+  },
+  {
+    id: "dining-room",
+    number: "02",
+    name: "Dining Room",
+    note: "Material and artwork variants tested under controlled lighting conditions.",
+    heroImage: {
+      src: img["r05-dining-room-marble-wall-variant"],
+      alt: "Dining room marble wall visualisation",
+    },
+    galleryImages: [
+      { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room ink mural variant", caption: "Ink Mural Variant" },
+      { src: img["r07-dining-room-angled-view"], alt: "Dining room angled view", caption: "Angled View" },
+      { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Dining room angled view with ink mural", caption: "Angled Mural Study" },
+    ],
+  },
+  {
+    id: "bathroom",
+    number: "03",
+    name: "Bathroom",
+    note: "A compact material study focused on stone, vanity joinery and reflective surfaces.",
+    heroImage: {
+      src: img["r09-bathroom-wide-render"],
+      alt: "Wide bathroom visualisation",
+    },
+    galleryImages: [
+      { src: img["r10-bathroom-vanity-detail"], alt: "Bathroom vanity detail", caption: "Vanity Detail" },
+      { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower detail", caption: "Shower Detail" },
+    ],
   },
 ];
