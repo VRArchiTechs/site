@@ -3,6 +3,7 @@
 // Replace the corresponding files in /public/images/ with your high-resolution WebP images.
 
 export const img = {
+  "landing-image": "/images/landing/landing-image.webp",
   "p01-vishnu-ahir-portrait": "/images/profile/vishnu.webp",
   "p02-bungalow-for-mr-pintubhai-render-view": "/images/projects/pintubhai/p02-bungalow-for-mr-pintubhai-render-view.webp",
   "p03-render-1": "/images/projects/pintubhai/p03-render-1.webp",
