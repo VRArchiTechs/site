@@ -1,22 +1,22 @@
 import { Filmstrip } from "./Filmstrip";
 import { Reveal } from "./Reveal";
 import { AspectImage } from "./AspectImage";
-import type { Project } from "@/lib/portfolio-data";
+import type { WorkProject } from "@/lib/work";
 
-export function ProjectSpread({ project }: { project: Project }) {
+export function ProjectSpread({ project }: { project: WorkProject }) {
   return (
     <section id={project.id} className="relative overflow-hidden border-b border-hair py-24 md:py-32">
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -top-10 right-2 select-none font-display text-[30vw] leading-none text-ink/[0.04] md:text-[18vw]"
       >
-        {project.number}
+        {project.displayNumber}
       </span>
 
       <div className="relative mx-auto max-w-[1240px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4">
-            <span className="eyebrow shrink-0 text-brass">{project.number} / 06</span>
+            <span className="eyebrow shrink-0 text-brass">{project.displayNumber} / 06</span>
             <span className="relative h-px w-[140px] bg-hair before:absolute before:-top-[5px] before:left-0 before:h-[11px] before:w-px before:bg-brass/60 after:absolute after:-top-[5px] after:right-0 after:h-[11px] after:w-px after:bg-brass/60" />
           </div>
           <h2 className="mt-6 max-w-[16ch] font-display text-[clamp(2.6rem,6.4vw,6rem)] leading-[0.98] tracking-[-0.015em] text-ink">

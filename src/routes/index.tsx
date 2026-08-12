@@ -9,7 +9,8 @@ import { SiteNav } from "@/components/site/SiteNav";
 import { Studio } from "@/components/site/Studio";
 import { Visualisation } from "@/components/site/Visualisation";
 import { WorkIndex } from "@/components/site/WorkIndex";
-import { projects, sections, studio } from "@/lib/portfolio-data";
+import { sections, studio } from "@/lib/portfolio-data";
+import { getWorkProjects } from "@/lib/work";
 import { useActiveSection } from "@/components/site/useActiveSection";
 
 const title = "Vishnu Ahir — Architecture, Structure & Interior Design";
@@ -57,6 +58,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const ids = useMemo(() => sections.map((s) => s.id), []);
   const active = useActiveSection(ids);
+  const projects = getWorkProjects();
 
   return (
     <div className="min-h-screen bg-paper font-sans text-ink antialiased">

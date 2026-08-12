@@ -1,7 +1,9 @@
 import { Reveal } from "./Reveal";
-import { projects } from "@/lib/portfolio-data";
+import { getWorkProjects } from "@/lib/work";
 
 export function WorkIndex() {
+  const projects = getWorkProjects();
+
   return (
     <section id="work" className="border-y border-hair bg-paper-deep/60">
       <div className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-32">
@@ -19,7 +21,7 @@ export function WorkIndex() {
                 href={`#${p.id}`}
                 className="group grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-5 gap-y-1 border-b border-hair py-6 md:grid-cols-[auto_minmax(0,1fr)_auto_auto] md:gap-x-10 md:py-8"
               >
-                <span className="eyebrow text-brass">{p.number}</span>
+                <span className="eyebrow text-brass">{p.displayNumber}</span>
                 <span className="min-w-0 font-display text-[clamp(1.4rem,3.2vw,2.4rem)] leading-tight text-ink transition-all duration-500 group-hover:translate-x-2 group-hover:text-brass">
                   {p.indexTitle}
                 </span>

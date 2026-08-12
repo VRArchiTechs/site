@@ -11,9 +11,13 @@ export type WorkGallery = {
   plates: Plate[];
 };
 
+export type ProjectStatus = "published" | "draft" | "private";
+
 export type Project = {
   id: string;
-  number: string;
+  sortOrder: number;
+  status: ProjectStatus;
+  year: number;
   title: string;
   indexTitle: string;
   location: string;
@@ -65,7 +69,9 @@ export const studio = {
 export const projects: Project[] = [
   {
     id: "pintubhai-bungalow",
-    number: "01",
+    sortOrder: 10,
+    status: "published",
+    year: 2026,
     title: "Bungalow for Mr. Pintubhai",
     indexTitle: "Bungalow for Mr. Pintubhai",
     location: "Gandhinagar",
@@ -119,7 +125,9 @@ export const projects: Project[] = [
   },
   {
     id: "tri-pod-residence",
-    number: "02",
+    sortOrder: 20,
+    status: "published",
+    year: 2026,
     title: "Tri-Pod Residence",
     indexTitle: "Tri-Pod Residence",
     location: "Ahmedabad",
@@ -172,7 +180,9 @@ export const projects: Project[] = [
   },
   {
     id: "harekrushna-villa",
-    number: "03",
+    sortOrder: 30,
+    status: "published",
+    year: 2026,
     title: "Harekrushna Villa",
     indexTitle: "Harekrushna Villa",
     location: "Radhanpur",
@@ -218,7 +228,9 @@ export const projects: Project[] = [
   },
   {
     id: "rupesh-interior",
-    number: "04",
+    sortOrder: 40,
+    status: "published",
+    year: 2026,
     title: "Interior for Mr. Rupesh",
     indexTitle: "Interior for Mr. Rupesh",
     location: "Delhi",
@@ -262,7 +274,9 @@ export const projects: Project[] = [
   },
   {
     id: "bharatbhai-bungalow",
-    number: "05",
+    sortOrder: 50,
+    status: "published",
+    year: 2026,
     title: "Bharatbhai Bungalow",
     indexTitle: "Bharatbhai Bungalow",
     location: "Ahmedabad",
@@ -295,7 +309,9 @@ export const projects: Project[] = [
   },
   {
     id: "wood-centric-living",
-    number: "06",
+    sortOrder: 60,
+    status: "published",
+    year: 2026,
     title: "Wood-Centric Minimalist Living Area",
     indexTitle: "Wood-Centric Minimalist Living",
     location: "Noida",
