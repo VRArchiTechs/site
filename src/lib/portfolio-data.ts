@@ -1,4 +1,5 @@
 import { img } from "./images";
+import type { DisplayPreset } from "./display-presets";
 
 export type Plate = { src: string; alt: string; caption: string };
 
@@ -6,6 +7,7 @@ export type WorkGallery = {
   title: string;
   description?: string;
   type: "render" | "drawing" | "site" | "photo";
+  display: DisplayPreset;
   plates: Plate[];
 };
 
@@ -19,7 +21,7 @@ export type Project = {
   sub: string;
   notes: string[];
   pull?: string;
-  heroImage?: { src: string; alt: string } | null;
+  heroImage?: { src: string; alt: string; display: DisplayPreset } | null;
   heroTag?: string;
   galleries: WorkGallery[];
   tags: string[];
@@ -73,11 +75,13 @@ export const projects: Project[] = [
     heroImage: {
       src: img["p02-bungalow-for-mr-pintubhai-render-view"],
       alt: "Render view of a compact stone-clad residential bungalow",
+      display: "16:9-cover",
     },
     galleries: [
       {
         title: "Render Views",
         type: "render",
+        display: "4:3-cover",
         plates: [
           { src: img["p03-render-1"], alt: "Front render of the bungalow", caption: "Street Approach" },
           { src: img["p04-render-2"], alt: "Angled render of the bungalow", caption: "Corner Massing" },
@@ -88,6 +92,7 @@ export const projects: Project[] = [
       {
         title: "Drawings & Details",
         type: "drawing",
+        display: "4:3-contain",
         plates: [
           {
             src: img["p07-ground-floor-plan-and-wall-cladding-detail"],
@@ -124,11 +129,13 @@ export const projects: Project[] = [
     heroImage: {
       src: img["p09-tri-pod-residence-exterior-render"],
       alt: "Exterior render of the Tri-Pod Residence facade",
+      display: "16:9-cover",
     },
     galleries: [
       {
         title: "Facade Strategy & Elevations",
         type: "drawing",
+        display: "4:3-contain",
         plates: [
           { src: img["p10-tri-pod-residence-street-elevation"], alt: "Street elevation render", caption: "Street Elevation" },
           {
@@ -160,11 +167,12 @@ export const projects: Project[] = [
       "The scope ran past the drawing board: structural development, interior design, custom detailing and full construction documentation, carried through to a completed, occupied residence.",
     ],
     pull: "The completed residence demonstrates the translation of design intent into a built reality — with consistency held across architecture, interior and technical disciplines.",
-    heroImage: { src: img["p14-harekrushna-villa-front-render"], alt: "Front render of Harekrushna Villa" },
+    heroImage: { src: img["p14-harekrushna-villa-front-render"], alt: "Front render of Harekrushna Villa", display: "16:9-cover" },
     galleries: [
       {
         title: "Concept to Built",
         type: "site",
+        display: "4:3-contain",
         plates: [
           { src: img["p15-completed-villa-at-dusk"], alt: "Completed villa photographed at dusk", caption: "Completed & Built" },
           { src: img["p16-site-under-construction"], alt: "Site photograph during construction", caption: "Site — Under Construction" },
@@ -177,6 +185,7 @@ export const projects: Project[] = [
       {
         title: "Interior Experience",
         type: "photo",
+        display: "4:3-contain",
         plates: [
           { src: img["p21-dining-area"], alt: "Dining area interior", caption: "Dining Area" },
           { src: img["p22-guest-bedroom"], alt: "Guest bedroom interior", caption: "Guest Bedroom" },
@@ -204,11 +213,12 @@ export const projects: Project[] = [
       "Every custom piece — the TV unit, the wardrobe, the walk-in closet — was drawn and dimensioned before it was rendered.",
     ],
     pull: "Each space is crafted to offer comfort and a timeless sense of luxury, while holding visual harmony throughout the residence.",
-    heroImage: { src: img["p25-living-room-interior-render"], alt: "Living room interior render" },
+    heroImage: { src: img["p25-living-room-interior-render"], alt: "Living room interior render", display: "16:9-cover" },
     galleries: [
       {
         title: "Living Room",
         type: "render",
+        display: "4:3-cover",
         plates: [
           { src: img["p26-living-room-wide-view"], alt: "Wide view of the living room", caption: "Living Room" },
           { src: img["p27-living-room-alternate-angle"], alt: "Living room from an alternate angle", caption: "Alternate Angle" },
@@ -219,6 +229,7 @@ export const projects: Project[] = [
       {
         title: "Bedrooms & Study",
         type: "render",
+        display: "4:3-cover",
         plates: [
           { src: img["p30-study-nook"], alt: "Study nook interior", caption: "Study Nook" },
           { src: img["p31-bedroom-with-study-desk"], alt: "Bedroom with study desk", caption: "Bedroom with Study Desk" },
@@ -245,11 +256,12 @@ export const projects: Project[] = [
       "A 3,000 sq.ft classical villa set within a landscaped garden — arched porticos, balustraded balconies and a stone water feature framed against dense planting.",
       "Balconies wrap the upper floor for shade, and the seating court is kept deliberately dark and cool. Visualisation work produced in collaboration with VR ArchiTechs.",
     ],
-    heroImage: { src: img["p34-bharatbhai-bunglow-exterior-render"], alt: "Exterior render of Bharatbhai Bungalow" },
+    heroImage: { src: img["p34-bharatbhai-bunglow-exterior-render"], alt: "Exterior render of Bharatbhai Bungalow", display: "16:9-cover" },
     galleries: [
       {
         title: "Render Views",
         type: "render",
+        display: "4:3-cover",
         plates: [
           { src: img["p35-front-exterior-render"], alt: "Front exterior render", caption: "Front Exterior" },
           { src: img["p36-dusk-exterior-render"], alt: "Dusk exterior render", caption: "Dusk View" },
@@ -277,11 +289,12 @@ export const projects: Project[] = [
       "A compact 320 sq.ft minimalist living area where fluted timber panelling, a marble-framed TV wall and a small shrine niche share one continuous material language — warm oak against cool white marble.",
       "Full-height glazing borrows the private garden as the room's fourth wall.",
     ],
-    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render" },
+    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render", display: "16:9-cover" },
     galleries: [
       {
         title: "Living Area Views",
         type: "render",
+        display: "4:3-cover",
         plates: [
           { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to the garden", caption: "Glazed Corner & Private Garden" },
           { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Area" },
