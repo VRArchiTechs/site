@@ -55,6 +55,7 @@ export function Visualisation() {
                   <AspectImage
                     src={plate.src}
                     alt={plate.alt}
+                    natural
                     frameClassName="border border-hair-dark"
                     className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
