@@ -58,8 +58,8 @@ function Index() {
       <div className="grain" aria-hidden="true" />
       <main>
         <Hero />
-        <Studio />
         <Visualisation />
+        <Studio />
         <WorkIndex />
         {projects.map((project) => (
           <ProjectSpread key={project.id} project={project} />

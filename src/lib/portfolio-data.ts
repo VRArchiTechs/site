@@ -334,9 +334,9 @@ export const scenes: Scene[] = [
 
 export const sections = [
   { id: "top", label: "Top" },
+  { id: "visualisation", label: "Renders" },
   { id: "studio", label: "Studio" },
   { id: "work", label: "Work" },
   ...projects.map((p) => ({ id: p.id, label: p.number })),
-  { id: "visualisation", label: "Renders" },
   { id: "contact", label: "Contact" },
 ];
