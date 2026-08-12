@@ -22,33 +22,34 @@ export function Filmstrip({ title, description, display, plates }: Props) {
         ) : null}
       </div>
 
-      <div
-        className="filmstrip mt-5 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5"
-        style={{
-          paddingInline: "max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))",
-          scrollPaddingInline: "max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))",
-        }}
-      >
-        {plates.filter(Boolean).map((plate, i) => (
-          <figure
-            key={plate.src + plate.caption}
-            className="group w-[84vw] shrink-0 snap-start sm:w-[54vw] lg:w-[38vw]"
-          >
-            <AspectImage
-              src={plate.src}
-              alt={plate.alt}
-              display={display}
-              frameClassName="border border-hair bg-paper-deep"
-              className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
-            />
-            <figcaption className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-3 border-t border-hair pt-2.5">
-              <span className="eyebrow shrink-0 text-brass">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-xs leading-relaxed text-ink-muted">{plate.caption}</span>
-            </figcaption>
-          </figure>
-        ))}
+      <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10">
+        <div
+          className="filmstrip mt-5 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5"
+          style={{
+            scrollPaddingInline: 0,
+          }}
+        >
+          {plates.filter(Boolean).map((plate, i) => (
+            <figure
+              key={plate.src + plate.caption}
+              className="group w-[84vw] shrink-0 snap-start sm:w-[54vw] lg:w-[38vw]"
+            >
+              <AspectImage
+                src={plate.src}
+                alt={plate.alt}
+                display={display}
+                frameClassName="border border-hair bg-paper-deep"
+                className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+              />
+              <figcaption className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-3 border-t border-hair pt-2.5">
+                <span className="eyebrow shrink-0 text-brass">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-xs leading-relaxed text-ink-muted">{plate.caption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </div>
   );
