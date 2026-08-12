@@ -1,5 +1,6 @@
 import { Filmstrip } from "./Filmstrip";
 import { Reveal } from "./Reveal";
+import { AspectImage } from "./AspectImage";
 import type { Project } from "@/lib/portfolio-data";
 
 export function ProjectSpread({ project }: { project: Project }) {
@@ -27,11 +28,12 @@ export function ProjectSpread({ project }: { project: Project }) {
 
       {project.heroImage ? (
         <Reveal className="relative mt-12">
-          <img
+          <AspectImage
             src={project.heroImage.src}
             alt={project.heroImage.alt}
-            loading="lazy"
-            className="aspect-[16/9] w-full object-contain md:max-h-[82vh]"
+            display={project.heroImage.display}
+            eager
+            frameClassName="border border-hair"
           />
           {project.heroTag ? (
             <span className="eyebrow absolute bottom-5 left-5 border border-hair bg-paper/70 px-3.5 py-2 text-ink backdrop-blur-md md:left-10">
@@ -73,7 +75,7 @@ export function ProjectSpread({ project }: { project: Project }) {
           key={gallery.title}
           title={gallery.title}
           description={gallery.description}
-          type={gallery.type}
+          display={gallery.display}
           plates={gallery.plates}
         />
       ))}
