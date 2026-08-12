@@ -1,13 +1,30 @@
 import { AspectImage } from "./AspectImage";
 import type { Plate } from "@/lib/portfolio-data";
 
-export function Filmstrip({ title, plates }: { title: string; plates: Plate[] }) {
+type GalleryType = "render" | "drawing" | "site" | "photo";
+
+type Props = {
+  title: string;
+  description?: string;
+  type: GalleryType;
+  plates: Plate[];
+};
+
+export function Filmstrip({ title, description, type, plates }: Props) {
+  const imageFit = type === "render" ? "object-cover" : "object-contain";
+
   return (
     <div className="mt-16">
-      <div className="mx-auto grid max-w-[1240px] grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 border-b border-hair px-6 pb-4 md:px-10">
-        <p className="eyebrow truncate text-brass">{title}</p>
-        <p className="eyebrow shrink-0 text-ink-muted">{plates.length} plates →</p>
+      <div className="mx-auto max-w-[1240px] border-b border-hair px-6 pb-4 md:px-10">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4">
+          <p className="eyebrow truncate text-brass">{title}</p>
+          <p className="eyebrow shrink-0 text-ink-muted">{plates.length} plates →</p>
+        </div>
+        {description ? (
+          <p className="mt-3 max-w-[62ch] text-sm leading-[1.8] text-ink-muted">{description}</p>
+        ) : null}
       </div>
+
       <div
         className="filmstrip mt-5 flex snap-x snap-proximity gap-5 overflow-x-auto pb-5"
         style={{
@@ -23,9 +40,9 @@ export function Filmstrip({ title, plates }: { title: string; plates: Plate[] })
             <AspectImage
               src={plate.src}
               alt={plate.alt}
-              ratio="3 / 4"
+              ratio="4 / 3"
               frameClassName="border border-hair bg-paper-deep"
-              className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+              className={`${imageFit} transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]`}
             />
             <figcaption className="mt-3 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-3 border-t border-hair pt-2.5">
               <span className="eyebrow shrink-0 text-brass">
