@@ -69,7 +69,7 @@ export const studio = {
 export const projects: Project[] = [
   {
     id: "pintubhai-bungalow",
-    sortOrder: 10,
+    sortOrder: 20,
     status: "published",
     year: 2026,
     title: "Bungalow for Mr. Pintubhai",
@@ -125,7 +125,7 @@ export const projects: Project[] = [
   },
   {
     id: "tri-pod-residence",
-    sortOrder: 20,
+    sortOrder: 10,
     status: "published",
     year: 2026,
     title: "Tri-Pod Residence",
