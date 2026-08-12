@@ -23,6 +23,7 @@ export function Filmstrip({ title, plates }: { title: string; plates: Plate[] })
             <AspectImage
               src={plate.src}
               alt={plate.alt}
+              ratio="3 / 4"
               frameClassName="border border-hair bg-paper-deep"
               className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
             />
