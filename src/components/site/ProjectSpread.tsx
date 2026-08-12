@@ -27,7 +27,7 @@ export function ProjectSpread({ project }: { project: WorkProject }) {
       </div>
 
       {project.heroImage ? (
-        <Reveal className="relative mt-12">
+        <Reveal className="relative mx-auto mt-12 w-full max-w-[1320px] px-6 md:px-10">
           <AspectImage
             src={project.heroImage.src}
             alt={project.heroImage.alt}
