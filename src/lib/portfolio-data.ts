@@ -13,9 +13,8 @@ export type Project = {
   sub: string;
   notes: string[];
   pull?: string;
-  heroTag?: string;
-  hero: { src: string; alt: string };
-  strips: { title: string; plates: Plate[] }[];
+  heroImage?: { src: string; alt: string } | null;
+  galleryImages: { title: string; plates: Plate[] }[];
   tags: string[];
 };
 
@@ -29,7 +28,7 @@ export const studio = {
   philosophy:
     "Buildings should be read slowly — material by material, joint by joint.",
   portrait: { src: img["p01-vishnu-ahir-portrait"], alt: "Portrait of Vishnu Ahir" },
-  heroImage: {
+  landingImage: {
     src: img["p09-tri-pod-residence-exterior-render"],
     alt: "Terracotta-clad residential facade with vertical louvers at dusk",
   },
@@ -64,12 +63,11 @@ export const projects: Project[] = [
       "This is the layer that sits underneath every render on this page: the working drawing set a contractor actually builds from.",
     ],
     pull: "Every finished render starts as a dimensioned line drawing — this is that layer, shown in full.",
-    heroTag: "As designed — render",
-    hero: {
+    heroImage: {
       src: img["p02-bungalow-for-mr-pintubhai-render-view"],
       alt: "Render view of a compact stone-clad residential bungalow",
     },
-    strips: [
+    galleryImages: [
       {
         title: "Render Views",
         plates: [
@@ -114,12 +112,11 @@ export const projects: Project[] = [
       "Terracotta cladding is layered against neutral concrete to define primary zones and add depth to the street-facing elevation.",
     ],
     pull: "The composition responds to both scale and context — introducing rhythm, privacy and a distinct architectural identity.",
-    heroTag: "Street facade — render",
-    hero: {
+    heroImage: {
       src: img["p09-tri-pod-residence-exterior-render"],
       alt: "Exterior render of the Tri-Pod Residence facade",
     },
-    strips: [
+    galleryImages: [
       {
         title: "Facade Strategy & Elevations",
         plates: [
@@ -153,9 +150,8 @@ export const projects: Project[] = [
       "The scope ran past the drawing board: structural development, interior design, custom detailing and full construction documentation, carried through to a completed, occupied residence.",
     ],
     pull: "The completed residence demonstrates the translation of design intent into a built reality — with consistency held across architecture, interior and technical disciplines.",
-    heroTag: "As designed — render",
-    hero: { src: img["p14-harekrushna-villa-front-render"], alt: "Front render of Harekrushna Villa" },
-    strips: [
+    heroImage: { src: img["p14-harekrushna-villa-front-render"], alt: "Front render of Harekrushna Villa" },
+    galleryImages: [
       {
         title: "Concept to Built",
         plates: [
@@ -196,9 +192,8 @@ export const projects: Project[] = [
       "Every custom piece — the TV unit, the wardrobe, the walk-in closet — was drawn and dimensioned before it was rendered.",
     ],
     pull: "Each space is crafted to offer comfort and a timeless sense of luxury, while holding visual harmony throughout the residence.",
-    heroTag: "Living area — render",
-    hero: { src: img["p25-living-room-interior-render"], alt: "Living room interior render" },
-    strips: [
+    heroImage: { src: img["p25-living-room-interior-render"], alt: "Living room interior render" },
+    galleryImages: [
       {
         title: "Living Room",
         plates: [
@@ -236,9 +231,8 @@ export const projects: Project[] = [
       "A 3,000 sq.ft classical villa set within a landscaped garden — arched porticos, balustraded balconies and a stone water feature framed against dense planting.",
       "Balconies wrap the upper floor for shade, and the seating court is kept deliberately dark and cool. Visualisation work produced in collaboration with VR ArchiTechs.",
     ],
-    heroTag: "Front elevation — render",
-    hero: { src: img["p34-bharatbhai-bunglow-exterior-render"], alt: "Exterior render of Bharatbhai Bungalow" },
-    strips: [
+    heroImage: { src: img["p34-bharatbhai-bunglow-exterior-render"], alt: "Exterior render of Bharatbhai Bungalow" },
+    galleryImages: [
       {
         title: "Render Views",
         plates: [
@@ -268,9 +262,8 @@ export const projects: Project[] = [
       "A compact 320 sq.ft minimalist living area where fluted timber panelling, a marble-framed TV wall and a small shrine niche share one continuous material language — warm oak against cool white marble.",
       "Full-height glazing borrows the private garden as the room's fourth wall.",
     ],
-    heroTag: "Living area — render",
-    hero: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render" },
-    strips: [
+    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render" },
+    galleryImages: [
       {
         title: "Living Area Views",
         plates: [
@@ -290,8 +283,8 @@ export type Scene = {
   number: string;
   name: string;
   note: string;
-  lead?: { src: string; alt: string };
-  plates: Plate[];
+  heroImage?: { src: string; alt: string } | null;
+  galleryImages: Plate[];
 };
 
 export const scenes: Scene[] = [
@@ -300,8 +293,8 @@ export const scenes: Scene[] = [
     number: "I",
     name: "Living Room",
     note: "A burgundy bouclé chair set against marble and wood panelling, with terracotta figurative art holding the accent. The study is about how bouclé, stone and lacquer each take the same afternoon light.",
-    lead: { src: img["r01-living-room-wide-presentation-render"], alt: "Wide presentation render of a living room" },
-    plates: [
+    heroImage: { src: img["r01-living-room-wide-presentation-render"], alt: "Wide presentation render of a living room" },
+    galleryImages: [
       { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating & Feature Wall" },
       { src: img["r03-living-room-sofa-and-art-detail"], alt: "Sofa and sculptural art detail", caption: "Sofa & Sculptural Art" },
       { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Styling detail with pouf and console", caption: "Styling — Pouf & Console" },
@@ -312,7 +305,8 @@ export const scenes: Scene[] = [
     number: "II",
     name: "Dining Room",
     note: "One layout, two material arguments: veined marble with circular wall art, and an ink-wash mural alternative. Both hang from the same bamboo-motif pendant so the comparison stays honest.",
-    plates: [
+    heroImage: null,
+    galleryImages: [
       { src: img["r05-dining-room-marble-wall-variant"], alt: "Dining room with marble wall", caption: "Marble Variant — Front" },
       { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room with ink mural wall", caption: "Ink Mural Variant — Front" },
       { src: img["r07-dining-room-angled-view"], alt: "Angled view of the marble variant", caption: "Angled — Marble" },
@@ -324,8 +318,9 @@ export const scenes: Scene[] = [
     number: "III",
     name: "Bathroom",
     note: "Sage cabinetry, textured marble tiling and a glazed walk-in shower lit from its niche — a spa register tested at close range, where grout and reflection decide the mood.",
-    lead: { src: img["r09-bathroom-wide-render"], alt: "Wide render of a sage-toned bathroom" },
-    plates: [
+    heroImage: null,
+    galleryImages: [
+      { src: img["r09-bathroom-wide-render"], alt: "Wide render of a sage-toned bathroom", caption: "Bathroom — Wide View" },
       { src: img["r10-bathroom-vanity-detail"], alt: "Bathroom vanity detail", caption: "Vanity & Mirror Wall" },
       { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower niche detail", caption: "Shower Niche Detail" },
     ],
