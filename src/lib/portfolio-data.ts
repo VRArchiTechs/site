@@ -128,23 +128,35 @@ export const projects: Project[] = [
     pull: "The composition responds to both scale and context — introducing rhythm, privacy and a distinct architectural identity.",
     heroImage: {
       src: img["p09-tri-pod-residence-exterior-render"],
-      alt: "Exterior render of the Tri-Pod Residence facade",
+      alt: "Street perspective render of Tri-Pod Residence",
       display: "16:9-cover",
     },
     galleries: [
       {
         title: "Facade Strategy & Elevations",
         type: "drawing",
-        display: "4:3-contain",
+        display: "4:3-cover",
         plates: [
-          { src: img["p10-tri-pod-residence-street-elevation"], alt: "Street elevation render", caption: "Street Elevation" },
+          {
+            src: img["p10-tri-pod-residence-street-elevation"],
+            alt: "Street perspective render of Tri-Pod Residence",
+            caption: "Street Perspective Render",
+          },
           {
             src: img["p11-facade-strategy-diagram"],
-            alt: "Diagram of the facade strategy",
-            caption: "Vertical Anchor, Horizontal Flow, Material Layering",
+            alt: "Annotated front elevation strategy drawing for Tri-Pod Residence",
+            caption: "Front Elevation Strategy",
           },
-          { src: img["p12-north-elevation"], alt: "North elevation drawing", caption: "North Elevation" },
-          { src: img["p13-balcony-edge-profile-detail"], alt: "Balcony edge profile detail", caption: "Curved Balcony Edge Profile" },
+          {
+            src: img["p12-north-elevation"],
+            alt: "Annotated side elevation strategy drawing for Tri-Pod Residence",
+            caption: "Side Elevation Strategy",
+          },
+          {
+            src: img["p13-balcony-edge-profile-detail"],
+            alt: "Architectural detail of the curved balcony edge",
+            caption: "Curved Balcony Edge Detail",
+          },
         ],
       },
     ],
@@ -282,85 +294,75 @@ export const projects: Project[] = [
     meta: [
       { label: "Area", value: "320 sq.ft" },
       { label: "Scope", value: "Interior & Documentation" },
-      { label: "Focus", value: "Compact Planning" },
+      { label: "Focus", value: "Living · Dining · Study" },
     ],
-    sub: "Noida — Interior Design",
+    sub: "Noida — Interior Design & Visualisation",
     notes: [
-      "A compact 320 sq.ft minimalist living area where fluted timber panelling, a marble-framed TV wall and a small shrine niche share one continuous material language — warm oak against cool white marble.",
-      "Full-height glazing borrows the private garden as the room's fourth wall.",
+      "A compact living area organized around warm wood, filtered daylight and restrained furniture. The design uses a framed glazing line to pull the garden into the room while a study nook is integrated without interrupting the main seating zone.",
+      "The visual language is deliberately quiet — natural timber, soft upholstery and concealed lighting carry the room without competing for attention.",
     ],
-    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render", display: "16:9-cover" },
+    pull: "The project is less about adding objects than about giving each necessary element enough space to read clearly.",
+    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric minimalist living area", display: "16:9-cover" },
     galleries: [
       {
-        title: "Living Area Views",
+        title: "Living Area",
         type: "render",
         display: "4:3-cover",
         plates: [
-          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to the garden", caption: "Glazed Corner & Private Garden" },
-          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Area" },
-          { src: img["p43-seating-area-alternate-view"], alt: "Seating area from an alternate view", caption: "Alternate View" },
-          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Seating with Study Nook" },
+          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to the garden", caption: "Garden Connection" },
+          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Living area with wooden furniture", caption: "Seating & Timber Palette" },
+          { src: img["p43-seating-area-alternate-view"], alt: "Alternate view of the living area", caption: "Alternate View" },
+          { src: img["p44-seating-area-with-study-nook"], alt: "Living area with integrated study nook", caption: "Integrated Study Nook" },
         ],
       },
     ],
-    tags: ["Fluted Wood Paneling", "Puja Niche", "Compact Planning"],
+    tags: ["Timber Detailing", "Filtered Daylight", "Integrated Study Nook"],
   },
 ];
 
-export type Scene = {
-  id: string;
-  number: string;
-  name: string;
-  note: string;
-  heroImage?: { src: string; alt: string } | null;
-  galleryImages: Plate[];
-};
-
-export const scenes: Scene[] = [
+export const scenes = [
   {
-    id: "scene-living",
-    number: "I",
+    id: "living-room",
+    number: "01",
     name: "Living Room",
-    note: "A burgundy bouclé chair set against marble and wood panelling, with terracotta figurative art holding the accent. The study is about how bouclé, stone and lacquer each take the same afternoon light.",
-    heroImage: { src: img["r01-living-room-wide-presentation-render"], alt: "Wide presentation render of a living room" },
+    note: "A controlled study of material, light and furniture within a restrained contemporary living space.",
+    heroImage: {
+      src: img["r01-living-room-wide-presentation-render"],
+      alt: "Wide presentation render of the living room",
+    },
     galleryImages: [
-      { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating & Feature Wall" },
-      { src: img["r03-living-room-sofa-and-art-detail"], alt: "Sofa and sculptural art detail", caption: "Sofa & Sculptural Art" },
-      { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Styling detail with pouf and console", caption: "Styling — Pouf & Console" },
+      { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating Detail" },
+      { src: img["r03-living-room-sofa-and-art-detail"], alt: "Sofa and art detail", caption: "Sofa & Sculptural Art" },
+      { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Living room styling detail with pouf", caption: "Styling & Pouf" },
     ],
   },
   {
-    id: "scene-dining",
-    number: "II",
+    id: "dining-room",
+    number: "02",
     name: "Dining Room",
-    note: "One layout, two material arguments: veined marble with circular wall art, and an ink-wash mural alternative. Both hang from the same bamboo-motif pendant so the comparison stays honest.",
-    heroImage: null,
+    note: "One layout, two material arguments: veined marble with circular wall art, and an ink-wash mural alternative.",
+    heroImage: {
+      src: img["r05-dining-room-marble-wall-variant"],
+      alt: "Dining room with marble wall treatment",
+    },
     galleryImages: [
-      { src: img["r05-dining-room-marble-wall-variant"], alt: "Dining room with marble wall", caption: "Marble Variant — Front" },
-      { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room with ink mural wall", caption: "Ink Mural Variant — Front" },
-      { src: img["r07-dining-room-angled-view"], alt: "Angled view of the marble variant", caption: "Angled — Marble" },
-      { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Angled view of the ink mural variant", caption: "Angled — Ink Mural" },
+      { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room with ink mural treatment", caption: "Ink Mural Variant — Front" },
+      { src: img["r07-dining-room-angled-view"], alt: "Angled dining room view", caption: "Angled — Marble" },
+      { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Angled dining room view with ink mural", caption: "Angled — Ink Mural" },
     ],
   },
   {
-    id: "scene-bathroom",
-    number: "III",
+    id: "bathroom",
+    number: "03",
     name: "Bathroom",
-    note: "Sage cabinetry, textured marble tiling and a glazed walk-in shower lit from its niche — a spa register tested at close range, where grout and reflection decide the mood.",
-    heroImage: null,
+    note: "A layered bathroom study combining stone, ribbed joinery, warm lighting and a compact shower volume.",
+    heroImage: undefined,
     galleryImages: [
-      { src: img["r09-bathroom-wide-render"], alt: "Wide render of a sage-toned bathroom", caption: "Bathroom — Wide View" },
+      { src: img["r09-bathroom-wide-render"], alt: "Wide bathroom render", caption: "Wide Render" },
       { src: img["r10-bathroom-vanity-detail"], alt: "Bathroom vanity detail", caption: "Vanity & Mirror Wall" },
-      { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower niche detail", caption: "Shower Niche Detail" },
+      { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower detail", caption: "Shower Niche Detail" },
     ],
   },
-];
+] as const;
 
-export const sections = [
-  { id: "top", label: "Top" },
-  { id: "visualisation", label: "Renders" },
-  { id: "studio", label: "Studio" },
-  { id: "work", label: "Work" },
-  ...projects.map((p) => ({ id: p.id, label: p.number })),
-  { id: "contact", label: "Contact" },
-];
+export type Scene = (typeof scenes)[number];
