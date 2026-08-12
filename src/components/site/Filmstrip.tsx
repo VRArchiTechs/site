@@ -15,7 +15,7 @@ export function Filmstrip({ title, plates }: { title: string; plates: Plate[] })
           scrollPaddingInline: "max(1.5rem, calc((100vw - 1240px) / 2 + 1.5rem))",
         }}
       >
-        {plates.map((plate, i) => (
+        {plates.filter(Boolean).map((plate, i) => (
           <figure
             key={plate.src + plate.caption}
             className="group w-[84vw] shrink-0 snap-start sm:w-[54vw] lg:w-[38vw]"
