@@ -8,13 +8,16 @@ type Props = {
   /** wrapper classes */
   frameClassName?: string;
   eager?: boolean;
-  /** keep the image's own ratio instead of snapping to 16:9 / 3:4 */
+  /** keep the image's own ratio instead of snapping to an editorial ratio */
   natural?: boolean;
+  /** explicit editorial ratio for this image frame */
+  ratio?: "16 / 9" | "3 / 4";
 };
 
 /**
- * Renders an image at a fixed editorial ratio based on its own orientation:
- * 16:9 for landscape, 3:4 for portrait. Never squares a portrait.
+ * Renders portfolio imagery with an explicit editorial ratio.
+ * Hero images use 16:9; gallery images use 3:4.
+ * Images are contained so the full render remains visible without cropping.
  */
 export function AspectImage({
   src,
@@ -23,28 +26,25 @@ export function AspectImage({
   frameClassName = "",
   eager,
   natural,
+  ratio,
 }: Props) {
-  const [ratio, setRatio] = useState<string>(natural ? "4 / 3" : "16 / 9");
+  const [loadedRatio, setLoadedRatio] = useState<string | null>(null);
+  const frameRatio = natural ? loadedRatio ?? "4 / 3" : ratio ?? "16 / 9";
 
   return (
-    <div className={`overflow-hidden ${frameClassName}`} style={{ aspectRatio: ratio }}>
+    <div className={`overflow-hidden ${frameClassName}`} style={{ aspectRatio: frameRatio ?? undefined }}>
       <img
         src={src}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         onLoad={(e) => {
+          if (!natural) return;
           const el = e.currentTarget;
           if (el.naturalWidth && el.naturalHeight) {
-            setRatio(
-              natural
-                ? `${el.naturalWidth} / ${el.naturalHeight}`
-                : el.naturalWidth < el.naturalHeight
-                  ? "3 / 4"
-                  : "16 / 9",
-            );
+            setLoadedRatio(`${el.naturalWidth} / ${el.naturalHeight}`);
           }
         }}
-        className={`h-full w-full object-cover ${className}`}
+        className={`h-full w-full ${natural ? "object-contain" : "object-contain"} ${className}`}
       />
     </div>
   );
