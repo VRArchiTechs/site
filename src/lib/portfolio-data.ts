@@ -50,8 +50,8 @@ export const studio = {
     "Buildings should be read slowly — material by material, joint by joint.",
   portrait: { src: img["p01-vishnu-ahir-portrait"], alt: "Portrait of Vishnu Ahir" },
   landingImage: {
-    src: img["p09-tri-pod-residence-exterior-render"],
-    alt: "Terracotta-clad residential facade with vertical louvers at dusk",
+    src: img["landing-image"],
+    alt: "Homepage landing image",
   },
   bio: [
     "Trained as an engineer and practising as a designer, I work across the whole lifecycle of a house — the plan, the frame that holds it up, and the rooms people finally live in. Nothing is handed off; drawings, structure and interior are resolved together, on the same table.",
@@ -305,7 +305,7 @@ export const projects: Project[] = [
         ],
       },
     ],
-    tags: ["Classical Elevation", "Landscape Design", "VR ArchiTechs Visualisation"],
+    tags: ["Classical Facade", "Landscape Design", "Exterior Visualisation"],
   },
   {
     id: "wood-centric-living",
@@ -316,68 +316,30 @@ export const projects: Project[] = [
     indexTitle: "Wood-Centric Minimalist Living",
     location: "Noida",
     meta: [
-      { label: "Area", value: "320 sq.ft" },
-      { label: "Scope", value: "Interior & Documentation" },
-      { label: "Focus", value: "Living Area" },
+      { label: "Area", value: "Living Area" },
+      { label: "Scope", value: "Interior Visualisation" },
+      { label: "Style", value: "Warm Minimalism" },
     ],
-    sub: "Noida — Wood-Centric Minimalist Living",
+    sub: "Noida, NCR — Interior Visualisation",
     notes: [
-      "A compact living area shaped around warm timber, restrained detailing and a strong connection to the garden beyond.",
-      "The design balances a calm material palette with carefully framed openings, integrated storage and furniture-scale detailing.",
+      "A warm minimalist living area built around natural timber, soft textiles and carefully controlled daylight. The material palette keeps the room calm while allowing the architecture and furniture to carry the composition.",
+      "The visualisation focuses on the relationship between glazing, garden views, timber surfaces and low-profile furniture.",
     ],
-    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric minimalist living area", display: "16:9-cover" },
+    pull: "A restrained palette allows proportion, light and material texture to become the defining elements of the room.",
+    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Warm minimalist living room render", display: "16:9-cover" },
     galleries: [
       {
         title: "Living Experience",
         type: "render",
         display: "4:3-cover",
         plates: [
-          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Glazed Corner Opening" },
-          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating & Timber Detailing" },
-          { src: img["p43-seating-area-alternate-view"], alt: "Alternate view of seating area", caption: "Alternate Seating View" },
-          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Study Nook Integration" },
+          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Garden Connection" },
+          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Composition" },
+          { src: img["p43-seating-area-alternate-view"], alt: "Alternate view of seating area", caption: "Alternate View" },
+          { src: img["p44-seating-area-with-study-nook"], alt: "Living area with study nook", caption: "Study Nook" },
         ],
       },
     ],
-    tags: ["Timber Detailing", "Garden Connection", "Minimalist Interior"],
+    tags: ["Warm Minimalism", "Natural Timber", "Daylight Study"],
   },
 ];
-
-export const scenes = [
-  {
-    id: "living-room",
-    number: "I",
-    name: "Living Room",
-    note: "A study in warm minimalism, layering tactile fabrics, timber and sculptural furniture against a restrained architectural shell.",
-    heroImage: { src: img["r01-living-room-wide-presentation-render"], alt: "Wide living room presentation render" },
-    galleryImages: [
-      { src: img["r02-living-room-seating-detail"], alt: "Living room seating detail", caption: "Seating & Feature Wall" },
-      { src: img["r03-living-room-sofa-and-art-detail"], alt: "Living room sofa and art detail", caption: "Sofa & Sculptural Art" },
-      { src: img["r04-living-room-styling-detail-with-pouf"], alt: "Living room styling detail with pouf", caption: "Styling — Pouf & Console" },
-    ],
-  },
-  {
-    id: "dining-room",
-    number: "II",
-    name: "Dining Room",
-    note: "One layout, two material arguments: veined marble with circular wall art, and an ink-wash mural alternative. Both hang from the same bamboo-motif pendant so the comparison stays honest.",
-    heroImage: { src: img["r05-dining-room-marble-wall-variant"], alt: "Dining room marble wall variant" },
-    galleryImages: [
-      { src: img["r06-dining-room-ink-mural-variant"], alt: "Dining room ink mural variant", caption: "Ink Mural Variant — Front" },
-      { src: img["r07-dining-room-angled-view"], alt: "Dining room angled view", caption: "Angled — Marble" },
-      { src: img["r08-dining-room-angled-view-ink-mural"], alt: "Dining room angled view with ink mural", caption: "Angled — Ink Mural" },
-    ],
-  },
-  {
-    id: "bathroom",
-    number: "III",
-    name: "Bathroom",
-    note: "A quiet material study pairing ribbed olive cabinetry with stone, small-format tile and a deep bronze mirror wall.",
-    heroImage: null,
-    galleryImages: [
-      { src: img["r09-bathroom-wide-render"], alt: "Wide bathroom render", caption: "Wide Bathroom View" },
-      { src: img["r10-bathroom-vanity-detail"], alt: "Bathroom vanity detail", caption: "Vanity & Mirror Wall" },
-      { src: img["r11-bathroom-shower-detail"], alt: "Bathroom shower detail", caption: "Shower Niche Detail" },
-    ],
-  },
-] as const;
