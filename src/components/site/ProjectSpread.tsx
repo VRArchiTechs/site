@@ -68,8 +68,14 @@ export function ProjectSpread({ project }: { project: Project }) {
         </Reveal>
       </div>
 
-      {project.galleryImages.map((gallery) => (
-        <Filmstrip key={gallery.title} title={gallery.title} plates={gallery.plates} />
+      {project.galleries.map((gallery) => (
+        <Filmstrip
+          key={gallery.title}
+          title={gallery.title}
+          description={gallery.description}
+          type={gallery.type}
+          plates={gallery.plates}
+        />
       ))}
 
       <div className="mx-auto mt-14 max-w-[1240px] px-6 md:px-10">
