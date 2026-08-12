@@ -42,7 +42,7 @@ export function Visualisation() {
               <AspectImage
                 src={scene.heroImage.src}
                 alt={scene.heroImage.alt}
-                ratio="16 / 9"
+                display="16:9-cover"
                 eager={i === 0}
                 frameClassName="mt-9 border border-hair-dark"
               />
@@ -57,7 +57,7 @@ export function Visualisation() {
                   <AspectImage
                     src={plate.src}
                     alt={plate.alt}
-                    ratio="3 / 4"
+                    display="3:4-cover"
                     frameClassName="border border-hair-dark"
                     className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
