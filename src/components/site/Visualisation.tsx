@@ -42,6 +42,8 @@ export function Visualisation() {
               <AspectImage
                 src={scene.lead.src}
                 alt={scene.lead.alt}
+                ratio="16 / 9"
+                eager={i === 0}
                 frameClassName="mt-9 border border-hair-dark"
               />
             ) : null}
@@ -55,7 +57,7 @@ export function Visualisation() {
                   <AspectImage
                     src={plate.src}
                     alt={plate.alt}
-                    natural
+                    ratio="3 / 4"
                     frameClassName="border border-hair-dark"
                     className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
