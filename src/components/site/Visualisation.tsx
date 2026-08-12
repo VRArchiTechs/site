@@ -25,9 +25,9 @@ export function Visualisation() {
             <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-hair-dark pb-5">
               <h3 className="font-display text-[clamp(1.5rem,3.2vw,2.4rem)]">
                 <span className="mr-4 align-middle text-sm tracking-[0.2em] text-brass-soft">
-                  {scene.number}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                {scene.name}
+                {scene.title}
               </h3>
               <p className="eyebrow text-ink/50">
                 {scene.galleryImages.length + (scene.heroImage ? 1 : 0)} renders
@@ -35,7 +35,7 @@ export function Visualisation() {
             </div>
 
             <p className="mt-6 max-w-[62ch] text-[0.95rem] leading-[1.8] text-ink/65">
-              {scene.note}
+              {scene.description}
             </p>
 
             {scene.heroImage ? (
