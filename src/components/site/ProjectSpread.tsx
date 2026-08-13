@@ -34,23 +34,22 @@ export function ProjectSpread({ project, total }: Props) {
       </div>
 
       {project.heroImage ? (
-        <Reveal className="relative mx-auto mt-12 w-full max-w-[1320px] px-6 md:px-10">
-          <div className="project-hero-entry">
+        <Reveal className="group relative mx-auto mt-12 w-full max-w-[1320px] overflow-hidden px-6 md:px-10">
+          <div className="project-hero-entry relative overflow-hidden border border-hair">
             <AspectImage
               src={project.heroImage.src}
               alt={project.heroImage.alt}
               display={project.heroImage.display}
               eager
-              frameClassName="border border-hair"
+              frameClassName="border-0"
             />
 
-            <div className="project-hero-drawing" aria-hidden="true">
-              <span className="project-hero-scan-grid" />
-              <span className="project-hero-registration-sweep" />
-              <span className="project-hero-registration-line project-hero-registration-line-x" />
-              <span className="project-hero-registration-line project-hero-registration-line-y" />
-              <span className="project-hero-registration-cross" />
-              <span className="project-hero-coordinate project-hero-coordinate-tl">A-01 / 00.00</span>
+            {/* Architectural sheet reveal: one moving sheet edge, no extra HUD elements. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-10 translate-y-0 bg-paper/90 transition-transform duration-[1250ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-data-[shown=true]:translate-y-full"
+            >
+              <span className="absolute inset-x-0 bottom-0 h-px bg-brass/70 shadow-[0_0_18px_color-mix(in_oklch,var(--color-brass)_45%,transparent)]" />
             </div>
           </div>
 
