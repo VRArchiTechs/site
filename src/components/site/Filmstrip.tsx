@@ -4,7 +4,7 @@ import type { Plate } from "@/lib/portfolio-data";
 
 type Props = {
   title: string;
-  description?: string;
+  description?: string | undefined;
   display: DisplayPreset;
   plates: Plate[];
 };
