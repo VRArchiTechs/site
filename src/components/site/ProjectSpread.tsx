@@ -35,7 +35,7 @@ export function ProjectSpread({ project, total }: Props) {
 
       {project.heroImage ? (
         <Reveal className="group relative mx-auto mt-12 w-full max-w-[1320px] overflow-hidden px-6 md:px-10">
-          <div className="project-hero-sheet-pull relative overflow-hidden border border-hair">
+          <div className="project-hero-double-datum relative overflow-hidden border border-hair">
             <AspectImage
               src={project.heroImage.src}
               alt={project.heroImage.alt}
@@ -44,12 +44,11 @@ export function ProjectSpread({ project, total }: Props) {
               frameClassName="border-0"
             />
 
-            {/* Version D: one architectural sheet pulls downward to reveal the hero. */}
-            <div
-              aria-hidden="true"
-              className="project-hero-sheet-cover pointer-events-none absolute inset-0 z-10"
-            >
-              <span className="project-hero-sheet-edge absolute inset-x-0 bottom-0 h-px" />
+            {/* Work hero: one paired datum scan resolves the image from left to right. */}
+            <div aria-hidden="true" className="project-hero-datum pointer-events-none absolute inset-y-0 left-0 z-10">
+              <span className="project-hero-datum-line project-hero-datum-line-a" />
+              <span className="project-hero-datum-line project-hero-datum-line-b" />
+              <span className="project-hero-datum-notch" />
             </div>
           </div>
 
@@ -79,7 +78,7 @@ export function ProjectSpread({ project, total }: Props) {
           {project.meta.map((m, i) => (
             <div
               key={m.label}
-              className={`relative flex-[1_1_160px] px-6 py-5 before:absolute before:left-[-1px] before:top-0 before:h-px before:w-[9px] before:bg-brass/60 ${i === 0 ? "" : "border-l border-hair"}`}
+              className={`relative flex-[1_1_160px] px-6 py-5 before:absolute before:left-[-1px] before:top-0 before:h-[9px] before:w-px before:bg-brass/60 ${i === 0 ? "" : "border-l border-hair"}`}
             >
               <span className="eyebrow block text-ink-muted">{m.label}</span>
               <span className="mt-1.5 block text-[0.95rem] font-semibold text-ink">{m.value}</span>
