@@ -12,7 +12,7 @@ export const images = {
     },
   },
   work: {
-    tripodResidence: {
+    triPodResidence: {
       hero: "/images/work/tri-pod-residence/hero",
       gallery01: "/images/work/tri-pod-residence/gallery-01",
     },
