@@ -1,5 +1,5 @@
 import { images } from "./image-registry";
-import { img } from "./images";
+import { siteAssets } from "./site-assets";
 import type { DisplayPreset } from "./display-presets";
 
 export type Plate = { src: string; alt: string; caption: string };
@@ -65,9 +65,9 @@ export const studio = {
   phone: "+91 90999 51391",
   philosophy:
     "Buildings should be read slowly — material by material, joint by joint.",
-  portrait: { src: img["p01-vishnu-ahir-portrait"], alt: "Portrait of Vishnu Ahir" },
+  portrait: { src: siteAssets.studioPortrait, alt: "Portrait of Vishnu Ahir" },
   landingImage: {
-    src: img["landing-image"],
+    src: siteAssets.landing,
     alt: "Homepage landing image",
   },
   bio: [
@@ -171,54 +171,6 @@ export const projects: Project[] = [
       },
     ],
     tags: ["Terracotta Cladding", "Vertical Louvers", "Curved Balconies", "Twinmotion Render"],
-  },
-  {
-    id: "harekrushna-villa",
-    sortOrder: 30,
-    status: "published",
-    year: 2026,
-    title: "Harekrushna Villa",
-    indexTitle: "Harekrushna Villa",
-    location: "Radhanpur",
-    meta: [
-      { label: "Scope", value: "Architecture · Interior · Structure" },
-      { label: "Floors", value: "G+1 · 5,000 sq.ft plot" },
-      { label: "Programme", value: "7 Bed · 5 Bath" },
-    ],
-    sub: "Radhanpur, Gujarat — Design → Structural → Interior → Built",
-    notes: [
-      "A balanced integration of architecture, structural engineering and interior design within a contemporary villa typology. Classical elements — pediments, symmetrical proportions, columned verandahs — are reinterpreted through modern construction and spatial planning.",
-      "The scope ran past the drawing board: structural development, interior design, custom detailing and full construction documentation, carried through to a completed, occupied residence.",
-    ],
-    pull: "The completed residence demonstrates the translation of design intent into a built reality — with consistency held across architecture, interior and technical disciplines.",
-    heroImage: { src: img["p14-harekrushna-villa-front-render"], alt: "Front render of Harekrushna Villa", display: "16:9-cover" },
-    galleries: [
-      {
-        title: "Concept to Built",
-        type: "site",
-        display: "4:3-contain",
-        plates: [
-          { src: img["p15-completed-villa-at-dusk"], alt: "Completed villa photographed at dusk", caption: "Completed & Built" },
-          { src: img["p16-site-under-construction"], alt: "Site photograph during construction", caption: "Site — Under Construction" },
-          { src: img["p17-foundation-stage"], alt: "Foundation stage on site", caption: "Foundation Stage" },
-          { src: img["p18-structure-completed"], alt: "Completed structural frame", caption: "Structure Completed" },
-          { src: img["p19-finishing-stage"], alt: "Finishing stage on site", caption: "Finishing Stage" },
-          { src: img["p20-floor-plan"], alt: "Villa floor plan drawing", caption: "Floor Plan" },
-        ],
-      },
-      {
-        title: "Interior Experience",
-        type: "photo",
-        display: "4:3-contain",
-        plates: [
-          { src: img["p21-dining-area"], alt: "Dining area interior", caption: "Dining Area" },
-          { src: img["p22-guest-bedroom"], alt: "Guest bedroom interior", caption: "Guest Bedroom" },
-          { src: img["p23-master-bedroom"], alt: "Master bedroom interior", caption: "Master Bedroom" },
-          { src: img["p24-puja-room"], alt: "Puja room interior", caption: "Puja Room" },
-        ],
-      },
-    ],
-    tags: ["Classical Facade", "Structural Documentation", "Full Interior Design", "Site Supervision"],
   },
   {
     id: "rupesh-interior",
