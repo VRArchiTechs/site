@@ -126,6 +126,54 @@ export const projects: Project[] = [
     ],
     tags: ["Terracotta Cladding", "Vertical Louvers", "Curved Balconies", "Twinmotion Render"],
   },
+  {
+    id: "harekrushna-villa",
+    sortOrder: 20,
+    status: "published",
+    year: 2026,
+    title: "Harekrushna Villa",
+    indexTitle: "Harekrushna Villa",
+    location: "Private Residence",
+    meta: [
+      { label: "Scope", value: "Architecture · Facade · Visualisation" },
+      { label: "Type", value: "Residential Villa" },
+      { label: "Output", value: "Design Studies · Visualisation" },
+    ],
+    sub: "Residential Villa — Architecture · Facade Design · Visualisation",
+    notes: [
+      "A residential villa study focused on architectural composition, facade articulation and the relationship between massing, openings and material expression.",
+      "The project is presented through two curated visual groups, moving from the primary architectural study into supporting design and visualisation material.",
+    ],
+    pull: "A study in proportion, material expression and the quiet balance between solid mass and open space.",
+    heroImage: {
+      src: images.work.harekrushnaVilla.hero,
+      alt: "Harekrushna Villa architectural visualisation",
+      display: "16:9-cover",
+    },
+    galleries: [
+      {
+        title: "Architectural Design Studies",
+        description: "Facade and architectural studies for Harekrushna Villa.",
+        display: "4:3-cover",
+        plates: images.work.harekrushnaVilla.gallery01.map((src, index) => ({
+          src,
+          alt: `Harekrushna Villa architectural design study ${index + 1}`,
+          caption: `Design Study ${String(index + 1).padStart(2, "0")}`,
+        })),
+      },
+      {
+        title: "Visualisation Studies",
+        description: "Selected visualisation studies for Harekrushna Villa.",
+        display: "4:3-cover",
+        plates: images.work.harekrushnaVilla.gallery02.map((src, index) => ({
+          src,
+          alt: `Harekrushna Villa visualisation study ${index + 1}`,
+          caption: `Visualisation ${String(index + 1).padStart(2, "0")}`,
+        })),
+      },
+    ],
+    tags: ["Residential Villa", "Facade Design", "Architectural Visualisation"],
+  },
 ];
 
 export const scenes: VisualisationScene[] = [
