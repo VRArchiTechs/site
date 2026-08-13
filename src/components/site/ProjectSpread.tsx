@@ -35,7 +35,7 @@ export function ProjectSpread({ project, total }: Props) {
 
       {project.heroImage ? (
         <Reveal className="group relative mx-auto mt-12 w-full max-w-[1320px] overflow-hidden px-6 md:px-10">
-          <div className="project-hero-sheet relative overflow-hidden border border-hair">
+          <div className="project-hero-light relative overflow-hidden border border-hair">
             <AspectImage
               src={project.heroImage.src}
               alt={project.heroImage.alt}
@@ -44,13 +44,11 @@ export function ProjectSpread({ project, total }: Props) {
               frameClassName="border-0"
             />
 
-            {/* One architectural sheet edge reveals the hero from top to bottom. */}
+            {/* One soft horizontal light sweep — the only Work hero animation. */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 z-10 translate-y-0 bg-paper/90 transition-transform duration-[1250ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-data-[shown=true]:translate-y-full"
-            >
-              <span className="absolute inset-x-0 bottom-0 h-px bg-brass/70 shadow-[0_0_18px_color-mix(in_oklch,var(--color-brass)_45%,transparent)]" />
-            </div>
+              className="project-hero-light-sweep pointer-events-none absolute inset-y-0 -left-[24%] z-10 w-[48%]"
+            />
           </div>
 
           {project.heroTag ? (
