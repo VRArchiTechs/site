@@ -1,9 +1,21 @@
 # Portfolio images
 
-Place the portfolio's local WebP images in this folder structure. The existing image keys in `src/lib/images.ts` are preserved so the rest of the site does not need to change.
+Portfolio media lives under this directory and follows the content workflow in [`/docs/CONTENT_WORKFLOW.md`](../../docs/CONTENT_WORKFLOW.md).
 
-- `hero/` — hero imagery
-- `profile/` — portrait/profile imagery
-- `visualisation/` — visualisation work
-- `projects/` — architecture/project imagery
-- `interiors/` — interior imagery
+```text
+images/
+├── landing/
+│   └── landing-image.webp
+├── profile/
+│   └── vishnu.webp
+├── work/
+│   └── <project-slug>/
+│       ├── hero/hero.webp
+│       └── gallery-01/01.webp
+└── visualisation/
+    └── <scene-slug>/
+        ├── hero/hero.webp       # optional
+        └── gallery-01/01.webp
+```
+
+Use lowercase kebab-case for project/scene folders and sequential filenames inside galleries. Image paths are referenced directly by `src/lib/portfolio-data.ts`.
