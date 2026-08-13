@@ -11,7 +11,9 @@ export function WorkIndex() {
           <h2 className="font-display text-[clamp(1.9rem,4vw,3rem)] tracking-[-0.01em] text-ink">
             Index of Work
           </h2>
-          <p className="eyebrow text-ink-muted">Six projects · Gujarat & Delhi NCR</p>
+          <p className="eyebrow text-ink-muted">
+            {projects.length} {projects.length === 1 ? "project" : "projects"}
+          </p>
         </Reveal>
 
         <ul>
