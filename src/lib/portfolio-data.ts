@@ -125,53 +125,6 @@ export const projects: Project[] = [
     tags: ["Terracotta Cladding", "Vertical Louvers", "Curved Balconies", "Twinmotion Render"],
   },
   {
-    id: "bharatbhai-bungalow",
-    sortOrder: 50,
-    status: "published",
-    year: 2026,
-    title: "Bharatbhai Bungalow",
-    indexTitle: "Bharatbhai Bungalow",
-    location: "Ahmedabad",
-    meta: [
-      { label: "Area", value: "3,000 sq.ft" },
-      { label: "Scope", value: "Architecture & Landscape" },
-      { label: "Storeys", value: "Two" },
-    ],
-    sub: "Ahmedabad, Gujarat — Visualisation, with VR ArchiTechs",
-    notes: [
-      "A 3,000 sq.ft classical villa set within a landscaped garden — arched porticos, balustraded balconies and a stone water feature framed against dense planting.",
-      "Balconies wrap the upper floor for shade, and the seating court is kept deliberately dark and cool. Visualisation work produced in collaboration with VR ArchiTechs.",
-    ],
-    heroImage: { src: img["p34-bharatbhai-bunglow-exterior-render"], alt: "Exterior render of Bharatbhai Bungalow", display: "16:9-cover" },
-    galleries: [
-      {
-        title: "Render Views",
-        type: "render",
-        display: "4:3-cover",
-        plates: [
-          { src: img["p35-front-exterior-render"], alt: "Front exterior render", caption: "Front Exterior" },
-          { src: img["p36-dusk-exterior-render"], alt: "Dusk exterior render", caption: "Dusk View" },
-          { src: img["p37-side-angle-render"], alt: "Side angle exterior render", caption: "Side Angle" },
-          { src: img["p38-outdoor-seating-area"], alt: "Outdoor seating area", caption: "Outdoor Seating" },
-          { src: img["p39-stone-water-feature"], alt: "Stone water feature detail", caption: "Stone Water Feature" },
-        ],
-      },
-      {
-        title: "Wood-Centric Living Area",
-        type: "render",
-        display: "4:3-cover",
-        plates: [
-          { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric living area render", caption: "Living Area" },
-          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Glazed Corner" },
-          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Composition" },
-          { src: img["p43-seating-area-alternate-view"], alt: "Seating area alternate view", caption: "Alternate View" },
-          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Study Nook" },
-        ],
-      },
-    ],
-    tags: ["Classical Facade", "Landscape Design", "Stone Water Feature"],
-  },
-  {
     id: "wood-centric-living",
     sortOrder: 60,
     status: "published",
