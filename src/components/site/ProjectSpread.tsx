@@ -45,6 +45,7 @@ export function ProjectSpread({ project, total }: Props) {
             />
 
             <div className="project-hero-drawing" aria-hidden="true">
+              <span className="project-hero-scan-grid" />
               <span className="project-hero-registration-sweep" />
               <span className="project-hero-registration-line project-hero-registration-line-x" />
               <span className="project-hero-registration-line project-hero-registration-line-y" />
