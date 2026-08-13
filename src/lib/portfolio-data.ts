@@ -202,7 +202,7 @@ export const projects: Project[] = [
     galleries: [
       {
         title: "Living Room — Design & Documentation",
-        description: "Interior design documentation and visualisation studies.",
+        description: "Living Room design documentation and visualisation studies.",
         display: "4:3-cover",
         plates: images.work.residence03B.gallery01.map((src, index) => ({
           src,
@@ -224,7 +224,7 @@ export const projects: Project[] = [
       },
       {
         title: "Bedroom — Design & Visualisation",
-        description: "Interior design, material and visualisation studies.",
+        description: "Bedroom design, material and visualisation studies.",
         display: "4:3-cover",
         plates: images.work.residence03B.gallery02.map((src, index) => ({
           src,
