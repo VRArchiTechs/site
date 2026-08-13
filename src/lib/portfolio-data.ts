@@ -124,39 +124,6 @@ export const projects: Project[] = [
     ],
     tags: ["Terracotta Cladding", "Vertical Louvers", "Curved Balconies", "Twinmotion Render"],
   },
-  {
-    id: "wood-centric-living",
-    sortOrder: 60,
-    status: "published",
-    year: 2026,
-    title: "Wood-Centric Minimalist Living Area",
-    indexTitle: "Wood-Centric Minimalist Living",
-    location: "Noida",
-    meta: [
-      { label: "Area", value: "1,200 sq.ft" },
-      { label: "Scope", value: "Interior Design & Visualisation" },
-      { label: "Style", value: "Warm Minimalism" },
-    ],
-    sub: "Noida, Delhi NCR — Interior & Visualisation",
-    notes: [
-      "A warm minimalist living space centred around timber grain, soft daylight and restrained furniture. The palette is deliberately quiet so that texture, joinery and proportion carry the visual weight.",
-    ],
-    heroImage: { src: img["p40-wood-centric-living-area-render"], alt: "Wood-centric minimalist living area", display: "16:9-cover" },
-    galleries: [
-      {
-        title: "Living Area",
-        type: "render",
-        display: "4:3-cover",
-        plates: [
-          { src: img["p41-glazed-corner-opening-to-garden"], alt: "Glazed corner opening to garden", caption: "Glazed Corner" },
-          { src: img["p42-seating-area-with-wooden-furniture"], alt: "Seating area with wooden furniture", caption: "Seating Composition" },
-          { src: img["p43-seating-area-alternate-view"], alt: "Seating area alternate view", caption: "Alternate View" },
-          { src: img["p44-seating-area-with-study-nook"], alt: "Seating area with study nook", caption: "Study Nook" },
-        ],
-      },
-    ],
-    tags: ["Warm Minimalism", "Timber", "Daylight Study"],
-  },
 ];
 
 export const scenes: VisualisationScene[] = [
