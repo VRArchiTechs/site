@@ -9,20 +9,16 @@
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-sans: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  /* Surfaces (dark ink) */
   --color-paper: oklch(0.153 0.008 60);
   --color-paper-deep: oklch(0.199 0.011 62);
   --color-paper-raised: oklch(0.235 0.013 62);
-  /* Type on dark */
   --color-ink: oklch(0.949 0.014 82);
   --color-ink-soft: oklch(0.703 0.028 78);
   --color-ink-muted: oklch(0.535 0.024 68);
-  /* Accents */
   --color-brass: oklch(0.727 0.093 79);
   --color-brass-soft: oklch(0.796 0.084 80);
   --color-brass-dim: oklch(0.556 0.072 78);
   --color-rust: oklch(0.455 0.107 38);
-  /* Rules */
   --color-hair: oklch(0.949 0.014 82 / 0.14);
   --color-hair-dark: oklch(0.949 0.014 82 / 0.07);
 }
@@ -88,19 +84,119 @@
   }
 }
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
+/* ---------- Shared portfolio media motion ---------- */
+.media-frame {
+  isolation: isolate;
+  background: var(--color-paper-deep);
+}
+
+.media-image {
+  opacity: 0;
+  transform: scale(1.002);
+  transition:
+    opacity 650ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 850ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter 850ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  filter: saturate(0.985) contrast(0.99);
+  will-change: transform, opacity;
+}
+
+.media-image.is-loaded {
+  opacity: 1;
+}
+
+.media-frame:hover .media-image.is-loaded {
+  transform: scale(1.018);
+  filter: saturate(1) contrast(1.01);
+}
+
+.media-scan {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    var(--color-brass-dim) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: translateY(-1px);
+}
+
+.media-frame:hover .media-scan {
+  animation: media-scan-pass 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes media-scan-pass {
+  from {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  12% {
+    opacity: 0.42;
+  }
+  72% {
+    opacity: 0.18;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(calc(100cqh - 1px));
+  }
+}
+
+@supports not (height: 100cqh) {
+  @keyframes media-scan-pass {
+    from {
+      opacity: 0;
+      transform: translateY(-1px);
+    }
+    12% {
+      opacity: 0.42;
+    }
+    72% {
+      opacity: 0.18;
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-image {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    filter: none;
+  }
+
+  .media-frame:hover .media-image.is-loaded {
+    transform: none;
+    filter: none;
+  }
+
+  .media-scan {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .media-frame:hover .media-image.is-loaded {
+    transform: none;
+    filter: none;
+  }
+
+  .media-scan {
+    display: none;
+  }
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
