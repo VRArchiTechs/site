@@ -86,54 +86,6 @@ export const studio = {
 // Existing Work project data
 export const projects: Project[] = [
   {
-    id: "pintubhai-bungalow",
-    sortOrder: 20,
-    status: "published",
-    year: 2026,
-    title: "Bungalow for Mr. Pintubhai",
-    indexTitle: "Bungalow for Mr. Pintubhai",
-    location: "Gandhinagar",
-    meta: [
-      { label: "Scope", value: "Architecture & Structure" },
-      { label: "Type", value: "Residential Bungalow" },
-      { label: "Delivery", value: "Drawings to Render" },
-    ],
-    sub: "Gandhinagar, Gujarat — Plan → Elevation → Section → Detail",
-    notes: [
-      "A ground-up residential project carried through complete construction documentation — floor plans, elevations, sections and wall cladding details, coordinated down to stone cladding profiles and RCC chaja levels.",
-      "This is the layer that sits underneath every render on this page: the working drawing set a contractor actually builds from.",
-    ],
-    pull: "Every finished render starts as a dimensioned line drawing — this is that layer, shown in full.",
-    heroImage: {
-      src: img["p02-bungalow-for-mr-pintubhai-render-view"],
-      alt: "Render view of a compact stone-clad residential bungalow",
-      display: "16:9-cover",
-    },
-    galleries: [
-      {
-        title: "Render Views",
-        type: "render",
-        display: "4:3-cover",
-        plates: [
-          { src: img["p03-render-1"], alt: "Front render of the bungalow", caption: "Street Approach" },
-          { src: img["p04-render-2"], alt: "Angled render of the bungalow", caption: "Corner Massing" },
-          { src: img["p05-render-3"], alt: "Entrance render of the bungalow", caption: "Entrance & Gate" },
-          { src: img["p06-render-4"], alt: "Evening render of the bungalow", caption: "Evening Study" },
-        ],
-      },
-      {
-        title: "Drawings & Details",
-        type: "drawing",
-        display: "4:3-contain",
-        plates: [
-          { src: img["p07-ground-floor-plan-and-wall-cladding-detail"], alt: "Ground floor plan with wall cladding detail", caption: "Ground Floor Plan & Wall Cladding Detail" },
-          { src: img["p08-front-elevation-and-section"], alt: "Front elevation and section drawing", caption: "Front Elevation & Section" },
-        ],
-      },
-    ],
-    tags: ["Ground Floor Planning", "Stone Cladding Detail", "Main Gate Design", "Structural Sections"],
-  },
-  {
     id: "tri-pod-residence",
     sortOrder: 10,
     status: "published",
