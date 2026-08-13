@@ -125,52 +125,6 @@ export const projects: Project[] = [
     tags: ["Terracotta Cladding", "Vertical Louvers", "Curved Balconies", "Twinmotion Render"],
   },
   {
-    id: "rupesh-interior",
-    sortOrder: 40,
-    status: "published",
-    year: 2026,
-    title: "Interior for Mr. Rupesh",
-    indexTitle: "Interior for Mr. Rupesh",
-    location: "Delhi",
-    meta: [
-      { label: "Area", value: "1,500 sq.ft" },
-      { label: "Scope", value: "Interior Design & Visualisation" },
-      { label: "Rooms", value: "Living · Study · Bedrooms" },
-    ],
-    sub: "Delhi — Full Interior Design",
-    notes: [
-      "A cohesive 1,500 sq.ft interior built on elegant materials, warm lighting and thoughtful detailing — a geometric wood-and-mirror feature wall carries through from the living area into the master bedroom, tying the apartment together.",
-      "Every custom piece — the TV unit, the wardrobe, the walk-in closet — was drawn and dimensioned before it was rendered.",
-    ],
-    pull: "Each space is crafted to offer comfort and a timeless sense of luxury, while holding visual harmony throughout the residence.",
-    heroImage: { src: img["p25-living-room-interior-render"], alt: "Living room interior render", display: "16:9-cover" },
-    galleries: [
-      {
-        title: "Living Room",
-        type: "render",
-        display: "4:3-cover",
-        plates: [
-          { src: img["p26-living-room-wide-view"], alt: "Wide view of the living room", caption: "Living Room" },
-          { src: img["p27-living-room-alternate-angle"], alt: "Living room from an alternate angle", caption: "Alternate Angle" },
-          { src: img["p28-tv-unit-detail"], alt: "Television unit detail", caption: "TV Unit Detail" },
-          { src: img["p29-wall-art-detail"], alt: "Feature wall art detail", caption: "Feature Wall Art" },
-        ],
-      },
-      {
-        title: "Bedrooms & Study",
-        type: "render",
-        display: "4:3-cover",
-        plates: [
-          { src: img["p30-study-nook"], alt: "Study nook interior", caption: "Study Nook" },
-          { src: img["p31-bedroom-with-study-desk"], alt: "Bedroom with study desk", caption: "Bedroom with Study Desk" },
-          { src: img["p32-master-bedroom"], alt: "Master bedroom interior", caption: "Master Bedroom" },
-          { src: img["p33-bedroom-tv-feature-wall"], alt: "Bedroom television feature wall", caption: "Bedroom Feature Wall" },
-        ],
-      },
-    ],
-    tags: ["Feature Wall Design", "Cove Lighting", "Custom Furniture"],
-  },
-  {
     id: "bharatbhai-bungalow",
     sortOrder: 50,
     status: "published",
