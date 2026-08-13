@@ -1,3 +1,4 @@
+import { images } from "./image-registry";
 import { siteAssets } from "./site-assets";
 import type { DisplayPreset } from "./display-presets";
 
@@ -98,7 +99,7 @@ export const projects: Project[] = [
     ],
     pull: "The composition responds to both scale and context — introducing rhythm, privacy and a distinct architectural identity.",
     heroImage: {
-      src: "/images/work/tri-pod-residence/hero/hero.webp",
+      src: images.work.triPodResidence.hero,
       alt: "Street perspective render of Tri-Pod Residence",
       display: "16:9-cover",
     },
@@ -106,12 +107,21 @@ export const projects: Project[] = [
       {
         title: "Facade Strategy & Elevations",
         display: "4:3-cover",
-        plates: [
-          { src: "/images/work/tri-pod-residence/gallery-01/01.webp", alt: "Street perspective render of Tri-Pod Residence", caption: "Street Perspective Render" },
-          { src: "/images/work/tri-pod-residence/gallery-01/02.webp", alt: "Annotated front elevation strategy drawing for Tri-Pod Residence", caption: "Front Elevation Strategy" },
-          { src: "/images/work/tri-pod-residence/gallery-01/03.webp", alt: "Annotated side elevation strategy drawing for Tri-Pod Residence", caption: "Side Elevation Strategy" },
-          { src: "/images/work/tri-pod-residence/gallery-01/04.webp", alt: "Architectural detail of the curved balcony edge", caption: "Curved Balcony Edge Detail" },
-        ],
+        plates: images.work.triPodResidence.gallery01.map((src, index) => ({
+          src,
+          alt: [
+            "Street perspective render of Tri-Pod Residence",
+            "Annotated front elevation strategy drawing for Tri-Pod Residence",
+            "Annotated side elevation strategy drawing for Tri-Pod Residence",
+            "Architectural detail of the curved balcony edge",
+          ][index],
+          caption: [
+            "Street Perspective Render",
+            "Front Elevation Strategy",
+            "Side Elevation Strategy",
+            "Curved Balcony Edge Detail",
+          ][index],
+        })),
       },
     ],
     tags: ["Terracotta Cladding", "Vertical Louvers", "Curved Balconies", "Twinmotion Render"],
@@ -127,16 +137,20 @@ export const scenes: VisualisationScene[] = [
     title: "Living Room",
     description: "A controlled study of warm timber, soft daylight and layered seating composition.",
     heroImage: {
-      src: "/images/visualisation/living-room/hero/hero.webp",
+      src: images.visualisation.livingRoom.hero,
       alt: "Wide living room visualisation",
       display: "16:9-cover",
     },
     galleryDisplay: "3:4-cover",
-    galleryImages: [
-      { src: "/images/visualisation/living-room/gallery-01/01.webp", alt: "Living room seating detail", caption: "Seating Detail" },
-      { src: "/images/visualisation/living-room/gallery-01/02.webp", alt: "Living room sofa and art detail", caption: "Sofa & Art" },
-      { src: "/images/visualisation/living-room/gallery-01/03.webp", alt: "Living room styling detail with pouf", caption: "Styling Study" },
-    ],
+    galleryImages: images.visualisation.livingRoom.gallery01.map((src, index) => ({
+      src,
+      alt: [
+        "Living room seating detail",
+        "Living room sofa and art detail",
+        "Living room styling detail with pouf",
+      ][index],
+      caption: ["Seating Detail", "Sofa & Art", "Styling Study"][index],
+    })),
   },
   {
     id: "dining-room",
@@ -146,12 +160,21 @@ export const scenes: VisualisationScene[] = [
     title: "Dining Room",
     description: "Material and artwork variants tested under controlled lighting conditions.",
     galleryDisplay: "3:4-cover",
-    galleryImages: [
-      { src: "/images/visualisation/dining-room/gallery-01/01.webp", alt: "Dining room marble wall variant", caption: "Marble Wall Variant" },
-      { src: "/images/visualisation/dining-room/gallery-01/02.webp", alt: "Dining room ink mural variant", caption: "Ink Mural Variant" },
-      { src: "/images/visualisation/dining-room/gallery-01/03.webp", alt: "Dining room angled view", caption: "Angled View" },
-      { src: "/images/visualisation/dining-room/gallery-01/04.webp", alt: "Dining room angled view with ink mural", caption: "Angled Mural Study" },
-    ],
+    galleryImages: images.visualisation.diningRoom.gallery01.map((src, index) => ({
+      src,
+      alt: [
+        "Dining room marble wall variant",
+        "Dining room ink mural variant",
+        "Dining room angled view",
+        "Dining room angled view with ink mural",
+      ][index],
+      caption: [
+        "Marble Wall Variant",
+        "Ink Mural Variant",
+        "Angled View",
+        "Angled Mural Study",
+      ][index],
+    })),
   },
   {
     id: "bathroom",
@@ -161,10 +184,14 @@ export const scenes: VisualisationScene[] = [
     title: "Bathroom",
     description: "A compact material study focused on stone, vanity joinery and reflective surfaces.",
     galleryDisplay: "3:4-cover",
-    galleryImages: [
-      { src: "/images/visualisation/bath-room/gallery-01/01.webp", alt: "Wide bathroom visualisation", caption: "Wide View" },
-      { src: "/images/visualisation/bath-room/gallery-01/02.webp", alt: "Bathroom vanity detail", caption: "Vanity Detail" },
-      { src: "/images/visualisation/bath-room/gallery-01/03.webp", alt: "Bathroom shower detail", caption: "Shower Detail" },
-    ],
+    galleryImages: images.visualisation.bathroom.gallery01.map((src, index) => ({
+      src,
+      alt: [
+        "Wide bathroom visualisation",
+        "Bathroom vanity detail",
+        "Bathroom shower detail",
+      ][index],
+      caption: ["Wide View", "Vanity Detail", "Shower Detail"][index],
+    })),
   },
 ];
