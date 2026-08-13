@@ -71,7 +71,7 @@ function Index() {
         <Visualisation />
         <WorkIndex />
         {projects.map((project) => (
-          <ProjectSpread key={project.id} project={project} />
+          <ProjectSpread key={project.id} project={project} total={projects.length} />
         ))}
       </main>
       <SiteFooter />
