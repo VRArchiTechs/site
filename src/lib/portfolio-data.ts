@@ -174,6 +174,79 @@ export const projects: Project[] = [
     ],
     tags: ["Residential Villa", "Architecture", "Interior Design", "Structural Design", "Enscape"],
   },
+  {
+    id: "residence-03b",
+    sortOrder: 30,
+    status: "published",
+    year: 2025,
+    title: "Residence 03B",
+    indexTitle: "Residence 03B",
+    location: "Bengaluru",
+    meta: [
+      { label: "Scope", value: "Interior Design · Space Planning · Design Documentation · Visualisation" },
+      { label: "Type", value: "3BHK Residence" },
+      { label: "Status", value: "Design Proposal — Unexecuted" },
+      { label: "Software", value: "AutoCAD · SketchUp · 3ds Max · Corona Renderer" },
+    ],
+    sub: "Bengaluru — Residential Interior · Design Documentation · Visualisation",
+    notes: [
+      "Residence 03B is a design proposal for a 3BHK urban residence in Bengaluru, developed as an integrated interior design and visualisation study. The work explores a warm contemporary language through layered timber finishes, muted wall surfaces, soft upholstery, marble accents and carefully controlled architectural lighting.",
+      "The design process combines space planning, detailed interior elevations, sections and material coordination with high-quality visualisation. The living and bedroom studies demonstrate how the same design intent is translated between technical documentation and rendered space, while remaining a proposal rather than an executed project.",
+    ],
+    pull: "A residential interior study where technical detailing and visual atmosphere are developed together — from measured drawings to rendered space.",
+    heroImage: {
+      src: images.work.residence03B.hero,
+      alt: "Contemporary living room visualisation for Residence 03B",
+      display: "16:9-cover",
+    },
+    galleries: [
+      {
+        title: "Living Room — Design & Documentation",
+        description: "Living room interior elevations, plan and section studies alongside the corresponding visualisation views.",
+        display: "4:3-cover",
+        plates: images.work.residence03B.gallery01.map((src, index) => ({
+          src,
+          alt: [
+            "Living room side-wall interior elevation with plan and section",
+            "Living room TV-wall interior elevation with plan and section",
+            "Living room interior visualisation with sculptural lounge chairs",
+            "Living room close visualisation showing TV wall, seating and marble ledge",
+            "Living room wide visualisation with sofa, timber tables and panoramic glazing",
+          ][index],
+          caption: [
+            "Living Room — Side Wall Elevation & Section",
+            "Living Room — TV Wall Elevation & Plan",
+            "Living Room — Material & Seating Study",
+            "Living Room — TV Wall Perspective",
+            "Living Room — Wide Perspective",
+          ][index],
+        })),
+      },
+      {
+        title: "Bedroom — Design & Visualisation",
+        description: "Bedroom interior elevation, section and visualisation studies exploring contrasting material palettes and built-in detailing.",
+        display: "4:3-cover",
+        plates: images.work.residence03B.gallery02.map((src, index) => ({
+          src,
+          alt: [
+            "Bedroom bed-wall interior elevation, plan and section with material legend",
+            "Bedroom TV wall visualisation with green built-in cabinetry",
+            "Bedroom visualisation with green cabinetry, window seat and botanical wall treatment",
+            "Bedroom front visualisation with upholstered bed and layered timber wall finish",
+            "Bedroom visualisation with botanical feature wall and integrated storage",
+          ][index],
+          caption: [
+            "Bedroom — Bed Wall Elevation, Plan & Section",
+            "Bedroom — TV Wall Perspective",
+            "Bedroom — Green Built-In & Window Seat",
+            "Bedroom — Bed Wall Perspective",
+            "Bedroom — Botanical Feature Wall",
+          ][index],
+        })),
+      },
+    ],
+    tags: ["3BHK Residence", "Interior Design", "Space Planning", "Design Documentation", "3ds Max", "Corona Renderer"],
+  },
 ];
 
 export const scenes: VisualisationScene[] = [
