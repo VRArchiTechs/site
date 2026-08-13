@@ -41,42 +41,37 @@ export function SiteFooter() {
           <div className="text-center">
             <p className="eyebrow text-brass-soft">Get in touch</p>
 
-            <div ref={taglineRef} className="mx-auto mt-8 max-w-[24ch]">
+            <div ref={taglineRef} className="mx-auto mt-8 w-full max-w-[980px]">
               <div
                 aria-hidden="true"
-                className="mx-auto mb-6 h-px w-24 bg-brass-soft/60 transition-transform duration-700 ease-out motion-reduce:transition-none"
-                style={lineStyle}
+                className="mx-auto mb-6 h-px w-24 bg-brass-soft/60 transition-transform duration-700 motion-reduce:transition-none"
+                style={{
+                  ...lineStyle,
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
               />
               <h2 className="font-display text-[clamp(2.4rem,8vw,6rem)] leading-[0.98] tracking-[-0.02em]">
                 <span
-                  className="inline-block transition-all duration-500 ease-out motion-reduce:transition-none"
+                  className="block whitespace-nowrap transition-[opacity,transform] duration-500 motion-reduce:transition-none"
                   style={{
                     opacity: taglineVisible ? 1 : 0,
                     transform: `translateY(${taglineVisible ? 0 : 14}px)`,
-                    transitionDelay: taglineVisible ? "180ms" : "0ms",
+                    transitionDelay: taglineVisible ? "120ms" : "0ms",
+                    transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                 >
-                  Let's design something&nbsp;
+                  Let's design something
                 </span>
-                <em
-                  className="inline-block text-brass-soft transition-all duration-500 ease-out motion-reduce:transition-none"
-                  style={{
-                    opacity: taglineVisible ? 1 : 0,
-                    transform: `translateY(${taglineVisible ? 0 : 14}px)`,
-                    transitionDelay: taglineVisible ? "360ms" : "0ms",
-                  }}
-                >
-                  timeless,&nbsp;
-                </em>
                 <span
-                  className="inline-block transition-all duration-500 ease-out motion-reduce:transition-none"
+                  className="block transition-[opacity,transform] duration-500 motion-reduce:transition-none"
                   style={{
                     opacity: taglineVisible ? 1 : 0,
                     transform: `translateY(${taglineVisible ? 0 : 14}px)`,
-                    transitionDelay: taglineVisible ? "540ms" : "0ms",
+                    transitionDelay: taglineVisible ? "300ms" : "0ms",
+                    transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                 >
-                  together.
+                  <em className="text-brass-soft">timeless,</em>{" "}together.
                 </span>
               </h2>
             </div>
