@@ -15,6 +15,25 @@ export const images = {
         "/images/work/tri-pod-residence/gallery-01/04.webp",
       ],
     },
+    harekrushnaVilla: {
+      hero: "/images/work/harekrushna-villa/hero/hero.webp",
+      gallery01: [
+        "/images/work/harekrushna-villa/gallery-01/01.webp",
+        "/images/work/harekrushna-villa/gallery-01/02.webp",
+        "/images/work/harekrushna-villa/gallery-01/03.webp",
+        "/images/work/harekrushna-villa/gallery-01/04.webp",
+        "/images/work/harekrushna-villa/gallery-01/05.webp",
+        "/images/work/harekrushna-villa/gallery-01/06.webp",
+        "/images/work/harekrushna-villa/gallery-01/07.webp",
+      ],
+      gallery02: [
+        "/images/work/harekrushna-villa/gallery-02/01.webp",
+        "/images/work/harekrushna-villa/gallery-02/02.webp",
+        "/images/work/harekrushna-villa/gallery-02/03.webp",
+        "/images/work/harekrushna-villa/gallery-02/04.webp",
+        "/images/work/harekrushna-villa/gallery-02/05.webp",
+      ],
+    },
   },
 
   visualisation: {
