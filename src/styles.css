@@ -23,9 +23,7 @@
   --color-hair-dark: oklch(0.949 0.014 82 / 0.07);
 }
 
-@utility hairline {
-  border-top: 1px solid var(--color-hair);
-}
+@utility hairline { border-top: 1px solid var(--color-hair); }
 
 @utility eyebrow {
   font-family: var(--font-mono);
@@ -61,27 +59,15 @@
 @utility reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition:
-    opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
-
-  &[data-shown="true"] {
-    opacity: 1;
-    transform: none;
-  }
+  transition: opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  &[data-shown="true"] { opacity: 1; transform: none; }
 }
 
 @utility filmstrip {
   scrollbar-width: thin;
   scrollbar-color: var(--color-hair) transparent;
-
-  &::-webkit-scrollbar {
-    height: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--color-hair);
-  }
+  &::-webkit-scrollbar { height: 3px; }
+  &::-webkit-scrollbar-thumb { background: var(--color-hair); }
 }
 
 /* ---------- Shared portfolio media motion ---------- */
@@ -93,22 +79,13 @@
 .media-image {
   opacity: 0;
   transform: scale(1.002);
-  transition:
-    opacity 650ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 850ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    filter 850ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 650ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 850ms cubic-bezier(0.22, 0.61, 0.36, 1), filter 850ms cubic-bezier(0.22, 0.61, 0.36, 1);
   filter: saturate(0.985) contrast(0.99);
   will-change: transform, opacity;
 }
 
-.media-image.is-loaded {
-  opacity: 1;
-}
-
-.media-frame:hover .media-image.is-loaded {
-  transform: scale(1.018);
-  filter: saturate(1) contrast(1.01);
-}
+.media-image.is-loaded { opacity: 1; }
+.media-frame:hover .media-image.is-loaded { transform: scale(1.018); filter: saturate(1) contrast(1.01); }
 
 .media-scan {
   position: absolute;
@@ -117,356 +94,61 @@
   height: 1px;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 35%,
-    var(--color-brass-dim) 50%,
-    transparent 65%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, transparent 35%, var(--color-brass-dim) 50%, transparent 65%, transparent 100%);
   opacity: 0;
   transform: translateY(-1px);
 }
 
-.media-frame:hover .media-scan {
-  animation: media-scan-pass 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
+.media-frame:hover .media-scan { animation: media-scan-pass 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 
 @keyframes media-scan-pass {
-  from {
-    opacity: 0;
-    transform: translateY(-1px);
-  }
-  12% {
-    opacity: 0.42;
-  }
-  72% {
-    opacity: 0.18;
-  }
-  to {
-    opacity: 0;
-    transform: translateY(calc(100cqh - 1px));
-  }
+  from { opacity: 0; transform: translateY(-1px); }
+  12% { opacity: 0.42; }
+  72% { opacity: 0.18; }
+  to { opacity: 0; transform: translateY(100%); }
 }
 
-@supports not (height: 100cqh) {
-  @keyframes media-scan-pass {
-    from {
-      opacity: 0;
-      transform: translateY(-1px);
-    }
-    12% {
-      opacity: 0.42;
-    }
-    72% {
-      opacity: 0.18;
-    }
-    to {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-  }
-}
+/* ---------- Work hero: Version B — soft light scan ---------- */
+.project-hero-light { isolation: isolate; }
 
-/* ---------- Work hero: architectural scan reveal ---------- */
-.project-hero-entry {
-  position: relative;
-  isolation: isolate;
-}
-
-/* The Work hero can be seen before the scan completes, but starts deliberately restrained. */
-.project-hero-entry .media-image.is-loaded {
-  opacity: 0.38;
-  transform: scale(1.035);
-  filter: blur(2px) saturate(0.72) contrast(0.9);
-  transition: none;
-  will-change: transform, opacity, filter;
-}
-
-.project-hero-drawing {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  overflow: hidden;
-  color: var(--color-brass);
+.project-hero-light-sweep {
+  background: linear-gradient(90deg, transparent 0%, color-mix(in oklch, var(--color-brass-soft) 7%, transparent) 30%, color-mix(in oklch, var(--color-ink) 13%, transparent) 50%, color-mix(in oklch, var(--color-brass-soft) 7%, transparent) 70%, transparent 100%);
+  filter: blur(18px);
   opacity: 0;
+  transform: translateX(-10%);
 }
 
-.project-hero-scan-grid {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  background-image:
-    linear-gradient(to right, var(--color-brass-dim) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-brass-dim) 1px, transparent 1px);
-  background-size: 12.5% 100%, 100% 25%;
-  mask-image: linear-gradient(to right, transparent 0%, black 42%, black 58%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 42%, black 58%, transparent 100%);
+.reveal[data-shown="true"] .project-hero-light-sweep {
+  animation: project-hero-light-sweep 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 80ms both;
 }
 
-.project-hero-registration-sweep {
-  position: absolute;
-  left: -8%;
-  top: 0;
-  width: 16%;
-  height: 100%;
-  opacity: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in oklch, var(--color-brass-soft) 18%, transparent) 35%,
-    color-mix(in oklch, var(--color-brass-soft) 72%, transparent) 50%,
-    color-mix(in oklch, var(--color-brass-soft) 18%, transparent) 65%,
-    transparent 100%
-  );
-  box-shadow: 0 0 42px color-mix(in oklch, var(--color-brass-soft) 14%, transparent);
-  transform: translateX(-20%);
+.reveal[data-shown="true"] .project-hero-light .media-image.is-loaded {
+  animation: project-hero-light-image 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 80ms both;
 }
 
-.project-hero-registration-line {
-  position: absolute;
-  display: block;
-  background: var(--color-brass-soft);
-  opacity: 0;
+@keyframes project-hero-light-sweep {
+  0% { opacity: 0; transform: translateX(-20%); }
+  14% { opacity: 0.22; }
+  50% { opacity: 0.13; }
+  100% { opacity: 0; transform: translateX(245%); }
 }
 
-.project-hero-registration-line-x {
-  left: 0;
-  top: 50%;
-  width: 100%;
-  height: 1px;
-  transform-origin: left center;
-  transform: scaleX(0);
-}
-
-.project-hero-registration-line-y {
-  left: 50%;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  transform-origin: top center;
-  transform: scaleY(0);
-}
-
-.project-hero-registration-cross {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 15px;
-  height: 15px;
-  margin-left: -7px;
-  margin-top: -7px;
-  border: 1px solid var(--color-brass-soft);
-  opacity: 0;
-  transform: scale(0.55);
-}
-
-.project-hero-registration-cross::before,
-.project-hero-registration-cross::after {
-  content: "";
-  position: absolute;
-  background: var(--color-brass-soft);
-}
-
-.project-hero-registration-cross::before {
-  left: 6px;
-  top: -8px;
-  width: 1px;
-  height: 29px;
-}
-
-.project-hero-registration-cross::after {
-  left: -8px;
-  top: 6px;
-  width: 29px;
-  height: 1px;
-}
-
-.project-hero-coordinate {
-  position: absolute;
-  left: 2%;
-  top: 2.2%;
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-brass-soft);
-  opacity: 0;
-  white-space: nowrap;
-}
-
-.reveal[data-shown="true"] .project-hero-drawing {
-  animation: project-hero-overlay 1650ms cubic-bezier(0.22, 0.61, 0.36, 1) 100ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-entry .media-image.is-loaded {
-  animation: project-hero-image-scan 1650ms cubic-bezier(0.22, 0.61, 0.36, 1) 100ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-registration-sweep {
-  animation: project-hero-scan-sweep 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 180ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-scan-grid {
-  animation: project-hero-grid-scan 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 180ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-registration-line-x {
-  animation: project-registration-x 800ms cubic-bezier(0.22, 0.61, 0.36, 1) 520ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-registration-line-y {
-  animation: project-registration-y 700ms cubic-bezier(0.22, 0.61, 0.36, 1) 760ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-registration-cross {
-  animation: project-registration-cross 520ms cubic-bezier(0.22, 0.61, 0.36, 1) 900ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-coordinate {
-  animation: project-hero-label-in 500ms ease-out 980ms both;
-}
-
-@keyframes project-hero-image-scan {
-  0% {
-    opacity: 0.38;
-    transform: scale(1.035);
-    filter: blur(2px) saturate(0.72) contrast(0.9);
-  }
-  38% {
-    opacity: 0.62;
-    filter: blur(1px) saturate(0.86) contrast(0.95);
-  }
-  72% {
-    opacity: 0.88;
-    filter: blur(0.2px) saturate(0.96) contrast(0.99);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.002);
-    filter: blur(0) saturate(1) contrast(1);
-  }
-}
-
-@keyframes project-hero-overlay {
-  0% { opacity: 1; }
-  68% { opacity: 0.72; }
-  100% { opacity: 0; }
-}
-
-@keyframes project-hero-scan-sweep {
-  0% {
-    opacity: 0;
-    transform: translateX(-20%);
-  }
-  12% { opacity: 0.72; }
-  62% { opacity: 0.42; }
-  100% {
-    opacity: 0;
-    transform: translateX(760%);
-  }
-}
-
-@keyframes project-hero-grid-scan {
-  0% {
-    opacity: 0;
-    transform: translateX(-18%);
-  }
-  18% { opacity: 0.34; }
-  55% { opacity: 0.2; }
-  100% {
-    opacity: 0;
-    transform: translateX(48%);
-  }
-}
-
-@keyframes project-registration-x {
-  0% {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  15% { opacity: 0.52; }
-  70% { opacity: 0.26; }
-  100% {
-    opacity: 0;
-    transform: scaleX(1);
-  }
-}
-
-@keyframes project-registration-y {
-  0% {
-    opacity: 0;
-    transform: scaleY(0);
-  }
-  15% { opacity: 0.46; }
-  72% { opacity: 0.22; }
-  100% {
-    opacity: 0;
-    transform: scaleY(1);
-  }
-}
-
-@keyframes project-registration-cross {
-  0% {
-    opacity: 0;
-    transform: scale(0.55);
-  }
-  28% { opacity: 0.78; }
-  70% { opacity: 0.42; }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-
-@keyframes project-hero-label-in {
-  0% {
-    opacity: 0;
-    transform: translateY(3px);
-  }
-  30% { opacity: 0.72; }
-  100% {
-    opacity: 0;
-    transform: translateY(-2px);
-  }
+@keyframes project-hero-light-image {
+  0% { transform: scale(1.018); filter: saturate(0.92) contrast(0.96) brightness(0.92); }
+  55% { transform: scale(1.008); filter: saturate(0.97) contrast(0.99) brightness(0.98); }
+  100% { transform: scale(1.002); filter: saturate(1) contrast(1) brightness(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .media-image {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    filter: none;
-  }
-
-  .media-frame:hover .media-image.is-loaded {
-    transform: none;
-    filter: none;
-  }
-
-  .project-hero-entry .media-image.is-loaded {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-
-  .media-scan,
-  .project-hero-drawing {
-    display: none;
-  }
+  .media-image { opacity: 1; transform: none; transition: none; filter: none; }
+  .media-frame:hover .media-image.is-loaded { transform: none; filter: none; }
+  .project-hero-light-sweep { display: none; }
+  .project-hero-light .media-image.is-loaded { animation: none !important; transform: none; filter: none; opacity: 1; }
 }
 
 @media (hover: none) {
-  .media-frame:hover .media-image.is-loaded {
-    transform: none;
-    filter: none;
-  }
-
-  .media-scan {
-    display: none;
-  }
+  .media-frame:hover .media-image.is-loaded { transform: none; filter: none; }
+  .media-scan { display: none; }
 }
 
 @theme inline {
@@ -482,7 +164,7 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
+  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -493,8 +175,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-ring-offset-background: var(--background);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
