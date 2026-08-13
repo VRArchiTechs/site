@@ -3,6 +3,8 @@ import { Reveal } from "./Reveal";
 import { scenes } from "@/lib/portfolio-data";
 
 export function Visualisation() {
+  const orderedScenes = [...scenes].sort((a, b) => a.sortOrder - b.sortOrder);
+
   return (
     <section id="visualisation" className="bg-paper-deep text-ink">
       <div className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-32">
@@ -20,7 +22,7 @@ export function Visualisation() {
           </p>
         </Reveal>
 
-        {scenes.map((scene, i) => (
+        {orderedScenes.map((scene, i) => (
           <Reveal key={scene.id} className="mt-20" delay={i * 40}>
             <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-hair-dark pb-5">
               <h3 className="font-display text-[clamp(1.5rem,3.2vw,2.4rem)]">
