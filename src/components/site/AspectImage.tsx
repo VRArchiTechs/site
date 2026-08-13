@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { DISPLAY_PRESETS, type DisplayPreset } from "@/lib/display-presets";
 
 type Props = {
@@ -13,8 +14,9 @@ type Props = {
 };
 
 /**
- * Renders portfolio imagery through the shared display preset system.
- * The preset controls both the frame aspect ratio and object-fit behavior.
+ * Shared portfolio image renderer.
+ * Handles aspect ratio, lazy loading and restrained editorial motion so
+ * every current and future project gets the same visual treatment.
  */
 export function AspectImage({
   src,
@@ -25,18 +27,21 @@ export function AspectImage({
   display = "16:9-contain",
 }: Props) {
   const preset = DISPLAY_PRESETS[display];
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div
-      className={`overflow-hidden ${frameClassName}`}
+      className={`media-frame group relative overflow-hidden ${frameClassName}`}
       style={{ aspectRatio: preset.aspectRatio }}
     >
       <img
         src={src}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
-        className={`h-full w-full object-${preset.objectFit} ${className}`}
+        onLoad={() => setLoaded(true)}
+        className={`media-image h-full w-full object-${preset.objectFit} ${loaded ? "is-loaded" : ""} ${className}`}
       />
+      <span aria-hidden="true" className="media-scan" />
     </div>
   );
 }
