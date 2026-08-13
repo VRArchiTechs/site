@@ -133,18 +133,18 @@ export const projects: Project[] = [
     year: 2026,
     title: "Harekrushna Villa",
     indexTitle: "Harekrushna Villa",
-    location: "Private Residence",
+    location: "Radhanpur",
     meta: [
-      { label: "Scope", value: "Architecture · Facade · Visualisation" },
-      { label: "Type", value: "Residential Villa" },
-      { label: "Output", value: "Design Studies · Visualisation" },
+      { label: "Scope", value: "Architecture · Interior Design · Structural Design" },
+      { label: "Floors", value: "G+1" },
+      { label: "Software", value: "AutoCAD · SketchUp · Enscape" },
     ],
-    sub: "Residential Villa — Architecture · Facade Design · Visualisation",
+    sub: "Radhanpur — Architecture · Interior Design · Structural Design",
     notes: [
-      "A residential villa study focused on architectural composition, facade articulation and the relationship between massing, openings and material expression.",
-      "The project is presented through two curated visual groups, moving from the primary architectural study into supporting design and visualisation material.",
+      "The project explores a balanced integration of architecture, structural engineering, and interior design within a contemporary villa typology. Classical architectural elements such as decorative pediments, symmetrical proportions, and columned verandahs are reinterpreted through modern construction techniques and spatial planning.",
+      "The design extended beyond architectural planning to include complete structural development, interior design, custom detailing, visualization, and construction documentation. The completed residence demonstrates the successful translation of design intent into built reality while maintaining consistency across architectural, interior, and technical disciplines.",
     ],
-    pull: "A study in proportion, material expression and the quiet balance between solid mass and open space.",
+    pull: "A balanced residential study where architectural character, structural logic and interior design are resolved as one continuous design process.",
     heroImage: {
       src: images.work.harekrushnaVilla.hero,
       alt: "Harekrushna Villa architectural visualisation",
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     galleries: [
       {
         title: "Architectural Design Studies",
-        description: "Facade and architectural studies for Harekrushna Villa.",
+        description: "Architectural, facade and design documentation studies for Harekrushna Villa.",
         display: "4:3-cover",
         plates: images.work.harekrushnaVilla.gallery01.map((src, index) => ({
           src,
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       },
       {
         title: "Visualisation Studies",
-        description: "Selected visualisation studies for Harekrushna Villa.",
+        description: "Selected visualisation and presentation studies for the completed residence.",
         display: "4:3-cover",
         plates: images.work.harekrushnaVilla.gallery02.map((src, index) => ({
           src,
@@ -172,7 +172,7 @@ export const projects: Project[] = [
         })),
       },
     ],
-    tags: ["Residential Villa", "Facade Design", "Architectural Visualisation"],
+    tags: ["Residential Villa", "Architecture", "Interior Design", "Structural Design", "Enscape"],
   },
 ];
 
