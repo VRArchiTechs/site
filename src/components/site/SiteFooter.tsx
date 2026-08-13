@@ -1,16 +1,85 @@
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 import { studio } from "@/lib/portfolio-data";
 
 export function SiteFooter() {
+  const taglineRef = useRef<HTMLDivElement>(null);
+  const [taglineVisible, setTaglineVisible] = useState(false);
+
+  useEffect(() => {
+    const element = taglineRef.current;
+    if (!element) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setTaglineVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTaglineVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  const lineStyle = {
+    transform: `scaleX(${taglineVisible ? 1 : 0})`,
+    transformOrigin: "center",
+  };
+
   return (
     <footer id="contact" className="border-t border-hair-dark bg-paper text-ink">
       <div className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-36">
         <Reveal>
           <div className="text-center">
             <p className="eyebrow text-brass-soft">Get in touch</p>
-            <h2 className="mx-auto mt-8 max-w-[24ch] font-display text-[clamp(2.4rem,8vw,6rem)] leading-[0.98] tracking-[-0.02em]">
-              Let's design something <em className="text-brass-soft">timeless,</em> together.
-            </h2>
+
+            <div ref={taglineRef} className="mx-auto mt-8 max-w-[24ch]">
+              <div
+                aria-hidden="true"
+                className="mx-auto mb-6 h-px w-24 bg-brass-soft/60 transition-transform duration-700 ease-out motion-reduce:transition-none"
+                style={lineStyle}
+              />
+              <h2 className="font-display text-[clamp(2.4rem,8vw,6rem)] leading-[0.98] tracking-[-0.02em]">
+                <span
+                  className="inline-block transition-all duration-500 ease-out motion-reduce:transition-none"
+                  style={{
+                    opacity: taglineVisible ? 1 : 0,
+                    transform: `translateY(${taglineVisible ? 0 : 14}px)`,
+                    transitionDelay: taglineVisible ? "180ms" : "0ms",
+                  }}
+                >
+                  Let's design something&nbsp;
+                </span>
+                <em
+                  className="inline-block text-brass-soft transition-all duration-500 ease-out motion-reduce:transition-none"
+                  style={{
+                    opacity: taglineVisible ? 1 : 0,
+                    transform: `translateY(${taglineVisible ? 0 : 14}px)`,
+                    transitionDelay: taglineVisible ? "360ms" : "0ms",
+                  }}
+                >
+                  timeless,&nbsp;
+                </em>
+                <span
+                  className="inline-block transition-all duration-500 ease-out motion-reduce:transition-none"
+                  style={{
+                    opacity: taglineVisible ? 1 : 0,
+                    transform: `translateY(${taglineVisible ? 0 : 14}px)`,
+                    transitionDelay: taglineVisible ? "540ms" : "0ms",
+                  }}
+                >
+                  together.
+                </span>
+              </h2>
+            </div>
 
             <div className="mt-14 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-10">
               <a
