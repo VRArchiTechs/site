@@ -45,20 +45,11 @@ export function ProjectSpread({ project, total }: Props) {
             />
 
             <div className="project-hero-drawing" aria-hidden="true">
-              <span className="project-hero-cross project-hero-cross-tl" />
-              <span className="project-hero-cross project-hero-cross-tr" />
-              <span className="project-hero-cross project-hero-cross-bl" />
-              <span className="project-hero-cross project-hero-cross-br" />
-              <span className="project-hero-line project-hero-line-top" />
-              <span className="project-hero-line project-hero-line-right" />
-              <span className="project-hero-line project-hero-line-bottom" />
-              <span className="project-hero-line project-hero-line-left" />
-              <span className="project-hero-axis project-hero-axis-x" />
-              <span className="project-hero-axis project-hero-axis-y" />
+              <span className="project-hero-registration-sweep" />
+              <span className="project-hero-registration-line project-hero-registration-line-x" />
+              <span className="project-hero-registration-line project-hero-registration-line-y" />
+              <span className="project-hero-registration-cross" />
               <span className="project-hero-coordinate project-hero-coordinate-tl">A-01 / 00.00</span>
-              <span className="project-hero-coordinate project-hero-coordinate-br">GRID / 01—04</span>
-              <span className="project-hero-marker project-hero-marker-t" />
-              <span className="project-hero-marker project-hero-marker-r" />
             </div>
           </div>
 
