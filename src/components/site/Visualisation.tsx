@@ -3,7 +3,9 @@ import { Reveal } from "./Reveal";
 import { scenes } from "@/lib/portfolio-data";
 
 export function Visualisation() {
-  const orderedScenes = [...scenes].sort((a, b) => a.sortOrder - b.sortOrder);
+  const orderedScenes = scenes
+    .filter((scene) => scene.status === "published")
+    .sort((a, b) => a.sortOrder - b.sortOrder);
 
   return (
     <section id="visualisation" className="bg-paper-deep text-ink">
@@ -16,9 +18,7 @@ export function Visualisation() {
             </h2>
           </div>
           <p className="self-end border-t border-hair-dark pt-6 text-[0.98rem] leading-[1.8] text-ink/70">
-            These scenes are grouped by room rather than by client. Each one is a controlled study —
-            one light condition, one palette, one question about how a surface behaves before it is
-            ever specified.
+            Controlled studies of light, material, proportion and atmosphere — presented as individual scenes rather than tied to a single client or project.
           </p>
         </Reveal>
 
@@ -44,7 +44,7 @@ export function Visualisation() {
               <AspectImage
                 src={scene.heroImage.src}
                 alt={scene.heroImage.alt}
-                display="16:9-cover"
+                display={scene.heroImage.display}
                 eager={i === 0}
                 frameClassName="mt-9 border border-hair-dark"
               />
@@ -59,7 +59,7 @@ export function Visualisation() {
                   <AspectImage
                     src={plate.src}
                     alt={plate.alt}
-                    display="3:4-cover"
+                    display={scene.galleryDisplay}
                     frameClassName="border border-hair-dark"
                     className="transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                   />
