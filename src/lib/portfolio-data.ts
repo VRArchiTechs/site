@@ -153,7 +153,7 @@ export const projects: Project[] = [
     ],
     pull: "The composition responds to both scale and context — introducing rhythm, privacy and a distinct architectural identity.",
     heroImage: {
-      src: img["p09-tri-pod-residence-exterior-render"],
+      src: `${images.work.triPodResidence.hero}/hero.webp`,
       alt: "Street perspective render of Tri-Pod Residence",
       display: "16:9-cover",
     },
@@ -163,10 +163,10 @@ export const projects: Project[] = [
         type: "drawing",
         display: "4:3-cover",
         plates: [
-          { src: img["p10-tri-pod-residence-street-elevation"], alt: "Street perspective render of Tri-Pod Residence", caption: "Street Perspective Render" },
-          { src: img["p11-facade-strategy-diagram"], alt: "Annotated front elevation strategy drawing for Tri-Pod Residence", caption: "Front Elevation Strategy" },
-          { src: img["p12-north-elevation"], alt: "Annotated side elevation strategy drawing for Tri-Pod Residence", caption: "Side Elevation Strategy" },
-          { src: img["p13-balcony-edge-profile-detail"], alt: "Architectural detail of the curved balcony edge", caption: "Curved Balcony Edge Detail" },
+          { src: `${images.work.triPodResidence.gallery01}/01.webp`, alt: "Street perspective render of Tri-Pod Residence", caption: "Street Perspective Render" },
+          { src: `${images.work.triPodResidence.gallery01}/02.webp`, alt: "Annotated front elevation strategy drawing for Tri-Pod Residence", caption: "Front Elevation Strategy" },
+          { src: `${images.work.triPodResidence.gallery01}/03.webp`, alt: "Annotated side elevation strategy drawing for Tri-Pod Residence", caption: "Side Elevation Strategy" },
+          { src: `${images.work.triPodResidence.gallery01}/04.webp`, alt: "Architectural detail of the curved balcony edge", caption: "Curved Balcony Edge Detail" },
         ],
       },
     ],
