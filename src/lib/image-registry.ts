@@ -34,6 +34,23 @@ export const images = {
         "/images/work/harekrushna-villa/gallery-02/05.webp",
       ],
     },
+    residence03B: {
+      hero: "/images/work/residence-03b/hero/hero.webp",
+      gallery01: [
+        "/images/work/residence-03b/gallery-01/01.webp",
+        "/images/work/residence-03b/gallery-01/02.webp",
+        "/images/work/residence-03b/gallery-01/03.webp",
+        "/images/work/residence-03b/gallery-01/04.webp",
+        "/images/work/residence-03b/gallery-01/05.webp",
+      ],
+      gallery02: [
+        "/images/work/residence-03b/gallery-02/01.webp",
+        "/images/work/residence-03b/gallery-02/02.webp",
+        "/images/work/residence-03b/gallery-02/03.webp",
+        "/images/work/residence-03b/gallery-02/04.webp",
+        "/images/work/residence-03b/gallery-02/05.webp",
+      ],
+    },
   },
 
   visualisation: {
