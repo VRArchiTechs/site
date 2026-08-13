@@ -1,4 +1,3 @@
-import { images } from "./image-registry";
 import { siteAssets } from "./site-assets";
 import type { DisplayPreset } from "./display-presets";
 
@@ -7,7 +6,6 @@ export type Plate = { src: string; alt: string; caption: string };
 export type WorkGallery = {
   title: string;
   description?: string;
-  type: "render" | "drawing" | "site" | "photo";
   display: DisplayPreset;
   plates: Plate[];
 };
@@ -34,17 +32,14 @@ export type Project = {
 
 export type VisualisationScene = {
   id: string;
-  slug: string;
   sortOrder: number;
   status: ProjectStatus;
   year: number;
   title: string;
   description: string;
-  metadata: { label: string; value: string }[];
   heroImage?: { src: string; alt: string; display: DisplayPreset };
   galleryDisplay: DisplayPreset;
   galleryImages: Plate[];
-  tags: string[];
 };
 
 export const sections = [
@@ -55,7 +50,6 @@ export const sections = [
   { id: "contact", label: "Contact" },
 ] as const;
 
-// Existing studio data
 export const studio = {
   name: "Vishnu Ahir",
   practice: "VR ArchiTechs",
@@ -83,7 +77,6 @@ export const studio = {
   ],
 };
 
-// Existing Work project data
 export const projects: Project[] = [
   {
     id: "tri-pod-residence",
@@ -105,20 +98,19 @@ export const projects: Project[] = [
     ],
     pull: "The composition responds to both scale and context — introducing rhythm, privacy and a distinct architectural identity.",
     heroImage: {
-      src: `${images.work.triPodResidence.hero}/hero.webp`,
+      src: "/images/work/tri-pod-residence/hero/hero.webp",
       alt: "Street perspective render of Tri-Pod Residence",
       display: "16:9-cover",
     },
     galleries: [
       {
         title: "Facade Strategy & Elevations",
-        type: "drawing",
         display: "4:3-cover",
         plates: [
-          { src: `${images.work.triPodResidence.gallery01}/01.webp`, alt: "Street perspective render of Tri-Pod Residence", caption: "Street Perspective Render" },
-          { src: `${images.work.triPodResidence.gallery01}/02.webp`, alt: "Annotated front elevation strategy drawing for Tri-Pod Residence", caption: "Front Elevation Strategy" },
-          { src: `${images.work.triPodResidence.gallery01}/03.webp`, alt: "Annotated side elevation strategy drawing for Tri-Pod Residence", caption: "Side Elevation Strategy" },
-          { src: `${images.work.triPodResidence.gallery01}/04.webp`, alt: "Architectural detail of the curved balcony edge", caption: "Curved Balcony Edge Detail" },
+          { src: "/images/work/tri-pod-residence/gallery-01/01.webp", alt: "Street perspective render of Tri-Pod Residence", caption: "Street Perspective Render" },
+          { src: "/images/work/tri-pod-residence/gallery-01/02.webp", alt: "Annotated front elevation strategy drawing for Tri-Pod Residence", caption: "Front Elevation Strategy" },
+          { src: "/images/work/tri-pod-residence/gallery-01/03.webp", alt: "Annotated side elevation strategy drawing for Tri-Pod Residence", caption: "Side Elevation Strategy" },
+          { src: "/images/work/tri-pod-residence/gallery-01/04.webp", alt: "Architectural detail of the curved balcony edge", caption: "Curved Balcony Edge Detail" },
         ],
       },
     ],
@@ -129,55 +121,50 @@ export const projects: Project[] = [
 export const scenes: VisualisationScene[] = [
   {
     id: "living-room",
-    slug: "living-room",
     sortOrder: 10,
     status: "published",
     year: 2026,
     title: "Living Room",
     description: "A controlled study of warm timber, soft daylight and layered seating composition.",
-    metadata: [],
-    heroImage: { src: `${images.visualisation.livingRoom.hero}/hero.webp`, alt: "Wide living room visualisation", display: "16:9-cover" },
+    heroImage: {
+      src: "/images/visualisation/living-room/hero/hero.webp",
+      alt: "Wide living room visualisation",
+      display: "16:9-cover",
+    },
     galleryDisplay: "3:4-cover",
     galleryImages: [
-      { src: `${images.visualisation.livingRoom.gallery01}/01.webp`, alt: "Living room seating detail", caption: "Seating Detail" },
-      { src: `${images.visualisation.livingRoom.gallery01}/02.webp`, alt: "Living room sofa and art detail", caption: "Sofa & Art" },
-      { src: `${images.visualisation.livingRoom.gallery01}/03.webp`, alt: "Living room styling detail with pouf", caption: "Styling Study" },
+      { src: "/images/visualisation/living-room/gallery-01/01.webp", alt: "Living room seating detail", caption: "Seating Detail" },
+      { src: "/images/visualisation/living-room/gallery-01/02.webp", alt: "Living room sofa and art detail", caption: "Sofa & Art" },
+      { src: "/images/visualisation/living-room/gallery-01/03.webp", alt: "Living room styling detail with pouf", caption: "Styling Study" },
     ],
-    tags: [],
   },
   {
     id: "dining-room",
-    slug: "dining-room",
     sortOrder: 20,
     status: "published",
     year: 2026,
     title: "Dining Room",
     description: "Material and artwork variants tested under controlled lighting conditions.",
-    metadata: [],
     galleryDisplay: "3:4-cover",
     galleryImages: [
-      { src: `${images.visualisation.diningRoom.gallery01}/01.webp`, alt: "Dining room marble wall variant", caption: "Marble Wall Variant" },
-      { src: `${images.visualisation.diningRoom.gallery01}/02.webp`, alt: "Dining room ink mural variant", caption: "Ink Mural Variant" },
-      { src: `${images.visualisation.diningRoom.gallery01}/03.webp`, alt: "Dining room angled view", caption: "Angled View" },
-      { src: `${images.visualisation.diningRoom.gallery01}/04.webp`, alt: "Dining room angled view with ink mural", caption: "Angled Mural Study" },
+      { src: "/images/visualisation/dining-room/gallery-01/01.webp", alt: "Dining room marble wall variant", caption: "Marble Wall Variant" },
+      { src: "/images/visualisation/dining-room/gallery-01/02.webp", alt: "Dining room ink mural variant", caption: "Ink Mural Variant" },
+      { src: "/images/visualisation/dining-room/gallery-01/03.webp", alt: "Dining room angled view", caption: "Angled View" },
+      { src: "/images/visualisation/dining-room/gallery-01/04.webp", alt: "Dining room angled view with ink mural", caption: "Angled Mural Study" },
     ],
-    tags: [],
   },
   {
     id: "bathroom",
-    slug: "bathroom",
     sortOrder: 30,
     status: "published",
     year: 2026,
     title: "Bathroom",
     description: "A compact material study focused on stone, vanity joinery and reflective surfaces.",
-    metadata: [],
     galleryDisplay: "3:4-cover",
     galleryImages: [
-      { src: `${images.visualisation.bathroom.gallery01}/01.webp`, alt: "Wide bathroom visualisation", caption: "Wide View" },
-      { src: `${images.visualisation.bathroom.gallery01}/02.webp`, alt: "Bathroom vanity detail", caption: "Vanity Detail" },
-      { src: `${images.visualisation.bathroom.gallery01}/03.webp`, alt: "Bathroom shower detail", caption: "Shower Detail" },
+      { src: "/images/visualisation/bath-room/gallery-01/01.webp", alt: "Wide bathroom visualisation", caption: "Wide View" },
+      { src: "/images/visualisation/bath-room/gallery-01/02.webp", alt: "Bathroom vanity detail", caption: "Vanity Detail" },
+      { src: "/images/visualisation/bath-room/gallery-01/03.webp", alt: "Bathroom shower detail", caption: "Shower Detail" },
     ],
-    tags: [],
   },
 ];
