@@ -35,7 +35,7 @@ export function ProjectSpread({ project, total }: Props) {
 
       {project.heroImage ? (
         <Reveal className="group relative mx-auto mt-12 w-full max-w-[1320px] overflow-hidden px-6 md:px-10">
-          <div className="project-hero-entry relative overflow-hidden border border-hair">
+          <div className="project-hero-sheet relative overflow-hidden border border-hair">
             <AspectImage
               src={project.heroImage.src}
               alt={project.heroImage.alt}
@@ -44,7 +44,7 @@ export function ProjectSpread({ project, total }: Props) {
               frameClassName="border-0"
             />
 
-            {/* Architectural sheet reveal: one moving sheet edge, no extra HUD elements. */}
+            {/* One architectural sheet edge reveals the hero from top to bottom. */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 z-10 translate-y-0 bg-paper/90 transition-transform duration-[1250ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] group-data-[shown=true]:translate-y-full"
