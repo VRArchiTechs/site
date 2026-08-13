@@ -14,7 +14,7 @@ export const images = {
       gallery01: "/images/visualisation/dining-room/gallery-01",
     },
     bathroom: {
-      gallery01: "/images/visualisation/bathroom/gallery-01",
+      gallery01: "/images/visualisation/bath-room/gallery-01",
     },
   },
 } as const;
