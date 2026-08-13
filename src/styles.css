@@ -169,10 +169,19 @@
   }
 }
 
-/* ---------- Work hero architectural reveal ---------- */
+/* ---------- Work hero: architectural scan reveal ---------- */
 .project-hero-entry {
   position: relative;
   isolation: isolate;
+}
+
+/* The Work hero can be seen before the scan completes, but starts deliberately restrained. */
+.project-hero-entry .media-image.is-loaded {
+  opacity: 0.38;
+  transform: scale(1.035);
+  filter: blur(2px) saturate(0.72) contrast(0.9);
+  transition: none;
+  will-change: transform, opacity, filter;
 }
 
 .project-hero-drawing {
@@ -180,39 +189,46 @@
   inset: 0;
   z-index: 4;
   pointer-events: none;
+  overflow: hidden;
   color: var(--color-brass);
   opacity: 0;
 }
 
-.reveal[data-shown="true"] .project-hero-drawing {
-  animation: project-hero-overlay-in 1350ms cubic-bezier(0.22, 0.61, 0.36, 1) 140ms both;
-}
-
-.reveal[data-shown="true"] .project-hero-entry .media-image.is-loaded {
-  animation: project-hero-image-settle 1350ms cubic-bezier(0.22, 0.61, 0.36, 1) 140ms;
+.project-hero-scan-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image:
+    linear-gradient(to right, var(--color-brass-dim) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-brass-dim) 1px, transparent 1px);
+  background-size: 12.5% 100%, 100% 25%;
+  mask-image: linear-gradient(to right, transparent 0%, black 42%, black 58%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 42%, black 58%, transparent 100%);
 }
 
 .project-hero-registration-sweep {
   position: absolute;
-  left: 0;
+  left: -8%;
   top: 0;
-  width: 1px;
+  width: 16%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    var(--color-brass-soft) 45%,
-    var(--color-brass-dim) 55%,
-    transparent
-  );
   opacity: 0;
-  transform: translateX(-1px);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklch, var(--color-brass-soft) 18%, transparent) 35%,
+    color-mix(in oklch, var(--color-brass-soft) 72%, transparent) 50%,
+    color-mix(in oklch, var(--color-brass-soft) 18%, transparent) 65%,
+    transparent 100%
+  );
+  box-shadow: 0 0 42px color-mix(in oklch, var(--color-brass-soft) 14%, transparent);
+  transform: translateX(-20%);
 }
 
 .project-hero-registration-line {
   position: absolute;
   display: block;
-  background: var(--color-brass-dim);
+  background: var(--color-brass-soft);
   opacity: 0;
 }
 
@@ -238,13 +254,13 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 11px;
-  height: 11px;
-  margin-left: -5px;
-  margin-top: -5px;
+  width: 15px;
+  height: 15px;
+  margin-left: -7px;
+  margin-top: -7px;
   border: 1px solid var(--color-brass-soft);
   opacity: 0;
-  transform: scale(0.6);
+  transform: scale(0.55);
 }
 
 .project-hero-registration-cross::before,
@@ -255,23 +271,23 @@
 }
 
 .project-hero-registration-cross::before {
-  left: 4px;
-  top: -5px;
+  left: 6px;
+  top: -8px;
   width: 1px;
-  height: 19px;
+  height: 29px;
 }
 
 .project-hero-registration-cross::after {
-  left: -5px;
-  top: 4px;
-  width: 19px;
+  left: -8px;
+  top: 6px;
+  width: 29px;
   height: 1px;
 }
 
 .project-hero-coordinate {
   position: absolute;
-  left: 1.8%;
-  top: 2%;
+  left: 2%;
+  top: 2.2%;
   font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.16em;
@@ -281,46 +297,88 @@
   white-space: nowrap;
 }
 
+.reveal[data-shown="true"] .project-hero-drawing {
+  animation: project-hero-overlay 1650ms cubic-bezier(0.22, 0.61, 0.36, 1) 100ms both;
+}
+
+.reveal[data-shown="true"] .project-hero-entry .media-image.is-loaded {
+  animation: project-hero-image-scan 1650ms cubic-bezier(0.22, 0.61, 0.36, 1) 100ms both;
+}
+
 .reveal[data-shown="true"] .project-hero-registration-sweep {
-  animation: project-hero-sweep 950ms cubic-bezier(0.22, 0.61, 0.36, 1) 240ms both;
+  animation: project-hero-scan-sweep 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 180ms both;
+}
+
+.reveal[data-shown="true"] .project-hero-scan-grid {
+  animation: project-hero-grid-scan 1250ms cubic-bezier(0.22, 0.61, 0.36, 1) 180ms both;
 }
 
 .reveal[data-shown="true"] .project-hero-registration-line-x {
-  animation: project-registration-x 700ms cubic-bezier(0.22, 0.61, 0.36, 1) 360ms both;
+  animation: project-registration-x 800ms cubic-bezier(0.22, 0.61, 0.36, 1) 520ms both;
 }
 
 .reveal[data-shown="true"] .project-hero-registration-line-y {
-  animation: project-registration-y 600ms cubic-bezier(0.22, 0.61, 0.36, 1) 620ms both;
+  animation: project-registration-y 700ms cubic-bezier(0.22, 0.61, 0.36, 1) 760ms both;
 }
 
 .reveal[data-shown="true"] .project-hero-registration-cross {
-  animation: project-registration-cross 500ms cubic-bezier(0.22, 0.61, 0.36, 1) 850ms both;
+  animation: project-registration-cross 520ms cubic-bezier(0.22, 0.61, 0.36, 1) 900ms both;
 }
 
 .reveal[data-shown="true"] .project-hero-coordinate {
-  animation: project-hero-label-in 420ms ease-out 920ms both;
+  animation: project-hero-label-in 500ms ease-out 980ms both;
 }
 
-@keyframes project-hero-image-settle {
-  from { transform: scale(1.025); }
-  to { transform: scale(1.002); }
+@keyframes project-hero-image-scan {
+  0% {
+    opacity: 0.38;
+    transform: scale(1.035);
+    filter: blur(2px) saturate(0.72) contrast(0.9);
+  }
+  38% {
+    opacity: 0.62;
+    filter: blur(1px) saturate(0.86) contrast(0.95);
+  }
+  72% {
+    opacity: 0.88;
+    filter: blur(0.2px) saturate(0.96) contrast(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.002);
+    filter: blur(0) saturate(1) contrast(1);
+  }
 }
 
-@keyframes project-hero-overlay-in {
-  0%, 75% { opacity: 1; }
+@keyframes project-hero-overlay {
+  0% { opacity: 1; }
+  68% { opacity: 0.72; }
   100% { opacity: 0; }
 }
 
-@keyframes project-hero-sweep {
+@keyframes project-hero-scan-sweep {
   0% {
     opacity: 0;
-    transform: translateX(-1px);
+    transform: translateX(-20%);
   }
-  12% { opacity: 0.5; }
-  80% { opacity: 0.22; }
+  12% { opacity: 0.72; }
+  62% { opacity: 0.42; }
   100% {
     opacity: 0;
-    transform: translateX(100vw);
+    transform: translateX(760%);
+  }
+}
+
+@keyframes project-hero-grid-scan {
+  0% {
+    opacity: 0;
+    transform: translateX(-18%);
+  }
+  18% { opacity: 0.34; }
+  55% { opacity: 0.2; }
+  100% {
+    opacity: 0;
+    transform: translateX(48%);
   }
 }
 
@@ -329,8 +387,8 @@
     opacity: 0;
     transform: scaleX(0);
   }
-  15% { opacity: 0.45; }
-  78% { opacity: 0.28; }
+  15% { opacity: 0.52; }
+  70% { opacity: 0.26; }
   100% {
     opacity: 0;
     transform: scaleX(1);
@@ -342,8 +400,8 @@
     opacity: 0;
     transform: scaleY(0);
   }
-  15% { opacity: 0.38; }
-  80% { opacity: 0.2; }
+  15% { opacity: 0.46; }
+  72% { opacity: 0.22; }
   100% {
     opacity: 0;
     transform: scaleY(1);
@@ -353,10 +411,10 @@
 @keyframes project-registration-cross {
   0% {
     opacity: 0;
-    transform: scale(0.6);
+    transform: scale(0.55);
   }
-  25% { opacity: 0.7; }
-  70% { opacity: 0.45; }
+  28% { opacity: 0.78; }
+  70% { opacity: 0.42; }
   100% {
     opacity: 0;
     transform: scale(1);
@@ -368,7 +426,7 @@
     opacity: 0;
     transform: translateY(3px);
   }
-  35% { opacity: 0.68; }
+  30% { opacity: 0.72; }
   100% {
     opacity: 0;
     transform: translateY(-2px);
@@ -384,6 +442,12 @@
   }
 
   .media-frame:hover .media-image.is-loaded {
+    transform: none;
+    filter: none;
+  }
+
+  .project-hero-entry .media-image.is-loaded {
+    opacity: 1;
     transform: none;
     filter: none;
   }
@@ -426,7 +490,6 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -442,5 +505,6 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
 }
