@@ -35,13 +35,33 @@ export function ProjectSpread({ project, total }: Props) {
 
       {project.heroImage ? (
         <Reveal className="relative mx-auto mt-12 w-full max-w-[1320px] px-6 md:px-10">
-          <AspectImage
-            src={project.heroImage.src}
-            alt={project.heroImage.alt}
-            display={project.heroImage.display}
-            eager
-            frameClassName="border border-hair"
-          />
+          <div className="project-hero-entry">
+            <AspectImage
+              src={project.heroImage.src}
+              alt={project.heroImage.alt}
+              display={project.heroImage.display}
+              eager
+              frameClassName="border border-hair"
+            />
+
+            <div className="project-hero-drawing" aria-hidden="true">
+              <span className="project-hero-cross project-hero-cross-tl" />
+              <span className="project-hero-cross project-hero-cross-tr" />
+              <span className="project-hero-cross project-hero-cross-bl" />
+              <span className="project-hero-cross project-hero-cross-br" />
+              <span className="project-hero-line project-hero-line-top" />
+              <span className="project-hero-line project-hero-line-right" />
+              <span className="project-hero-line project-hero-line-bottom" />
+              <span className="project-hero-line project-hero-line-left" />
+              <span className="project-hero-axis project-hero-axis-x" />
+              <span className="project-hero-axis project-hero-axis-y" />
+              <span className="project-hero-coordinate project-hero-coordinate-tl">A-01 / 00.00</span>
+              <span className="project-hero-coordinate project-hero-coordinate-br">GRID / 01—04</span>
+              <span className="project-hero-marker project-hero-marker-t" />
+              <span className="project-hero-marker project-hero-marker-r" />
+            </div>
+          </div>
+
           {project.heroTag ? (
             <span className="eyebrow absolute bottom-5 left-5 border border-hair bg-paper/70 px-3.5 py-2 text-ink backdrop-blur-md md:left-10">
               {project.heroTag}
