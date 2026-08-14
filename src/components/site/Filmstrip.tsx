@@ -16,6 +16,7 @@ export function Filmstrip({ title, description, display, plates }: Props) {
   const plateMetricsRef = useRef<Array<{ left: number; right: number }>>([]);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [trailingSpacerWidth, setTrailingSpacerWidth] = useState(0);
 
   const visiblePlates = plates.filter(Boolean);
   const activePlate = Math.min(activeIndex, Math.max(visiblePlates.length - 1, 0));
@@ -32,6 +33,9 @@ export function Filmstrip({ title, description, display, plates }: Props) {
         left: figure.offsetLeft,
         right: figure.offsetLeft + figure.offsetWidth,
       }));
+
+      const lastFigure = figures[figures.length - 1];
+      setTrailingSpacerWidth(lastFigure ? Math.max(0, track.clientWidth - lastFigure.offsetWidth) : 0);
     };
 
     const chooseActivePlate = () => {
@@ -160,6 +164,12 @@ export function Filmstrip({ title, description, display, plates }: Props) {
                 </figure>
               );
             })}
+
+            <div
+              aria-hidden="true"
+              className="shrink-0"
+              style={{ width: `${trailingSpacerWidth}px` }}
+            />
           </div>
         </div>
       </div>
