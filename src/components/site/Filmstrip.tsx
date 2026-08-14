@@ -10,12 +10,8 @@ type Props = {
   plates: Plate[];
 };
 
-const ACTIVE_PLATE_TRIGGER = 0.75;
-
 export function Filmstrip({ title, description, display, plates }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
-  const scrollFrameRef = useRef<number | null>(null);
-  const plateLeftEdgesRef = useRef<number[]>([]);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -28,63 +24,46 @@ export function Filmstrip({ title, description, display, plates }: Props) {
     const track = trackRef.current;
     if (!track) return;
 
-    const measurePlates = () => {
-      const figures = Array.from(track.querySelectorAll<HTMLElement>("figure"));
-      plateLeftEdgesRef.current = figures.map((figure) => figure.offsetLeft);
-    };
+    const plateNodes = Array.from(track.querySelectorAll<HTMLElement>("figure[data-plate-index]"));
+    if (!plateNodes.length) return;
 
-    const chooseActivePlate = () => {
-      const leftEdges = plateLeftEdgesRef.current;
-      if (!leftEdges.length) return activeIndexRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let nextActiveIndex = activeIndexRef.current;
+        let nextActiveLeft = Number.NEGATIVE_INFINITY;
+        let sawIntersection = false;
 
-      const activationLine = track.scrollLeft + track.clientWidth * ACTIVE_PLATE_TRIGGER;
-      let low = 0;
-      let high = leftEdges.length - 1;
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
 
-      while (low <= high) {
-        const mid = Math.floor((low + high) / 2);
-        if (leftEdges[mid] <= activationLine) {
-          low = mid + 1;
-        } else {
-          high = mid - 1;
+          sawIntersection = true;
+          const target = entry.target as HTMLElement;
+          const index = Number(target.dataset.plateIndex);
+          const left = entry.boundingClientRect.left;
+
+          if (left > nextActiveLeft || (left === nextActiveLeft && index > nextActiveIndex)) {
+            nextActiveLeft = left;
+            nextActiveIndex = index;
+          }
         }
-      }
 
-      return Math.max(0, low - 1);
-    };
+        if (!sawIntersection) return;
+        if (nextActiveIndex === activeIndexRef.current) return;
 
-    const syncActivePlate = () => {
-      scrollFrameRef.current = null;
+        activeIndexRef.current = nextActiveIndex;
+        setActiveIndex(nextActiveIndex);
+      },
+      {
+        root: track,
+        threshold: 0,
+        rootMargin: "0px -24.5% 0px -75%",
+      },
+    );
 
-      if (!plateLeftEdgesRef.current.length) return;
-
-      const nextActiveIndex = chooseActivePlate();
-      activeIndexRef.current = nextActiveIndex;
-      setActiveIndex((current) => (current === nextActiveIndex ? current : nextActiveIndex));
-    };
-
-    const scheduleActivePlateSync = () => {
-      if (scrollFrameRef.current !== null) return;
-      scrollFrameRef.current = window.requestAnimationFrame(syncActivePlate);
-    };
-
-    const handleResize = () => {
-      measurePlates();
-      scheduleActivePlateSync();
-    };
-
-    measurePlates();
-    syncActivePlate();
-
-    track.addEventListener("scroll", scheduleActivePlateSync, { passive: true });
-    window.addEventListener("resize", handleResize);
+    plateNodes.forEach((plate) => observer.observe(plate));
 
     return () => {
-      track.removeEventListener("scroll", scheduleActivePlateSync);
-      window.removeEventListener("resize", handleResize);
-      if (scrollFrameRef.current !== null) {
-        window.cancelAnimationFrame(scrollFrameRef.current);
-      }
+      observer.disconnect();
     };
   }, [visiblePlates.length]);
 
@@ -104,19 +83,14 @@ export function Filmstrip({ title, description, display, plates }: Props) {
 
       <div className="mx-auto w-full max-w-[1320px] px-6 md:px-10">
         <div className="mt-5 border-b border-hair/50 pb-4">
-          <div
-            ref={trackRef}
-            className="filmstrip flex gap-8 overflow-x-auto pb-5 md:gap-10"
-            style={{
-              scrollPaddingInline: 0,
-            }}
-          >
+          <div ref={trackRef} className="filmstrip flex gap-8 overflow-x-auto pb-5 md:gap-10" style={{ scrollPaddingInline: 0 }}>
             {visiblePlates.map((plate, i) => {
               const isActive = i === activePlate;
 
               return (
                 <figure
                   key={plate.src + plate.caption}
+                  data-plate-index={i}
                   className="group w-[82vw] shrink-0 sm:w-[52vw] lg:w-[calc((100%-2.5rem)/2.15)]"
                 >
                   <figcaption
