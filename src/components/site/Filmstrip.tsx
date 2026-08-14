@@ -13,7 +13,8 @@ type Props = {
 export function Filmstrip({ title, description, display, plates }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const scrollFrameRef = useRef<number | null>(null);
-  const plateCentersRef = useRef<number[]>([]);
+  const plateMetricsRef = useRef<Array<{ left: number; right: number }>>([]);
+  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const visiblePlates = plates.filter(Boolean);
@@ -27,44 +28,48 @@ export function Filmstrip({ title, description, display, plates }: Props) {
 
     const measurePlates = () => {
       const figures = Array.from(track.querySelectorAll<HTMLElement>("figure"));
-      plateCentersRef.current = figures.map((figure) => figure.offsetLeft + figure.offsetWidth / 2);
+      plateMetricsRef.current = figures.map((figure) => ({
+        left: figure.offsetLeft,
+        right: figure.offsetLeft + figure.offsetWidth,
+      }));
     };
 
-    const findClosestPlate = (targetCenter: number) => {
-      const centers = plateCentersRef.current;
-      if (!centers.length) return 0;
+    const chooseActivePlate = () => {
+      const metrics = plateMetricsRef.current;
+      if (!metrics.length) return activeIndexRef.current;
 
-      let low = 0;
-      let high = centers.length - 1;
+      const viewportLeft = track.scrollLeft;
+      const viewportRight = viewportLeft + track.clientWidth;
+      const epsilon = 0.5;
 
-      while (low <= high) {
-        const mid = Math.floor((low + high) / 2);
-        if (centers[mid] < targetCenter) {
-          low = mid + 1;
-        } else {
-          high = mid - 1;
+      let bestIndex = activeIndexRef.current;
+      let bestVisibleWidth = -1;
+
+      metrics.forEach((plate, index) => {
+        const visibleWidth = Math.max(0, Math.min(plate.right, viewportRight) - Math.max(plate.left, viewportLeft));
+
+        if (visibleWidth > bestVisibleWidth + epsilon) {
+          bestVisibleWidth = visibleWidth;
+          bestIndex = index;
+          return;
         }
-      }
 
-      if (low <= 0) return 0;
-      if (low >= centers.length) return centers.length - 1;
+        if (Math.abs(visibleWidth - bestVisibleWidth) <= epsilon && index === activeIndexRef.current) {
+          bestIndex = index;
+          bestVisibleWidth = visibleWidth;
+        }
+      });
 
-      const rightIndex = low;
-      const leftIndex = low - 1;
-      const rightDistance = Math.abs(centers[rightIndex] - targetCenter);
-      const leftDistance = Math.abs(centers[leftIndex] - targetCenter);
-
-      return rightDistance < leftDistance ? rightIndex : leftIndex;
+      return bestIndex;
     };
 
     const syncActivePlate = () => {
       scrollFrameRef.current = null;
 
-      if (!plateCentersRef.current.length) return;
+      if (!plateMetricsRef.current.length) return;
 
-      const targetCenter = track.scrollLeft + track.clientWidth / 2;
-      const nextActiveIndex = findClosestPlate(targetCenter);
-
+      const nextActiveIndex = chooseActivePlate();
+      activeIndexRef.current = nextActiveIndex;
       setActiveIndex((current) => (current === nextActiveIndex ? current : nextActiveIndex));
     };
 
