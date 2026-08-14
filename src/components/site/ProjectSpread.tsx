@@ -102,7 +102,7 @@ export function ProjectSpread({ project, total }: Props) {
           {project.tags.map((t) => (
             <li
               key={t}
-              className="eyebrow border border-hair px-3 py-1.5 text-ink-soft transition-colors hover:border-brass hover:text-brass"
+              className="eyebrow border border-hair/60 px-3 py-1.5 text-ink-soft/70 transition-colors duration-150 hover:border-brass/60 hover:text-brass motion-reduce:transition-none"
             >
               {t}
             </li>
