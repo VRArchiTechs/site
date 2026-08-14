@@ -10,8 +10,6 @@ type Props = {
   plates: Plate[];
 };
 
-const ACTIVE_PLATE_TRIGGER = 0.22;
-
 export function Filmstrip({ title, description, display, plates }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const scrollFrameRef = useRef<number | null>(null);
@@ -37,18 +35,20 @@ export function Filmstrip({ title, description, display, plates }: Props) {
       const leftEdges = plateLeftEdgesRef.current;
       if (!leftEdges.length) return activeIndexRef.current;
 
-      const activationLine = track.scrollLeft + track.clientWidth * ACTIVE_PLATE_TRIGGER;
-      let nextActiveIndex = 0;
+      const scrollLeft = track.scrollLeft;
+      let low = 0;
+      let high = leftEdges.length - 1;
 
-      for (let index = 0; index < leftEdges.length; index += 1) {
-        if (leftEdges[index] <= activationLine) {
-          nextActiveIndex = index;
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        if (leftEdges[mid] <= scrollLeft) {
+          low = mid + 1;
         } else {
-          break;
+          high = mid - 1;
         }
       }
 
-      return nextActiveIndex;
+      return Math.max(0, low - 1);
     };
 
     const syncActivePlate = () => {
