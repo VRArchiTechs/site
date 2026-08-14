@@ -10,10 +10,12 @@ type Props = {
   plates: Plate[];
 };
 
+const ACTIVE_PLATE_TRIGGER = 0.22;
+
 export function Filmstrip({ title, description, display, plates }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const scrollFrameRef = useRef<number | null>(null);
-  const plateMetricsRef = useRef<Array<{ left: number; right: number }>>([]);
+  const plateLeftEdgesRef = useRef<number[]>([]);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -28,45 +30,31 @@ export function Filmstrip({ title, description, display, plates }: Props) {
 
     const measurePlates = () => {
       const figures = Array.from(track.querySelectorAll<HTMLElement>("figure"));
-      plateMetricsRef.current = figures.map((figure) => ({
-        left: figure.offsetLeft,
-        right: figure.offsetLeft + figure.offsetWidth,
-      }));
+      plateLeftEdgesRef.current = figures.map((figure) => figure.offsetLeft);
     };
 
     const chooseActivePlate = () => {
-      const metrics = plateMetricsRef.current;
-      if (!metrics.length) return activeIndexRef.current;
+      const leftEdges = plateLeftEdgesRef.current;
+      if (!leftEdges.length) return activeIndexRef.current;
 
-      const viewportLeft = track.scrollLeft;
-      const viewportRight = viewportLeft + track.clientWidth;
-      const epsilon = 0.5;
+      const activationLine = track.scrollLeft + track.clientWidth * ACTIVE_PLATE_TRIGGER;
+      let nextActiveIndex = 0;
 
-      let bestIndex = activeIndexRef.current;
-      let bestVisibleWidth = -1;
-
-      metrics.forEach((plate, index) => {
-        const visibleWidth = Math.max(0, Math.min(plate.right, viewportRight) - Math.max(plate.left, viewportLeft));
-
-        if (visibleWidth > bestVisibleWidth + epsilon) {
-          bestVisibleWidth = visibleWidth;
-          bestIndex = index;
-          return;
+      for (let index = 0; index < leftEdges.length; index += 1) {
+        if (leftEdges[index] <= activationLine) {
+          nextActiveIndex = index;
+        } else {
+          break;
         }
+      }
 
-        if (Math.abs(visibleWidth - bestVisibleWidth) <= epsilon && index === activeIndexRef.current) {
-          bestIndex = index;
-          bestVisibleWidth = visibleWidth;
-        }
-      });
-
-      return bestIndex;
+      return nextActiveIndex;
     };
 
     const syncActivePlate = () => {
       scrollFrameRef.current = null;
 
-      if (!plateMetricsRef.current.length) return;
+      if (!plateLeftEdgesRef.current.length) return;
 
       const nextActiveIndex = chooseActivePlate();
       activeIndexRef.current = nextActiveIndex;
