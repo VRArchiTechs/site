@@ -12,6 +12,8 @@ type Props = {
 
 export function Filmstrip({ title, description, display, plates }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
+  const scrollFrameRef = useRef<number | null>(null);
+  const plateCentersRef = useRef<number[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const visiblePlates = plates.filter(Boolean);
@@ -20,39 +22,74 @@ export function Filmstrip({ title, description, display, plates }: Props) {
   const totalPlateLabel = String(visiblePlates.length).padStart(2, "0");
 
   useEffect(() => {
-    const updateActivePlate = () => {
-      const track = trackRef.current;
-      if (!track) return;
+    const track = trackRef.current;
+    if (!track) return;
 
+    const measurePlates = () => {
       const figures = Array.from(track.querySelectorAll<HTMLElement>("figure"));
-      if (!figures.length) return;
+      plateCentersRef.current = figures.map((figure) => figure.offsetLeft + figure.offsetWidth / 2);
+    };
 
-      const scrollLeft = track.scrollLeft;
-      let nextActiveIndex = 0;
-      let smallestDistance = Number.POSITIVE_INFINITY;
+    const findClosestPlate = (targetCenter: number) => {
+      const centers = plateCentersRef.current;
+      if (!centers.length) return 0;
 
-      figures.forEach((figure, index) => {
-        const distance = Math.abs(figure.offsetLeft - scrollLeft);
-        if (distance < smallestDistance) {
-          smallestDistance = distance;
-          nextActiveIndex = index;
+      let low = 0;
+      let high = centers.length - 1;
+
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        if (centers[mid] < targetCenter) {
+          low = mid + 1;
+        } else {
+          high = mid - 1;
         }
-      });
+      }
+
+      if (low <= 0) return 0;
+      if (low >= centers.length) return centers.length - 1;
+
+      const rightIndex = low;
+      const leftIndex = low - 1;
+      const rightDistance = Math.abs(centers[rightIndex] - targetCenter);
+      const leftDistance = Math.abs(centers[leftIndex] - targetCenter);
+
+      return rightDistance < leftDistance ? rightIndex : leftIndex;
+    };
+
+    const syncActivePlate = () => {
+      scrollFrameRef.current = null;
+
+      if (!plateCentersRef.current.length) return;
+
+      const targetCenter = track.scrollLeft + track.clientWidth / 2;
+      const nextActiveIndex = findClosestPlate(targetCenter);
 
       setActiveIndex((current) => (current === nextActiveIndex ? current : nextActiveIndex));
     };
 
-    updateActivePlate();
+    const scheduleActivePlateSync = () => {
+      if (scrollFrameRef.current !== null) return;
+      scrollFrameRef.current = window.requestAnimationFrame(syncActivePlate);
+    };
 
-    const track = trackRef.current;
-    if (!track) return;
+    const handleResize = () => {
+      measurePlates();
+      scheduleActivePlateSync();
+    };
 
-    track.addEventListener("scroll", updateActivePlate, { passive: true });
-    window.addEventListener("resize", updateActivePlate);
+    measurePlates();
+    syncActivePlate();
+
+    track.addEventListener("scroll", scheduleActivePlateSync, { passive: true });
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      track.removeEventListener("scroll", updateActivePlate);
-      window.removeEventListener("resize", updateActivePlate);
+      track.removeEventListener("scroll", scheduleActivePlateSync);
+      window.removeEventListener("resize", handleResize);
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
     };
   }, [visiblePlates.length]);
 
@@ -74,7 +111,7 @@ export function Filmstrip({ title, description, display, plates }: Props) {
         <div className="mt-5 border-b border-hair/50 pb-4">
           <div
             ref={trackRef}
-            className="filmstrip flex snap-x snap-mandatory gap-8 overflow-x-auto pb-5 md:gap-10"
+            className="filmstrip flex gap-8 overflow-x-auto pb-5 md:gap-10"
             style={{
               scrollPaddingInline: 0,
             }}
@@ -85,7 +122,7 @@ export function Filmstrip({ title, description, display, plates }: Props) {
               return (
                 <figure
                   key={plate.src + plate.caption}
-                  className="group w-[82vw] shrink-0 snap-start snap-always sm:w-[52vw] lg:w-[calc((100%-2.5rem)/2.15)]"
+                  className="group w-[82vw] shrink-0 sm:w-[52vw] lg:w-[calc((100%-2.5rem)/2.15)]"
                 >
                   <figcaption
                     className={`mb-4 border-b pb-3 transition-[border-color,opacity,color] duration-150 motion-reduce:transition-none ${
