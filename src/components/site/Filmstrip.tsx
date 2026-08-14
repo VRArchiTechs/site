@@ -10,6 +10,8 @@ type Props = {
   plates: Plate[];
 };
 
+const ACTIVE_PLATE_TRIGGER = 0.75;
+
 export function Filmstrip({ title, description, display, plates }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const scrollFrameRef = useRef<number | null>(null);
@@ -35,13 +37,13 @@ export function Filmstrip({ title, description, display, plates }: Props) {
       const leftEdges = plateLeftEdgesRef.current;
       if (!leftEdges.length) return activeIndexRef.current;
 
-      const scrollLeft = track.scrollLeft;
+      const activationLine = track.scrollLeft + track.clientWidth * ACTIVE_PLATE_TRIGGER;
       let low = 0;
       let high = leftEdges.length - 1;
 
       while (low <= high) {
         const mid = Math.floor((low + high) / 2);
-        if (leftEdges[mid] <= scrollLeft) {
+        if (leftEdges[mid] <= activationLine) {
           low = mid + 1;
         } else {
           high = mid - 1;
