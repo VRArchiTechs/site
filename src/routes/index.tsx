@@ -224,7 +224,7 @@ function Index() {
               <p>{studio.bio[1]}</p>
               <a className="rv-text-link" href="#contact">WORK WITH ME <span>↗</span></a>
               <div className="rv-studio-facts">
-                <div><strong>{projects.length}</strong><span>BUILT PROJECTS</span></div>
+                <div><strong>{projects.length}</strong><span>PROJECTS</span></div>
                 <div><strong>{scenes.length}</strong><span>VISUAL STUDIES</span></div>
                 <div><strong>GJ</strong><span>BASED IN GUJARAT</span></div>
               </div>
@@ -253,7 +253,7 @@ function Index() {
             <div className="rv-contact-details">
               <div><span>BASED IN</span><strong>{studio.city}</strong></div>
               <div><span>PHONE</span><a href={"tel:" + studio.phone.replace(/\s/g, "")}>{studio.phone}</a></div>
-              <div><span>AVAILABLE FOR</span><strong>Projects across India</strong></div>
+              <div><span>PRACTICE</span><strong>Architecture · Interiors · Structure</strong></div>
             </div>
           </div>
           <form className="rv-contact-form" onSubmit={submitProject}>
