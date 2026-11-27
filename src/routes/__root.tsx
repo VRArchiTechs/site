@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -34,7 +35,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -77,16 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vishnu Ahir — Architecture & Interior Design" },
-      {
-        name: "description",
-        content:
-          "Portfolio of Vishnu Ahir, architect and interior designer — residential architecture, structural detailing and photorealistic visualisation.",
-      },
-      { name: "author", content: "Vishnu Ahir" },
-      { property: "og:site_name", content: "Vishnu Ahir — VR ArchiTechs" },
+      { title: "VR ArchiTechs — Architecture & Visualisation Studio" },
+      { name: "description", content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir." },
+      { name: "author", content: "VR ArchiTechs" },
+      { property: "og:title", content: "VR ArchiTechs — Architecture & Visualisation Studio" },
+      { property: "og:description", content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -97,9 +96,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,
@@ -127,7 +126,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
