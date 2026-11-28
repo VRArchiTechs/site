@@ -81,18 +81,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VR ArchiTechs — Architecture & Visualisation Studio" },
-      {
-        name: "description",
-        content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir.",
-      },
       { name: "author", content: "VR ArchiTechs" },
-      { property: "og:title", content: "VR ArchiTechs — Architecture & Visualisation Studio" },
-      {
-        property: "og:description",
-        content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir.",
-      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "VR ArchiTechs" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [

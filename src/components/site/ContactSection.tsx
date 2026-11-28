@@ -28,7 +28,8 @@ function MonogramBackdrop() {
   );
 }
 
-export function ContactSection() {
+export function ContactSection({ standalone = false }: { standalone?: boolean }) {
+  const Heading = standalone ? "h1" : "h2";
   const services = ["Architecture", "Structural Design", "Interior Design", "Visualisation"];
   const [sent, setSent] = useState(false);
   const label = "text-[10px] tracking-[0.3em] text-bone/45 uppercase";
@@ -40,14 +41,14 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-forest-deep text-bone">
+    <section id="contact" className={`relative overflow-hidden bg-forest-deep text-bone ${standalone ? "pt-16 md:pt-20" : ""}`}>
       <MonogramBackdrop />
       <div className="relative mx-auto grid max-w-[1440px] gap-14 px-5 py-20 md:px-10 md:py-28 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div>
           <p className={label}>Contact</p>
-          <h2 className="mt-5 text-5xl font-light tracking-[-0.03em] md:text-6xl">
+          <Heading className="mt-5 text-5xl font-light tracking-[-0.03em] md:text-6xl">
             Start a <span className="font-medium text-bone/70">project</span>
-          </h2>
+          </Heading>
           <p className="mt-7 max-w-md text-base text-bone/60">Planning a home, a facade or an interior? Share the site, scale and timeline — every project is resolved from plan to handover.</p>
           <dl className="mt-12 grid gap-7 sm:grid-cols-2">
             <div>
