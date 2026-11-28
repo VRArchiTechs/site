@@ -75,17 +75,25 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    // Replace these placeholders with the app's name and description when first building the app.
+    // Each content route, / included, must still set its own head(). Never add og:image or
+    // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "VR ArchiTechs — Architecture & Visualisation Studio" },
-      { name: "description", content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir." },
+      {
+        name: "description",
+        content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir.",
+      },
       { name: "author", content: "VR ArchiTechs" },
       { property: "og:title", content: "VR ArchiTechs — Architecture & Visualisation Studio" },
-      { property: "og:description", content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir." },
+      {
+        property: "og:description",
+        content: "Architecture, interior architecture and 3D visualisation by VR ArchiTechs, led by Vishnu Ahir.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -98,7 +106,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", type: "image/png", href: "/favicon/favicon-96x96.png", sizes: "96x96" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon/favicon.svg" },
+      { rel: "shortcut icon", href: "/favicon/favicon.ico" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon/apple-touch-icon.png" },
+      { rel: "manifest", href: "/favicon/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
@@ -126,6 +138,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );

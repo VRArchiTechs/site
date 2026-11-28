@@ -10,6 +10,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant can-hover (@media (hover: hover) and (pointer: fine));
 
 /*
  * Design system definition.
@@ -161,22 +162,32 @@
     border-color: var(--color-border);
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
   }
+
   @media (hover: hover) and (pointer: fine) {
-    body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
+    body.has-cursor,
+    body.has-cursor a,
+    body.has-cursor button {
+      cursor: none;
+    }
   }
 }
 
 @utility scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @utility link-underline {
@@ -193,5 +204,8 @@
     transform-origin: right;
     transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  &:hover::after { transform: scaleX(1); transform-origin: left; }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
