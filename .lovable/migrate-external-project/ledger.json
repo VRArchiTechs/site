@@ -1,0 +1,104 @@
+{
+  "source": "code-archive",
+  "artifact": "site-Main-26.3.zip",
+  "capabilities": [
+    {
+      "capability": "code",
+      "source": "site-Main-26.3.zip (TanStack Start v1, React 19, Tailwind CSS v4, single-page VR ArchiTechs portfolio)",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "schema",
+      "source": "none detected (static portfolio site)",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "records",
+      "source": "Static portfolio items defined in code (3 architecture projects, 3 interior visualisation studies)",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "auth_identities",
+      "source": "none detected",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "authorization",
+      "source": "none detected",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "uploaded_file_bytes",
+      "source": "42 WebP images in public/images/ plus favicon assets in public/",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "external_providers",
+      "source": "Google Fonts (Lora, Space Grotesk) and outbound links (Instagram, Pinterest, WhatsApp, mailto, tel)",
+      "outcome": "preserve",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "public_endpoints",
+      "source": "none detected (contact form is client-side confirmation only)",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "callbacks",
+      "source": "none detected",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "webhooks",
+      "source": "none detected",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "schedules",
+      "source": "none detected",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "secrets",
+      "source": "none required",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "cutover",
+      "source": "none required for static portfolio",
+      "outcome": "not_applicable",
+      "status": "verified",
+      "next_action": "None"
+    },
+    {
+      "capability": "verification",
+      "source": "Build, typecheck, unit tests, and Playwright desktop/mobile preview checks",
+      "outcome": "verify",
+      "status": "verified",
+      "next_action": "None"
+    }
+  ]
+}

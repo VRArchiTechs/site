@@ -82,12 +82,12 @@
 
 :root {
   --radius: 0.25rem;
-  --espresso: oklch(0.215 0.008 67);
-  --linen: oklch(0.92 0.014 80);
+  --espresso: oklch(0.2 0.012 60);
+  --linen: oklch(0.925 0.018 78);
   --bone: oklch(0.982 0.004 80);
-  --forest: oklch(0.47 0.07 148);
-  --forest-deep: oklch(0.37 0.055 148);
-  --background: oklch(0.968 0.007 90);
+  --forest: oklch(0.48 0.075 152);
+  --forest-deep: oklch(0.33 0.05 155);
+  --background: oklch(0.972 0.008 82);
   --foreground: oklch(0.215 0.008 67);
   --card: oklch(0.982 0.004 80);
   --card-foreground: oklch(0.215 0.008 67);
@@ -98,7 +98,7 @@
   --secondary: oklch(0.92 0.014 80);
   --secondary-foreground: oklch(0.215 0.008 67);
   --muted: oklch(0.92 0.014 80);
-  --muted-foreground: oklch(0.48 0.012 67);
+  --muted-foreground: oklch(0.46 0.014 62);
   --accent: oklch(0.92 0.014 80);
   --accent-foreground: oklch(0.215 0.008 67);
   --destructive: oklch(0.577 0.245 27.325);
@@ -164,6 +164,9 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
   }
 
   body {
@@ -188,6 +191,14 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+@utility shadow-plate {
+  box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--espresso) 45%, transparent);
+}
+
+@utility ease-premium {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @utility link-underline {

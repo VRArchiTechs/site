@@ -1,52 +1,24 @@
-# VR ArchiTechs — Portfolio
+# Project Revival
 
-Editorial portfolio site for Vishnu Ahir / VR ArchiTechs.
+/skill:migrate-external-project Source: code archive. Migrate the attached project into Lovable.
 
-The site is intentionally content-driven: **Work** and **Visualisation** are collections rendered by reusable components. Adding normal content should not require component, routing, or layout changes.
+This project was built with [Lovable](https://lovable.dev).
 
-## Content workflow
+## Build with Lovable
 
-See [`docs/CONTENT_WORKFLOW.md`](docs/CONTENT_WORKFLOW.md) for the single source of truth for adding, editing, and removing projects.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/159c11da-1f95-4b3b-a10a-213c45d40ed4).
 
-### Canonical templates
-
-- **Work:** `Tri-Pod Residence`
-- **Visualisation:** `Living Room`
-
-Use those entries as structural examples for future content. Do not copy legacy asset metadata or create one-off component variants for individual projects.
-
-## Project structure
-
-```text
-public/images/
-├── landing/
-├── profile/
-├── work/
-│   └── project-slug/
-└── visualisation/
-    └── scene-slug/
-
-src/
-├── components/site/     # reusable presentation components
-├── lib/
-│   ├── portfolio-data.ts # editable portfolio content
-│   ├── site-assets.ts    # site-wide image references
-│   └── work.ts           # Work collection helpers
-└── routes/              # application routes
-```
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
-```sh
-bun install
-bun run dev
-```
-
-Before publishing content changes:
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-bun run build
-bun run lint
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
 ```
-
-The repository is connected to Lovable; keep `main` in a working state and do not rewrite published Git history.
